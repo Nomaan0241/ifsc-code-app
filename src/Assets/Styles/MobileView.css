@@ -1,0 +1,40 @@
+@media screen and (max-width: 500px) {    
+    .fullWithContainer {
+        padding: 10px 15px;
+        background-size: 25%, 35%;
+    }
+    
+    .homeSubContainer {
+        padding: 15px 10px;
+    }
+
+    #homeHeading {
+        font-size: 48px;
+    }
+
+    #homeSubHeading {
+        margin: 0 auto 25px auto;
+    }
+    :root {
+        --fontSize: 18px;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .homeSubContainer {
+        padding: 10px 0px;
+    }
+
+    #bankDetailSearchContainer {
+        padding: 20px 10px
+    }
+
+    #bankDetailSearchContainer h1 {
+        font-size: 28px;
+    }
+
+    #bankDetailSearchContainer h1 span::after {
+        height: 3px;
+        left: -3px;
+    }
+}

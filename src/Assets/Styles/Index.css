@@ -1,0 +1,58 @@
+:root {
+  --prColor: #013DB9;
+  --secColor: #01C324;
+  --thirdColor: #d9d9d9;
+  --whiteColor: #ffffff;
+  --bgColor: #d9d9d9;
+  --textFontSize: 18px;
+  --headSize: 42px;
+  --fontSize: 20px;
+  --navFontSize: 18px;
+  --mainFont: 'Roboto', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--mainFont);
+}
+
+.mainContainer {
+  max-width: 980px;
+  margin: 0px auto;
+  padding: 10px;
+}
+
+.mainHeading {
+  text-align: center;
+  color: var(--prColor);
+  font-size: var(--headSize);
+  margin: 10px 0px;
+}
+
+.mainHeading span {
+  color: var(--secColor);
+  text-decoration: underline;
+}
+
+.cardContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px;
+  min-height: 265px;
+}
+
+.errorMsg{
+  color: red;
+  font-size: 24px;
+}
+
+@media screen and (max-width: 430px) {
+  .mainHeading {
+      font-size: 34px;
+  }
+
+}

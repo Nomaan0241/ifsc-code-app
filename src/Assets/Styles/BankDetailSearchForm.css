@@ -1,0 +1,92 @@
+#bankDetailSearchContainer {
+    width: inherit;
+    padding: 20px;
+    border-radius: 15px;
+    background-color: var(--whiteColor);
+    box-shadow: 1px 1px 30px 3px rgba(0, 0, 0, 0.160);
+}
+
+#bankDetailSearchContainer h1 {
+    margin: 0 0 30px 0;
+    color: var(--prColor);
+    text-align: center;
+    font-size: 36px;
+}
+
+#bankDetailSearchContainer h1 span {
+    color: var(--secColor);
+    position: relative;
+}
+
+#bankDetailSearchContainer h1 span::after {
+    content: '';
+    background-color: var(--secColor);
+    position: absolute;
+    bottom: 0px;
+    left: -4px;
+    width: 110%;
+    height: 5px;
+    border-radius: 10px;
+}
+
+.bankDetailSelectContainer {
+    width: 100%;
+    margin: 0 0 30px 0;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    border: 0.5px solid var(--prColor);
+    border-radius: 10px;
+    color: var(--prColor);
+    font-size: var(--fontSize);
+    font-weight: 500;
+    cursor: pointer;
+    outline: none;
+    box-shadow: 2px 3px 9px rgba(0, 0, 0, 0.160);
+}
+
+.bankDetailSelectIcon {
+    margin: 0 10px 0 0;
+    color: var(--secColor);
+    width: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bankDetailSelectContainer p {
+    flex: 1;
+}
+
+.bankDetailSelectDropDownIcon {
+    padding: 3px;
+    width: 25px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bankDetailSelectDropDownIcon:hover {
+    background-color: #e2e2e2;
+}
+
+.bankDetailOption {
+    border-radius: 10px;
+    padding: 10px;
+}
+
+
+#selectBank{
+    background-color: none;
+    border: none;
+    outline: none;
+    color: var(--prColor);
+    font-size: var(--fontSize);
+    font-weight: 500;
+    flex: 1;
+    cursor: pointer;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+}

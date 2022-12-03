@@ -1,0 +1,88 @@
+.fullWithContainer {
+    width: 100%;
+    min-height: calc(100vh - 70px);
+    padding: 60px 70px;
+    position: relative;
+    background-image: url('../Images/backgroundImages/debitCard.png'), url('../Images/backgroundImages/bank.png');
+    background-repeat: no-repeat;
+    background-size: 12%, 22%;
+    background-position: right 10px, left bottom;
+}
+
+.homeContainer {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.homeSubContainer {
+    padding: 20px;
+    /* flex: 1; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.backgroundImages {
+    position: absolute;
+}
+
+#debitCardPng {
+    right: 0px;
+    top: 10px;
+    width: 12%;
+}
+
+#bankPng {
+    left: 0px;
+    bottom: 20px;
+    width: 20%;
+}
+
+/* LEFT SIDE CONTAINER */
+
+.homeLeftSideContainer{
+    flex: 1 1 55%;
+}
+
+#homeHeading {
+    font-size: 62px;
+    color: var(--prColor);
+}
+
+#homeHeading span {
+    color: var(--secColor);
+}
+
+#homeSubHeading {
+    max-width: 330px;
+    margin: 0 0 50px 0;
+    font-size: var(--fontSize);
+    font-weight: 500;
+}
+
+#homeBannerBtn {
+    width: 170px;
+    border-radius: 30px;
+    outline: none;
+    border: none;
+    padding: 8px 18px;
+    background-color: var(--prColor);
+    color: var(--whiteColor);
+    font-size: var(--fontSize);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s ease-in 0s;
+}
+
+#homeBannerBtn:hover {
+    background-color: var(--secColor);
+    width: 175px;
+}
+
+/* RIGHT SIDE CONTAINER */
+
+.homeRightSideContainer{
+    flex: 1 1 45%;
+}
