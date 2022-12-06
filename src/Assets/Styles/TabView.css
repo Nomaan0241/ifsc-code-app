@@ -2,11 +2,9 @@
     header {
         padding: 10px 15px;
     }
-
     .fullWithContainer {
         padding: 20px 15px;
     }
-
     .navbar li a {
         color: var(--whiteColor);
         text-decoration: none;
@@ -24,12 +22,10 @@
     header {
         justify-content: space-between;
     }
-
     .mainLogo {
         padding: 0px;
         border-right: none;
     }
-
     .btnSection {
         display: none;
         position: absolute;
@@ -43,23 +39,19 @@
         transition: all 0.3s ease 0s;
         z-index: 498;
     }
-
     .btnSection.show {
         display: flex;
     }
-
     .navbar {
         display: flex;
         flex-wrap: wrap;
         flex-direction: column;
         width: 100%;
     }
-
     .navbar li {
         list-style: none;
         padding: 5px 0px;
     }
-
     .navbar li a {
         padding: 10px 15px;
         font-size: 20px;
@@ -67,12 +59,10 @@
         display: block;
         text-align: center;
     }
-
     .navbar li a:hover {
         color: var(--whiteColor);
         background-color: var(--prColor);
     }
-
     #menuIcon {
         display: block;
     }
@@ -82,34 +72,33 @@
     .homeSubContainer {
         flex: 1 1 100%;
     }
-
     .homeLeftSideContainer {
         text-align: center;
-
     }
-
     #homeSubHeading {
         margin: 0 auto 50px auto;
         max-width: 500px;
         display: block;
         text-align: center;
     }
-
     #homeBannerBtn {
         margin: 0px auto;
         text-align: center;
     }
-
     .homeRightSideContainer {
         max-width: 100%;
     }
-
     #bankDetailSearchContainer h1 {
         margin: 0 0 20px 0;
     }
-
-    .bankDetailSelectContainer{
+    .bankDetailSelectContainer {
         margin: 0 0 15px 0;
         box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.160);
+    }
+}
+
+@media screen and (max-width: 770px) {
+     :root {
+        --titleHeadingSize: 48px;
     }
 }

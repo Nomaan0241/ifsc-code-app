@@ -77,7 +77,7 @@
 }
 
 
-#selectBank{
+#selectBank {
     background-color: none;
     border: none;
     outline: none;
@@ -89,4 +89,109 @@
     appearance: none;
     -moz-appearance: none;
     -webkit-appearance: none;
+}
+
+.bankDetailSelectContainer {
+    width: 100%;
+    margin: 0 0 30px 0;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    border: 0.5px solid var(--prColor);
+    border-radius: 10px;
+    color: var(--prColor);
+    font-size: var(--fontSize);
+    font-weight: 500;
+    cursor: pointer;
+    outline: none;
+    box-shadow: 2px 3px 9px rgba(0, 0, 0, 0.160);
+    position: relative;
+}
+
+.bankDetailSelectIcon {
+    margin: 0 10px 0 0;
+    color: var(--secColor);
+    width: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bankDetailSelectContainer p {
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+.bankDetailSelectDropDownIcon {
+    padding: 3px;
+    width: 25px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bankDetailSelectDropDownIcon:hover {
+    background-color: var(--thirdColor);
+}
+
+.opened {
+    transform: rotate(180deg);
+    transition: all 0.2s ease-in;
+}
+
+.bankDetailOptionContainer {
+    width: inherit;
+    max-height: 140px;
+    position: absolute;
+    overflow-y: auto;
+    top: 48px;
+    left: 0px;
+    background-color: var(--whiteColor);
+    border-radius: 10px;
+    border: 0.5px solid var(--prColor);
+    z-index: 99;
+}
+
+.bankDetailOptionContainer::-webkit-scrollbar {
+    width: 15px;
+    border-radius: 20px;
+    background-color: var(--thirdColor);
+}
+.bankDetailOptionContainer::-webkit-scrollbar-thumb {
+    background-color: var(--prColor);
+    border-radius: 20px;
+}
+
+.bankDetailOptionSelector {
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.bankDetailOptionSelector:hover {
+    background-color: var(--thirdColor);
+}
+
+
+.successBorder {
+    border: 0.5px solid var(--secColor);
+}
+
+.errorBorder {
+    border: 0.5px solid var(--redColor);
+}
+
+.successColor, .refreshBtnColor {
+    color: var(--refreshBtnColor);
+}
+
+.errorColor {
+    color: var(--redColor);
+}
+
+.disabledField{
+    background-color: var(--thirdColor);
 }

@@ -1,9 +1,9 @@
-import React from 'react'
+import TitleHeader from '../../Components/TitleHeader'
 
 function Contact() {
   return (
-    <div>
-      Contact Us Page 
+    <div className='sectionContainer'>
+      <TitleHeader title='Contact' title2='us' />
     </div>
   )
 }

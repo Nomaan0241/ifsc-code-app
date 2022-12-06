@@ -1,12 +1,13 @@
-
+import TitleHeader from '../../Components/TitleHeader'
 import '../../Assets/Styles/About.css'
 
 function About() {
 
   return (
-    <>
-      About Page
-    </>
+    <div className='sectionContainer'>
+      <TitleHeader title='About' title2='us' />
+      <p>This is about page</p>
+    </div>
   )
 }
 

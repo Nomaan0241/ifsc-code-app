@@ -7,6 +7,8 @@ const ifscFetchDetails = createSlice({
             { bankvalue: 'punjab-national-bank', bankname: 'Punjab National Bank' },
             { bankvalue: 'axis-bank', bankname: 'Axis Bank' },
             { bankvalue: 'state-bank-of-india', bankname: 'State Bank of India' },
+            { bankvalue: 'icici-bank', bankname: 'ICICI Bank' },
+            { bankvalue: 'canara-bank', bankname: 'Canara Bank' }
         ],
         state: [
             {statevalue:'punjab', statename: 'Punjab'},

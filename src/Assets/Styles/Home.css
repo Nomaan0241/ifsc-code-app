@@ -16,26 +16,9 @@
 
 .homeSubContainer {
     padding: 20px;
-    /* flex: 1; */
     display: flex;
     flex-direction: column;
     justify-content: center;
-}
-
-.backgroundImages {
-    position: absolute;
-}
-
-#debitCardPng {
-    right: 0px;
-    top: 10px;
-    width: 12%;
-}
-
-#bankPng {
-    left: 0px;
-    bottom: 20px;
-    width: 20%;
 }
 
 /* LEFT SIDE CONTAINER */
@@ -45,7 +28,7 @@
 }
 
 #homeHeading {
-    font-size: 62px;
+    font-size: var(--headingSize);
     color: var(--prColor);
 }
 
@@ -69,6 +52,7 @@
     background-color: var(--prColor);
     color: var(--whiteColor);
     font-size: var(--fontSize);
+    text-decoration: none;
     display: flex;
     justify-content: space-between;
     align-items: center;

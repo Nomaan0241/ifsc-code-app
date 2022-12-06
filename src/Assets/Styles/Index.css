@@ -1,11 +1,15 @@
 :root {
   --prColor: #013DB9;
   --secColor: #01C324;
-  --thirdColor: #d9d9d9;
+  --thirdColor: #e2e2e2;
   --whiteColor: #ffffff;
+  --redColor: #ff0000;
+  --refreshBtnColor: #FFA500;
   --bgColor: #d9d9d9;
   --textFontSize: 18px;
-  --headSize: 42px;
+  --headSize: 62px;
+  --headingSize: 62px;
+  --titleHeadingSize: 62px;
   --fontSize: 20px;
   --navFontSize: 18px;
   --mainFont: 'Roboto', sans-serif;
@@ -18,41 +22,33 @@
   font-family: var(--mainFont);
 }
 
-.mainContainer {
-  max-width: 980px;
-  margin: 0px auto;
-  padding: 10px;
+.sectionContainer{
+  max-width: 920px;
+  padding: 10px 15px;
+  margin: auto;
 }
 
-.mainHeading {
-  text-align: center;
+.sectionHeaderTitle{
   color: var(--prColor);
-  font-size: var(--headSize);
-  margin: 10px 0px;
+  font-size: var(--headingSize);
+  text-align: center;
+  font-weight: 900;
+  position: relative;
+  margin: 10px 0px 20px 0px;
+  text-transform: uppercase;
 }
 
-.mainHeading span {
+.sectionHeaderTitle span{
   color: var(--secColor);
-  text-decoration: underline;
+  position: relative;
 }
 
-.cardContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 5px;
-  min-height: 265px;
-}
-
-.errorMsg{
-  color: red;
-  font-size: 24px;
-}
-
-@media screen and (max-width: 430px) {
-  .mainHeading {
-      font-size: 34px;
-  }
-
+.sectionHeaderTitle span::after {
+  content: '';
+  background-color: var(--secColor);
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  height: 8px;
+  width: 100%;
 }

@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux'
-function ShowFullDetails() {
+function IfscFullDetail() {
     const bankName = useSelector((state) => state.ifscSearchDetailInfo.bank.bankname);
     const stateName = useSelector((state) => state.ifscSearchDetailInfo.state.statename);
     const districtName = useSelector((state) => state.ifscSearchDetailInfo.district.districtname);
@@ -15,4 +15,4 @@ function ShowFullDetails() {
     )
 }
 
-export default ShowFullDetails
+export default IfscFullDetail

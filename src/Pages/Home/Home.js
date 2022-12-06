@@ -1,9 +1,9 @@
 import Typed from "react-typed"
+import { Link } from 'react-router-dom'
 import RightSideArrow from "../../Assets/Images/Icons/rightSideArrow.png"
 import '../../Assets/Styles/Home.css';
-import FindIFSCSetBankComponent from "../../Components/SetIfscBankDetail";
 
-function Home() {
+function Home({ IFSCDetailTakerComponent }) {
     const textLines = [`IFSC`, `Banks`, `Address`];
     return (
         <>
@@ -15,13 +15,13 @@ function Home() {
                         </span>
                     </h1>
                     <p id="homeSubHeading">Website Name is a place where you can know your bank details through IFSC Codes.</p>
-                    <button id='homeBannerBtn'>
+                    <Link to='/about' id='homeBannerBtn'>
                         <span>Know More</span>
                         <img src={RightSideArrow} alt="right side arrow" />
-                    </button>
+                    </Link>
                 </div>
                 <div className="homeSubContainer homeRightSideContainer">
-                    <FindIFSCSetBankComponent/>
+                    <IFSCDetailTakerComponent />
                 </div>
             </div>
         </>
