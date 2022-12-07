@@ -1,13 +1,14 @@
 import Typed from "react-typed"
 import { Link } from 'react-router-dom'
-import RightSideArrow from "../../Assets/Images/Icons/rightSideArrow.png"
 import '../../Assets/Styles/Home.css';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleChevronRight } from "@fortawesome/free-solid-svg-icons";
 
 function Home({ IFSCDetailTakerComponent }) {
     const textLines = [`IFSC`, `Banks`, `Address`];
     return (
         <>
-            <div className="homeContainer fullWithContainer">
+            <div className="homeContainer homeFullWithContainer">
                 <div className="homeSubContainer homeLeftSideContainer">
                     <h1 id="homeHeading">Find&nbsp;
                         <span id='homeHeadingAutoType'>
@@ -17,7 +18,7 @@ function Home({ IFSCDetailTakerComponent }) {
                     <p id="homeSubHeading">Website Name is a place where you can know your bank details through IFSC Codes.</p>
                     <Link to='/about' id='homeBannerBtn'>
                         <span>Know More</span>
-                        <img src={RightSideArrow} alt="right side arrow" />
+                        <FontAwesomeIcon icon={faCircleChevronRight}/>
                     </Link>
                 </div>
                 <div className="homeSubContainer homeRightSideContainer">

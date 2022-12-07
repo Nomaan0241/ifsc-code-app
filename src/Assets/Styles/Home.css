@@ -1,7 +1,8 @@
-.fullWithContainer {
+.homeFullWithContainer {
     width: 100%;
     min-height: calc(100vh - 70px);
-    padding: 60px 70px;
+    padding: 55px 70px;
+    padding: 3% 6%;
     position: relative;
     background-image: url('../Images/backgroundImages/debitCard.png'), url('../Images/backgroundImages/bank.png');
     background-repeat: no-repeat;
@@ -48,7 +49,7 @@
     border-radius: 30px;
     outline: none;
     border: none;
-    padding: 8px 18px;
+    padding: 8px 12px 8px 15px;
     background-color: var(--prColor);
     color: var(--whiteColor);
     font-size: var(--fontSize);

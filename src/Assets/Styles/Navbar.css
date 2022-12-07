@@ -13,6 +13,7 @@ header {
 
 .mainLogo {
     height: 50px;
+    width: inherit;
     padding: 0px 20px 0px 0px;
     border-right: 2px solid var(--whiteColor);
 }
@@ -46,7 +47,7 @@ header {
     transition: all 0.3s ease 0s;
 }
 
-.navbar li a:hover {
+.navbar li a:hover, .active {
     background-color: rgba(255, 255, 255, 0.30);
 }
 
@@ -78,6 +79,7 @@ header {
 
 #ifscSearchBox::placeholder {
     color: var(--prColor);
+    opacity: 0.6;
 }
 
 #ifscSearchBtn {
@@ -98,3 +100,7 @@ header {
     display: grid;
     place-items: center;
 }
+/* #ifscSearchBtn img{
+    height: 100%;
+    width: 100%;
+} */

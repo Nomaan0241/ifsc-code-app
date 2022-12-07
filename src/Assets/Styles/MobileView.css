@@ -3,8 +3,9 @@
             --fontSize: 18px;
             --headingSize: 48px;
             --titleHeadingSize: 36px;
+            --titleHeadingSize: 30px;
         }
-        .fullWithContainer {
+        .homeFullWithContainer {
             padding: 10px 15px;
             background-size: 25%, 35%;
         }
@@ -14,8 +15,8 @@
         #homeHeading {
             font-size: var(--headingSize);
         }
-        #homeSubHeading {
-            margin: 0 auto 25px auto;
+        .bankDataInfoContainer{
+            flex: 1 1 100%;
         }
     }    
     

@@ -10,7 +10,7 @@
     margin: 0 0 30px 0;
     color: var(--prColor);
     text-align: center;
-    font-size: 36px;
+    font-size: var(--titleHeadingSize);
 }
 
 #bankDetailSearchContainer h1 span {
@@ -71,25 +71,6 @@
     background-color: #e2e2e2;
 }
 
-.bankDetailOption {
-    border-radius: 10px;
-    padding: 10px;
-}
-
-
-#selectBank {
-    background-color: none;
-    border: none;
-    outline: none;
-    color: var(--prColor);
-    font-size: var(--fontSize);
-    font-weight: 500;
-    flex: 1;
-    cursor: pointer;
-    appearance: none;
-    -moz-appearance: none;
-    -webkit-appearance: none;
-}
 
 .bankDetailSelectContainer {
     width: 100%;
@@ -104,7 +85,7 @@
     font-weight: 500;
     cursor: pointer;
     outline: none;
-    box-shadow: 2px 3px 9px rgba(0, 0, 0, 0.160);
+    box-shadow: 2px 3px 9px #00000029;
     position: relative;
 }
 
@@ -145,7 +126,7 @@
 
 .bankDetailOptionContainer {
     width: inherit;
-    max-height: 140px;
+    max-height: 138px;
     position: absolute;
     overflow-y: auto;
     top: 48px;
@@ -156,11 +137,13 @@
     z-index: 99;
 }
 
+
 .bankDetailOptionContainer::-webkit-scrollbar {
-    width: 15px;
-    border-radius: 20px;
+    width: 10px;
+    border-radius: 0px 10px 10px 0px ;
     background-color: var(--thirdColor);
 }
+
 .bankDetailOptionContainer::-webkit-scrollbar-thumb {
     background-color: var(--prColor);
     border-radius: 20px;
@@ -168,13 +151,19 @@
 
 .bankDetailOptionSelector {
     padding: 5px;
-    border-radius: 10px;
+}
+
+.bankDetailOptionSelector:first-child {
+    border-radius: 10px 10px 0px 0px;
+}
+
+.bankDetailOptionSelector:last-child {
+    border-radius: 0px 0px 10px 10px;
 }
 
 .bankDetailOptionSelector:hover {
     background-color: var(--thirdColor);
 }
-
 
 .successBorder {
     border: 0.5px solid var(--secColor);
@@ -184,7 +173,8 @@
     border: 0.5px solid var(--redColor);
 }
 
-.successColor, .refreshBtnColor {
+
+.refreshBtnColor {
     color: var(--refreshBtnColor);
 }
 
@@ -192,6 +182,7 @@
     color: var(--redColor);
 }
 
-.disabledField{
+.disabledField {
     background-color: var(--thirdColor);
+    cursor: auto;
 }

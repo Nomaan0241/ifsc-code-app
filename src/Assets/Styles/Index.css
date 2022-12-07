@@ -1,18 +1,21 @@
 :root {
   --prColor: #013DB9;
+  /* --secColor: #00CC66; */
   --secColor: #01C324;
   --thirdColor: #e2e2e2;
   --whiteColor: #ffffff;
+  --blackColor: #000000;
   --redColor: #ff0000;
   --refreshBtnColor: #FFA500;
   --bgColor: #d9d9d9;
   --textFontSize: 18px;
   --headSize: 62px;
   --headingSize: 62px;
-  --titleHeadingSize: 62px;
+  --titleHeadingSize: 36px;
   --fontSize: 20px;
   --navFontSize: 18px;
   --mainFont: 'Roboto', sans-serif;
+  --shadow: 2px 3px 9px rgba(0, 0, 0, 0.160);
 }
 
 * {
@@ -22,23 +25,38 @@
   font-family: var(--mainFont);
 }
 
-.sectionContainer{
+p {
+  font-size: var(--fontSize);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: var(--thirdColor);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--secColor);
+  border-radius: 20px;
+}
+
+
+.pageContainer {
   max-width: 920px;
   padding: 10px 15px;
   margin: auto;
 }
 
-.sectionHeaderTitle{
+.sectionHeaderTitle {
   color: var(--prColor);
   font-size: var(--headingSize);
   text-align: center;
   font-weight: 900;
   position: relative;
-  margin: 10px 0px 20px 0px;
+  margin: 10px 0px;
   text-transform: uppercase;
 }
 
-.sectionHeaderTitle span{
+.sectionHeaderTitle span {
   color: var(--secColor);
   position: relative;
 }
@@ -49,6 +67,54 @@
   position: absolute;
   bottom: 0px;
   left: 0px;
-  height: 8px;
+  height: 6px;
+  width: 100%;
+}
+
+.descriptionContainer {
+  margin: 20px 0px 40px 0px;
+}
+
+.descriptionContainer p {
+  text-align: center;
+  text-align: justify;
+  padding: 0px 20px;
+}
+.descriptionContainer p span{
+  font-weight: 700;
+}
+
+.descriptionHeading {
+  padding: 8px;
+  margin: 0 0 10px 0;
+  text-align: center;
+  border: 1px solid var(--prColor);
+  border-radius: 15px;
+  color: var(--prColor);
+  box-shadow: var(--shadow);
+  font-size: var(--titleHeadingSize);
+}
+
+
+.headingStyle {
+  color: var(--prColor);
+  font-size: var(--titleHeadingSize);
+  text-align: center;
+  margin: 0px 0px 8px 0px;
+}
+
+.headingStyle span,
+.descriptionHeading span {
+  color: var(--secColor);
+  position: relative;
+}
+
+.headingStyle span::after {
+  content: '';
+  background-color: var(--secColor);
+  position: absolute;
+  bottom: 2px;
+  left: 0px;
+  height: 3px;
   width: 100%;
 }

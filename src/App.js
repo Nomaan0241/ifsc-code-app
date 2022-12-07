@@ -8,9 +8,9 @@ import OutletPage from './Pages/Extra/OutletPage'
 import PageNotFound from './Pages/Extra/PageNotFound'
 import IfscFullDetail from './Pages/IfscFullDetail'
 import SetIfscBankDetail from './Components/HomeIFSCDetailComponents/SetIfscBankDetail'
-import SetIfscStateDetail from './Components/HomeIFSCDetailComponents/SetIfscStateDetail'
-import SetIfscDistrictDetail from './Components/HomeIFSCDetailComponents/SetIfscDistrictDetail'
-import SetIfscBranchDetail from './Components/HomeIFSCDetailComponents/SetIfscBranchDetail'
+import StateDetailRoute from './Pages/BankDetailRoutes/StateDetailRoute'
+import DistrictDetailRoute from './Pages/BankDetailRoutes/DistrictDetailRoute'
+import BranchDetailRoute from './Pages/BankDetailRoutes/BranchDetailRoute'
 
 function App() {
   return (
@@ -24,11 +24,11 @@ function App() {
           <Route path='service' element={<Service />} />
           <Route path='bank' element={<OutletPage />} >
             <Route path=':bankName' element={<OutletPage />} >
-              <Route index element={<Home IFSCDetailTakerComponent={SetIfscStateDetail} />} />
+              <Route index element={<StateDetailRoute />} />
               <Route path=':stateName' element={<OutletPage />} >
-                <Route index element={<Home IFSCDetailTakerComponent={SetIfscDistrictDetail} />} />
+                <Route index element={<DistrictDetailRoute />} />
                 <Route path=':districtName' element={<OutletPage />} >
-                  <Route index element={<Home IFSCDetailTakerComponent={SetIfscBranchDetail} />} />
+                  <Route index element={<BranchDetailRoute />} />
                   <Route path=':branchName' element={<OutletPage />} >
                     <Route index element={<IfscFullDetail />} />
                     <Route path='details' element={<IfscFullDetail />} />
