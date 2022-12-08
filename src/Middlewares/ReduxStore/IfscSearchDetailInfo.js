@@ -7,6 +7,7 @@ const ifscSearchDetailInfo = createSlice({
         state: '',
         district: '',
         branch: '',
+        ifsc: ''
     },
     reducers: {
         setIFSCSearchDetailInfo(state, actions) {

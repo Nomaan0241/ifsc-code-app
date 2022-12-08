@@ -1,4 +1,3 @@
-import TitleHeader from '../../Components/TitleHeader'
 import targetImg from '../../Assets/Images/Icons/targetIcon.png'
 import missionImg from '../../Assets/Images/Icons/mission.png'
 import '../../Assets/Styles/About.css'
@@ -7,7 +6,7 @@ function About() {
 
   return (
     <>
-      <TitleHeader title='About' title2='us' />
+      <h1 className='sectionHeaderTitle'>About <span>us</span></h1>
       {/* what is ifsc section */}
       <div className="pageContainer">
         <div id="aboutIfscSection">
@@ -47,7 +46,7 @@ function About() {
           </div>
           <div id='whoWeAreRightContainer' className='detailRightSectionContainer'>
             <h1 className='headingStyle' >Our Goal <span></span></h1>
-            <p>{`It gives us great pleasure to present to you <website name>! A place where you can very easily find IFSC (India Financial System Code) code. The websites currently lists around 1 lac bank branches of around 150 banks in India. We have utmost care in making sure the data we have collected is correct. However, we expect you to use this website only for reference, and please confirm from the bank directly before performing any transaction. Contact details for each bank/branch are provided in the same page where we list the IFSC Code`}</p>
+            <p>{`It gives us great pleasure to present to you <website name>! A place where you can very easily find IFSC (India Financial System Code) code. The websites currently lists around 1 lac bank branches of around 150 banks in India.`}</p>
           </div>
         </div>
         {/* our mission section */}
@@ -57,7 +56,7 @@ function About() {
           </div>
           <div id='ourMissionSectionRightContainer' className='detailRightSectionContainer'>
             <h1 className='headingStyle'>Our Mission<span></span></h1>
-            <p>{`Providing you the best services is our moto. Providing you the best services is our moto. Providing you the best services is our moto. Providing you the best services is our moto. Providing you the best services is our moto.`}</p>
+            <p>{`It gives us great pleasure to present to you <website name>! A place where you can very easily find IFSC (India Financial System Code) code. The websites currently lists around 1 lac bank branches of around 150 banks in India.`}</p>
           </div>
         </div>
       </div>

@@ -25,6 +25,7 @@ const ifscFetchDetails = createSlice({
             {branchvalue:'firozpur-cantt', branchname: 'Firozpur Cantt'},
             {branchvalue:'zira', branchname: 'Zira'},
         ],
+        ifsc: {}
     },
     reducers: {
         setIfscFetchedDetails(state, actions) {

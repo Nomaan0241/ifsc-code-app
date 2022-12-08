@@ -1,8 +1,7 @@
     @media screen and (max-width: 500px) {
         :root {
             --fontSize: 18px;
-            --headingSize: 48px;
-            --titleHeadingSize: 36px;
+            --headingSize: 42px;
             --titleHeadingSize: 30px;
         }
         .homeFullWithContainer {
@@ -13,13 +12,13 @@
             padding: 15px 10px;
         }
         #homeHeading {
-            font-size: var(--headingSize);
+            font-size: calc(var(--headingSize) + 6px);
         }
         .bankDataInfoContainer{
             flex: 1 1 100%;
         }
     }    
-    
+        
     @media screen and (max-width: 375px) {
         .homeSubContainer {
             padding: 10px 0px;

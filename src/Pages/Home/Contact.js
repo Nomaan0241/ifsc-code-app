@@ -1,9 +1,7 @@
-import TitleHeader from '../../Components/TitleHeader'
-
 function Contact() {
   return (
     <div className='sectionContainer'>
-      <TitleHeader title='Contact' title2='us' />
+      <h1 className='sectionHeaderTitle'>contact <span>us</span></h1>
     </div>
   )
 }

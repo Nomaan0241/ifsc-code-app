@@ -11,17 +11,22 @@ import SetIfscBankDetail from './Components/HomeIFSCDetailComponents/SetIfscBank
 import StateDetailRoute from './Pages/BankDetailRoutes/StateDetailRoute'
 import DistrictDetailRoute from './Pages/BankDetailRoutes/DistrictDetailRoute'
 import BranchDetailRoute from './Pages/BankDetailRoutes/BranchDetailRoute'
+import BankFullDetail from './Pages/BankFullDetail'
 
 function App() {
   return (
     <>
       <Navbar />
+      
       <Routes>
         <Route path='/' element={<OutletPage />}>
           <Route index element={<Home IFSCDetailTakerComponent={SetIfscBankDetail} />} />
           <Route path='about' element={<About />} />
           <Route path='contact' element={<Contact />} />
           <Route path='service' element={<Service />} />
+          <Route path='ifsc' element={<OutletPage />}>
+            <Route path=':ifscCode' element={<BankFullDetail/>} />
+          </Route>
           <Route path='bank' element={<OutletPage />} >
             <Route path=':bankName' element={<OutletPage />} >
               <Route index element={<StateDetailRoute />} />

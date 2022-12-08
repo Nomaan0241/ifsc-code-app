@@ -7,14 +7,18 @@ header {
     position: sticky;
     top: 0;
     left: 0;
-    height: 70px;
+    height: 66px;
     z-index: 500;
 }
 
-.mainLogo {
-    height: 50px;
+#mainLogoContainer{
+    height: 100%;
+}
+
+#mainLogo {
+    height: inherit;
     width: inherit;
-    padding: 0px 20px 0px 0px;
+    padding: 0px 15px 0px 0px;
     border-right: 2px solid var(--whiteColor);
 }
 
@@ -47,7 +51,12 @@ header {
     transition: all 0.3s ease 0s;
 }
 
-.navbar li a:hover, .active {
+.active{
+    background-color: var(--whiteColor);
+    color: var(--prColor) !important;
+}
+
+.navbar li a:hover {
     background-color: rgba(255, 255, 255, 0.30);
 }
 
@@ -58,7 +67,10 @@ header {
 }
 
 #menuIcon {
-    display: none;
+    display: none;    
+    width: 30px;
+    height: 30px;
+    color: var(--whiteColor);
 }
 
 .ifscSearchBoxContainer{
@@ -67,7 +79,7 @@ header {
 }
 
 #ifscSearchBox {
-    padding: 10px 10px 10px 22px;
+    padding: 10px 43px 10px 22px;
     outline: none;
     border: none;
     border-radius: 20px;
@@ -79,7 +91,7 @@ header {
 
 #ifscSearchBox::placeholder {
     color: var(--prColor);
-    opacity: 0.6;
+    opacity: 0.7;
 }
 
 #ifscSearchBtn {
@@ -100,7 +112,3 @@ header {
     display: grid;
     place-items: center;
 }
-/* #ifscSearchBtn img{
-    height: 100%;
-    width: 100%;
-} */
