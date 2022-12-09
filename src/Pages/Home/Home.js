@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom'
 import '../../Assets/Styles/Home.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleChevronRight } from "@fortawesome/free-solid-svg-icons";
+import IfscDetailSetComponent from "../../Components/HomeIFSCDetailComponents/IfscDetailSetComponent";
 
 function Home({ IFSCDetailTakerComponent }) {
-    const textLines = [`IFSC`, `Banks`, `Address`];
+    const textLines = [`IFSC`, `MICR`, `Banks`];
     return (
         <>
             <div className="homeContainer homeFullWithContainer">
@@ -18,10 +19,11 @@ function Home({ IFSCDetailTakerComponent }) {
                     <p id="homeSubHeading">Website Name is a place where you can know your bank details through IFSC Codes.</p>
                     <Link to='/about' id='homeBannerBtn'>
                         <span>Know More</span>
-                        <FontAwesomeIcon icon={faCircleChevronRight}/>
+                        <FontAwesomeIcon icon={faCircleChevronRight} />
                     </Link>
                 </div>
                 <div className="homeSubContainer homeRightSideContainer">
+                    {/* <IfscDetailSetComponent /> */}
                     <IFSCDetailTakerComponent />
                 </div>
             </div>

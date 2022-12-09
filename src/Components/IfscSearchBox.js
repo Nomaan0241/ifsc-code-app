@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setIFSCSearchDetailInfo } from '../Middlewares/ReduxStore/IfscSearchDetailInfo'
 import { setIfscFetchedDetails } from '../Middlewares/ReduxStore/IfscFetchDetails'
+import { setNavToggle } from '../Middlewares/ReduxStore/NavToggleSlice'
 
 function IfscSearchBox() {
     const [ifscValue, setIfscValue] = useState();
@@ -19,9 +20,10 @@ function IfscSearchBox() {
             method: 'GET',
             url: `https://ifsc.razorpay.com/${ifscValue}`
         }).then((res) => {
-            console.log(res.data);
+            // console.log(res.data);
             dispatch(setIFSCSearchDetailInfo({ key: 'ifsc', value: ifscValue }))
             dispatch(setIfscFetchedDetails({ key: 'ifsc', value: res.data }))
+            dispatch(setNavToggle())
             navigate(`/ifsc/${ifscValue}`)
         }).catch((err) => {
             alert(err.message);

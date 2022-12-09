@@ -107,8 +107,9 @@
 
 
 .bankDetailSelectDropDownIcon {
-    padding: 3px;
     width: 25px;
+    height: 25px;
+    padding: 3px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -129,7 +130,7 @@
     max-height: 138px;
     position: absolute;
     overflow-y: auto;
-    top: 48px;
+    top: 52px;
     left: 0px;
     background-color: var(--whiteColor);
     border-radius: 10px;

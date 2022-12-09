@@ -43,6 +43,7 @@ function FindIFSCSetStateComponent() {
           </div>
           }
         </div>
+        
         <div className="bankDetailSelectContainer disabledField">
           <FontAwesomeIcon icon={faCity} className={`bankDetailSelectIcon`} />
           <p>Select District</p>

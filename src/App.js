@@ -12,12 +12,14 @@ import StateDetailRoute from './Pages/BankDetailRoutes/StateDetailRoute'
 import DistrictDetailRoute from './Pages/BankDetailRoutes/DistrictDetailRoute'
 import BranchDetailRoute from './Pages/BankDetailRoutes/BranchDetailRoute'
 import BankFullDetail from './Pages/BankFullDetail'
+import { useEffect } from 'react'
+import Footer from './Layouts/Footer'
 
 function App() {
+  useEffect(() => window.scrollTo(0, 1), [])
   return (
     <>
       <Navbar />
-      
       <Routes>
         <Route path='/' element={<OutletPage />}>
           <Route index element={<Home IFSCDetailTakerComponent={SetIfscBankDetail} />} />
@@ -25,7 +27,7 @@ function App() {
           <Route path='contact' element={<Contact />} />
           <Route path='service' element={<Service />} />
           <Route path='ifsc' element={<OutletPage />}>
-            <Route path=':ifscCode' element={<BankFullDetail/>} />
+            <Route path=':ifscCode' element={<BankFullDetail />} />
           </Route>
           <Route path='bank' element={<OutletPage />} >
             <Route path=':bankName' element={<OutletPage />} >
@@ -45,6 +47,7 @@ function App() {
           <Route path='*' element={<PageNotFound />} />
         </Route>
       </Routes>
+      <Footer />
     </>
   )
 }

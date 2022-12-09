@@ -5,13 +5,30 @@ function IfscFullDetail() {
     const districtName = useSelector((state) => state.ifscSearchDetailInfo.district.districtname);
     const branchName = useSelector((state) => state.ifscSearchDetailInfo.branch.branchname);
     return (
-        <div>
-            <h1>Full Details</h1>
-            <div>Bank: {bankName}</div>
-            <div>State: {stateName}</div>
-            <div>District: {districtName}</div>
-            <div>Branch: {branchName}</div>
-        </div>
+        <>
+            <h1 className='sectionHeaderTitle'>Bank <span>Details</span></h1>
+            <div className="pageContainer">
+                <div className="infoTable">
+                    <h1 className="infoTableHeading">{bankName} IFSC Details</h1>
+                    <div className='infoTableRow'>
+                        <div className='infoTableCol fieldNameCol'>Bank:</div>
+                        <div className='infoTableCol dataCol'>{bankName || 'No Data Available'}</div>
+                    </div>
+                    <div className='infoTableRow'>
+                        <div className='infoTableCol fieldNameCol'>State:</div>
+                        <div className='infoTableCol dataCol'>{stateName || 'No Data Available'}</div>
+                    </div>
+                    <div className='infoTableRow'>
+                        <div className='infoTableCol fieldNameCol'>District:</div>
+                        <div className='infoTableCol dataCol'>{districtName || 'No Data Available'}</div>
+                    </div>
+                    <div className='infoTableRow'>
+                        <div className='infoTableCol fieldNameCol'>Branch:</div>
+                        <div className='infoTableCol dataCol'>{branchName || 'No Data Available'}</div>
+                    </div>
+                </div>
+            </div>
+        </>
     )
 }
 

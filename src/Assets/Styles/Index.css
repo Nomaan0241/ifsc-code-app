@@ -1,6 +1,5 @@
 :root {
   --prColor: #013DB9;
-  /* --secColor: #00CC66; */
   --secColor: #01C324;
   --thirdColor: #e2e2e2;
   --whiteColor: #ffffff;
@@ -9,8 +8,8 @@
   --refreshBtnColor: #FFA500;
   --bgColor: #d9d9d9;
   --textFontSize: 18px;
-  --headSize: 62px;
-  --headingSize: 62px;
+  --headSize: 72px;
+  --headingSize: 55px;
   --titleHeadingSize: 36px;
   --fontSize: 20px;
   --navFontSize: 18px;
@@ -80,7 +79,8 @@ p {
   text-align: justify;
   padding: 0px 20px;
 }
-.descriptionContainer p span{
+
+.descriptionContainer p span {
   font-weight: 700;
 }
 
@@ -117,4 +117,46 @@ p {
   left: 0px;
   height: 3px;
   width: 100%;
+}
+
+.infoTable {
+  margin: 20px 0px;
+  padding: 20px;
+  font-size: var(--fontSize);
+  border-radius: 20px;
+  background-color: var(--whiteColor);
+  box-shadow: 1px 3px 25px rgba(0, 0, 0, 0.160);
+}
+
+.infoTableHeading{
+  padding: 10px;
+  text-align: center;
+  font-size: 24px;
+  border-radius: 13px 13px 0px 0px;
+  color: var(--whiteColor);
+  background-color: var(--prColor);
+}
+
+.infoTableRow {
+  width: 100%;
+  padding: 10px;
+  background-color: var(--whiteColor);
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.infoTableRow:nth-child(2n+1) {
+  background-color: var(--thirdColor);
+}
+
+.infoTableCol {
+  flex: 1 1;
+}
+
+.fieldNameCol{
+  font-weight: 700;
+}
+
+.dataCol{
+  text-transform: capitalize;
 }

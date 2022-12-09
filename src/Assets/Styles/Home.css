@@ -29,7 +29,7 @@
 }
 
 #homeHeading {
-    font-size: var(--headingSize);
+    font-size: var(--headSize);
     color: var(--prColor);
 }
 
