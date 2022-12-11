@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 
 function BankFullDetail() {
-  const { IFSC, MICR, BANK, BRANCH, ADDRESS, STATE, CITY, DISTRICT, CONTACT } = useSelector((state) => state.ifscFetchDetails.ifsc)
+  const { IFSC, MICR, BANK, BRANCH, ADDRESS, STATE, CITY, DISTRICT, CONTACT } = useSelector((state) => state.ifscFetchDetails.ifsc);
   return (
     <>
       <>
@@ -47,10 +47,18 @@ function BankFullDetail() {
               <div className='infoTableCol dataCol'>{STATE || 'No Data Available'}</div>
             </div>
           </div>
-          <div className="descriptionContainer">
+          <section className="descriptionContainer">
             <h1 className='descriptionHeading'><span>{IFSC}</span> IFSC Code Details</h1>
-            <p className='description'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae ea quam deleniti aliquid, enim ab cupiditate possimus! Nisi cumque delectus a ab sint asperiores assumenda, obcaecati nemo. Culpa a molestias quisquam autem at praesentium porro aspernatur consequuntur ipsam reprehenderit? Laborum, tempore ad nihil quae minus pariatur consequuntur sed, repellat placeat magnam repellendus commodi corrupti. Voluptatum officia eveniet </p>
-          </div>
+            <p className='descriptionPara'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae ea quam deleniti aliquid, enim ab cupiditate possimus! Nisi cumque delectus a ab sint asperiores assumenda, obcaecati nemo. Culpa a molestias quisquam autem at praesentium porro aspernatur consequuntur ipsam reprehenderit? Laborum, tempore ad nihil quae minus pariatur consequuntur sed, repellat placeat magnam repellendus commodi corrupti. Voluptatum officia eveniet </p>
+          </section>
+          <section className="descriptionContainer">
+            <h1 className='descriptionHeading'>What is <span>{BRANCH}</span> Branch IFSC Code?</h1>
+            <p className='descriptionPara'>The <span>{BRANCH}</span> Branch IFSC code is <span>{IFSC}</span>.
+              The IFSC Code stands for Indian Financial System Code. It is an alphanumeric code that facilitates electronic funds transfer in India while using NEFT, RTGS, IMPS, or UPI.
+
+              In the IFSC Code <span>{IFSC}</span>, <span>{IFSC?.slice(0, 4) || 'Bank Code'}</span> represents <span>{BANK}</span> and <span>{IFSC?.slice(-5, 11) || 'Branch Code'}</span> is the branch code of <span>{BANK}</span>, <span>{BRANCH}</span>.
+            </p>
+          </section>
         </div>
       </>
     </>

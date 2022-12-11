@@ -8,15 +8,7 @@
     }
 
     .navbar li a {
-        color: var(--whiteColor);
-        text-decoration: none;
         padding: 7px 12px;
-        cursor: pointer;
-        margin: 0px 3px;
-        border-radius: 20px;
-        font-weight: 500;
-        font-size: var(--navFontSize);
-        transition: all 0.3s ease 0s;
     }
 }
 
@@ -25,7 +17,7 @@
         justify-content: space-between;
     }
 
-    #mainLogo {
+    #mainLogoContainer {
         padding: 0px;
         border-right: none;
     }
@@ -41,7 +33,7 @@
         flex-direction: column;
         justify-content: start;
         transition: all 0.3s ease 0s;
-        z-index: 498;
+        z-index: 50;
     }
 
     .btnSection.show {
@@ -149,8 +141,20 @@
     }
 }
 
-@media screen and (max-width: 700px) {
-    .infoTable{
+
+@media screen and (max-width: 600px) {
+    .infoTable {
         padding: 10px;
     }
+
+    #footer {
+        justify-content: center;
+        padding: 30px;
+    }
+
+    .footerContainer {
+        width: 100%;
+        padding: 10px;
+    }
+
 }

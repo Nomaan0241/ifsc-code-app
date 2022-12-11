@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux'
+
 function IfscFullDetail() {
     const bankName = useSelector((state) => state.ifscSearchDetailInfo.bank.bankname);
     const stateName = useSelector((state) => state.ifscSearchDetailInfo.state.statename);

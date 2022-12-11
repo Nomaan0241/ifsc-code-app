@@ -4,7 +4,7 @@ import Home from './Pages/Home/Home'
 import About from './Pages/Home/About'
 import Contact from './Pages/Home/Contact'
 import Service from './Pages/Home/Service'
-import OutletPage from './Pages/Extra/OutletPage'
+import OutletPage from './Pages/Outlets/OutletPage'
 import PageNotFound from './Pages/Extra/PageNotFound'
 import IfscFullDetail from './Pages/IfscFullDetail'
 import SetIfscBankDetail from './Components/HomeIFSCDetailComponents/SetIfscBankDetail'
@@ -12,13 +12,15 @@ import StateDetailRoute from './Pages/BankDetailRoutes/StateDetailRoute'
 import DistrictDetailRoute from './Pages/BankDetailRoutes/DistrictDetailRoute'
 import BranchDetailRoute from './Pages/BankDetailRoutes/BranchDetailRoute'
 import BankFullDetail from './Pages/BankFullDetail'
-import { useEffect } from 'react'
 import Footer from './Layouts/Footer'
+import Loader from './Components/Loader'
+import { useSelector } from 'react-redux'
 
 function App() {
-  useEffect(() => window.scrollTo(0, 1), [])
+  const loadiing = useSelector((state)=> state.toggleState.isLoading)
   return (
     <>
+      {loadiing && <Loader />}
       <Navbar />
       <Routes>
         <Route path='/' element={<OutletPage />}>

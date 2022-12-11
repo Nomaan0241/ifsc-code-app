@@ -3,28 +3,10 @@ import { createSlice } from '@reduxjs/toolkit'
 const ifscFetchDetails = createSlice({
     name: 'ifscFetchDetails',
     initialState: {
-        bank: [
-            { bankvalue: 'punjab-national-bank', bankname: 'Punjab National Bank' },
-            { bankvalue: 'axis-bank', bankname: 'Axis Bank' },
-            { bankvalue: 'state-bank-of-india', bankname: 'State Bank of India' },
-            { bankvalue: 'icici-bank', bankname: 'ICICI Bank' },
-            { bankvalue: 'canara-bank', bankname: 'Canara Bank' }
-        ],
-        state: [
-            {statevalue:'punjab', statename: 'Punjab'},
-            {statevalue:'delhi', statename: 'Delhi'},
-            {statevalue:'haryana', statename: 'Haryana'}
-        ],
-        district: [
-            {districtvalue:'firozpur', districtname: 'Firozpur'},
-            {districtvalue:'chandigarh', districtname: 'Chandigarh'},
-            {districtvalue:'moga', districtname: 'Moga'}
-        ],
-        branch: [
-            {branchvalue:'firozpur-city', branchname: 'Firozpur City'},
-            {branchvalue:'firozpur-cantt', branchname: 'Firozpur Cantt'},
-            {branchvalue:'zira', branchname: 'Zira'},
-        ],
+        bank: ['Punjab National Bank', 'Axis Bank', 'State Bank of India', 'ICICI Bank', 'Canara Bank'],
+        state: ['Punjab', 'Delhi', 'Haryana'],
+        district: ['Firozpur', 'Chandigarh', 'Moga'],
+        branch: ['Firozpur City', 'Firozpur Cantt', 'Zira',],
         ifsc: {}
     },
     reducers: {
@@ -40,7 +22,7 @@ export function fetchIFSCDetails(fetchFor, fetchLink) {
             const res = await fetch(fetchLink);
             const data = await res.json();
             console.log(data);
-            dispatch(setIfscFetchedDetails({key:fetchFor, value: data}));
+            dispatch(setIfscFetchedDetails({ key: fetchFor, value: data }));
         } catch (error) {
             console.log(error);
         }

@@ -1,7 +1,7 @@
-#footer{
+#footer {
     background-color: var(--prColor);
     width: 100%;
-    padding: 50px;
+    padding: 30px 30px;
     box-sizing: border-box;
     display: flex;
     flex-wrap: wrap;
@@ -10,60 +10,53 @@
     color: var(--whiteColor);
 }
 
-.footerContainer{
+.footerContainer {
     width: 250px;
     padding: 10px;
 }
 
-#footerContainer1 img{
+#footerContainer1 img {
     width: 100%;
 }
 
-#footerContainer2 h3{
+.footerContainer h1 {
     margin: 0px 0px 10px 0px;
     font-weight: 600;
-    
+    font-size: calc(var(--fontSize) + 4px);
 }
-#footerContainer2 p{
+
+#footerContainer2 p {
     text-align: justify;
     color: var(--whiteColor);
 
 }
 
-#footerContainer3{
+#footerContainer3 {
     display: flex;
     flex-direction: column;
 }
-#footerContainer3 h3{
-    margin: 0px 0px 10px 0px;
-    font-weight: 600;
-}
-#footerContainer3 ul li{
+
+#footerContainer3 ul li {
     list-style: none;
     margin: 0px 0px 5px 0px;
     cursor: pointer;
 }
-#footerContainer3 ul li a{
+
+#footerContainer3 ul li a {
     text-decoration: none;
     color: var(--whiteColor);
     cursor: pointer;
-}
-#footerContainer3 ul li a:hover{
-    font-weight: 800;
+    display: block;
+    transition: all 0.1s ease-in ;
 }
 
-.footerSMIcons{
+#footerContainer3 ul li a:hover {
+    font-weight: 500;
+    translate: 5px;
+}
+
+.footerSMIcons {
     width: 50px;
     margin: 5px;
 }
 
-@media screen and (max-width: 600px) {
-    #footer{
-        justify-content: center;
-        padding: 30px;
-    }
-    .footerContainer{
-        width: 100%;
-        padding: 10px;
-    }
-}

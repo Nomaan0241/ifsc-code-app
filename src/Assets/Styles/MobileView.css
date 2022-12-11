@@ -23,13 +23,18 @@
             padding: 0px 5px;
         }
 
-        .infoTableCol {
-            flex: 1 1 100%;
+        .infoTableRow {
+            padding: 10px;
         }
+
 
     }
 
     @media screen and (max-width: 375px) {
+        .homeFullWithContainer {
+            background-size: 25%, 50%;
+        }
+
         .homeSubContainer {
             padding: 10px 0px;
         }

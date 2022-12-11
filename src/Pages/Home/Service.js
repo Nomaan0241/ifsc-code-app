@@ -2,9 +2,9 @@ import React from 'react'
 
 function Service() {
   return (
-    <div>
-      Service Page Details
-    </div>
+    <>
+      <h1 className='sectionHeaderTitle'>Our <span>Services</span></h1>
+    </>
   )
 }
 

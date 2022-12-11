@@ -2,15 +2,15 @@ import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars } from '@fortawesome/free-solid-svg-icons'
-import { setNavToggle } from '../Middlewares/ReduxStore/NavToggleSlice'
-import iconLogo from '../Assets/Images/logo2.png'
+import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons'
+import { setNavToggle } from '../Middlewares/ReduxStore/ToggleStateSlice'
+import iconLogo from '../Assets/Images/logo.png'
 import '../Assets/Styles/Navbar.css'
 import IfscSearchBox from '../Components/IfscSearchBox'
 
 
 function Navbar() {
-    const NavToggleVal = useSelector(state => state.NavToggle);
+    const NavToggleVal = useSelector(state => state.toggleState.navToggle);
     const Dispatch = useDispatch();
 
     function toggleNavValue() {
@@ -30,7 +30,7 @@ function Navbar() {
                     </ul>
                     <IfscSearchBox/>
                 </div>
-                <FontAwesomeIcon icon={faBars} onClick={() => toggleNavValue()} className='headerIconStyle' id='menuIcon'/>
+                <FontAwesomeIcon icon={NavToggleVal ? faBars : faXmark} onClick={() => toggleNavValue()} className='headerIconStyle' id='menuIcon'/>
             </header>
         </>
     )

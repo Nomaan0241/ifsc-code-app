@@ -135,7 +135,7 @@
     background-color: var(--whiteColor);
     border-radius: 10px;
     border: 0.5px solid var(--prColor);
-    z-index: 99;
+    z-index: 10;
 }
 
 

@@ -4,7 +4,7 @@
     padding: 55px 70px;
     padding: 3% 6%;
     position: relative;
-    background-image: url('../Images/backgroundImages/debitCard.png'), url('../Images/backgroundImages/bank.png');
+    background-image: url('../Images/backgroundImages/debitCard.webp'), url('../Images/backgroundImages/bank.webp');
     background-repeat: no-repeat;
     background-size: 12%, 22%;
     background-position: right 10px, left bottom;
@@ -63,7 +63,7 @@
 
 #homeBannerBtn:hover {
     background-color: var(--secColor);
-    width: 175px;
+    width: 173px;
 }
 
 /* RIGHT SIDE CONTAINER */

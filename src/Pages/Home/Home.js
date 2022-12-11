@@ -23,8 +23,8 @@ function Home({ IFSCDetailTakerComponent }) {
                     </Link>
                 </div>
                 <div className="homeSubContainer homeRightSideContainer">
-                    {/* <IfscDetailSetComponent /> */}
-                    <IFSCDetailTakerComponent />
+                    <IfscDetailSetComponent />
+                    {/* <IFSCDetailTakerComponent /> */}
                 </div>
             </div>
         </>
