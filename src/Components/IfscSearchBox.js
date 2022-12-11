@@ -16,6 +16,7 @@ function IfscSearchBox() {
 
     function getIFSCData(e) {
         e.preventDefault();
+        dispatch(setNavToggle());
         dispatch(setLoadingState(true));
         axios({
             method: 'GET',
@@ -23,7 +24,6 @@ function IfscSearchBox() {
         }).then((res) => {
             dispatch(setIFSCSearchDetailInfo({ key: 'ifsc', value: ifscValue }))
             dispatch(setIfscFetchedDetails({ key: 'ifsc', value: res.data }))
-            dispatch(setNavToggle());
             navigate(`/ifsc/${ifscValue}`)
         }).catch((err) => {
             alert(err.message);

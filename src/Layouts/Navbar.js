@@ -28,9 +28,9 @@ function Navbar() {
                         <li><NavLink to="/contact" onClick={toggleNavValue}>Contact Us</NavLink></li>
                         <li><NavLink to="/service" onClick={toggleNavValue}>Service</NavLink></li>
                     </ul>
-                    <IfscSearchBox/>
+                    <IfscSearchBox />
                 </div>
-                <FontAwesomeIcon icon={NavToggleVal ? faBars : faXmark} onClick={() => toggleNavValue()} className='headerIconStyle' id='menuIcon'/>
+                <FontAwesomeIcon icon={NavToggleVal ? faXmark : faBars} onClick={toggleNavValue} className='headerIconStyle' id='menuIcon' />
             </header>
         </>
     )

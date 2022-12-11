@@ -17,10 +17,10 @@ import Loader from './Components/Loader'
 import { useSelector } from 'react-redux'
 
 function App() {
-  const loadiing = useSelector((state)=> state.toggleState.isLoading)
+  const loading = useSelector((state)=> state.toggleState.isLoading)
   return (
     <>
-      {loadiing && <Loader />}
+      {loading && <Loader />}
       <Navbar />
       <Routes>
         <Route path='/' element={<OutletPage />}>
