@@ -4,7 +4,15 @@ function Loader() {
   return (
     <>
       <div id="loaderContainer">
-        <div class="loadingio-spinner-dual-ball-rz6gcm629e"><div class="ldio-a3qz12lvrk9"><div></div><div></div><div></div></div></div>
+        <div className="loadingio-spinner-dual-ball-rz6gcm629e">
+          <div className="ldio-a3qz12lvrk9"><div>
+          </div>
+            <div>
+            </div>
+            <div>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   )

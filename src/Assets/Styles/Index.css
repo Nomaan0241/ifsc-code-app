@@ -3,7 +3,7 @@
   --secColor: #01C324;
   --thirdColor: #e2e2e2;
   --whiteColor: #ffffff;
-  --blackColor: #000000;
+  --blackColor: #0f0f0f;
   --redColor: #ff0000;
   --refreshBtnColor: #FFA500;
   --bgColor: #d9d9d9;
@@ -74,6 +74,8 @@ p {
   width: 100%;
 }
 
+/* Description Box */
+
 .descriptionContainer {
   margin: 20px 0px 40px 0px;
 }
@@ -82,6 +84,7 @@ p {
   text-align: center;
   text-align: justify;
   padding: 0px 20px;
+  color: var(--blackColor);
 }
 
 .descriptionContainer p span {
@@ -129,6 +132,7 @@ p {
   border-radius: 20px;
   background-color: var(--whiteColor);
   box-shadow: 1px 3px 25px rgba(0, 0, 0, 0.160);
+  color: var(--blackColor);
 }
 
 .infoTableHeading {

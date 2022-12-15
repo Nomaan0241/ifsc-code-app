@@ -19,12 +19,16 @@ function IfscSearchBox() {
         dispatch(setNavToggle());
         dispatch(setLoadingState(true));
         axios({
-            method: 'GET',
-            url: `https://ifsc.razorpay.com/${ifscValue}`
+            method: "post",
+            url: "https://findbankifsccode.onrender.com/api/ifsc",
+            data: {
+                IFSC: ifscValue,
+            },
         }).then((res) => {
+            console.log(res.data);
             dispatch(setIFSCSearchDetailInfo({ key: 'ifsc', value: ifscValue }))
-            dispatch(setIfscFetchedDetails({ key: 'ifsc', value: res.data }))
-            navigate(`/ifsc/${ifscValue}`)
+            dispatch(setIfscFetchedDetails({ key: 'ifsc', value: res.data.data }))
+            navigate(`/ifsc/${ifscValue}`);
         }).catch((err) => {
             alert(err.message);
         }).finally(() => {

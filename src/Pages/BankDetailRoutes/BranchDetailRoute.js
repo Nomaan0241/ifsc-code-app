@@ -1,6 +1,5 @@
 import React from 'react'
 import Home from '../Home/Home'
-import SetIfscBranchDetail from '../../Components/HomeIFSCDetailComponents/SetIfscBranchDetail'
 import { useSelector } from 'react-redux';
 
 function BranchDetailRoute() {
@@ -8,7 +7,7 @@ function BranchDetailRoute() {
 
   return (
     <>
-      <Home IFSCDetailTakerComponent={SetIfscBranchDetail} />
+      <Home />
       <div className="pageContainer">
         <div className="descriptionSectionContainer">
           <div className="descriptionContainer">

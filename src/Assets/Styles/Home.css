@@ -42,6 +42,7 @@
     margin: 0 0 50px 0;
     font-size: var(--fontSize);
     font-weight: 500;
+    color: var(--blackColor);
 }
 
 #homeBannerBtn {

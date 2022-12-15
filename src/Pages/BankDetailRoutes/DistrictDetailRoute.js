@@ -1,13 +1,12 @@
 import React from 'react'
 import Home from '../Home/Home'
-import SetIfscDistrictDetail from '../../Components/HomeIFSCDetailComponents/SetIfscDistrictDetail'
 import { useSelector } from 'react-redux'
 
 function DistrictDetailRoute() {
   const { bank: { bankname }, state: { statename } } = useSelector((state) => state.ifscSearchDetailInfo);
   return (
     <>
-      <Home IFSCDetailTakerComponent={SetIfscDistrictDetail} />
+      <Home />
       <div className="pageContainer">
         <div className="descriptionSectionContainer">
           <div className="descriptionContainer">
