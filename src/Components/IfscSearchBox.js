@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setIFSCSearchDetailInfo } from '../Middlewares/ReduxStore/IfscSearchDetailInfo'
 import { setIfscFetchedDetails } from '../Middlewares/ReduxStore/IfscFetchDetails'
-import { setNavToggle, setLoadingState } from '../Middlewares/ReduxStore/ToggleStateSlice'
+import { setLoadingState } from '../Middlewares/ReduxStore/ToggleStateSlice'
 
 function IfscSearchBox() {
     const [ifscValue, setIfscValue] = useState();
@@ -16,7 +16,6 @@ function IfscSearchBox() {
 
     function getIFSCData(e) {
         e.preventDefault();
-        dispatch(setNavToggle());
         dispatch(setLoadingState(true));
         axios({
             method: "post",
@@ -31,6 +30,7 @@ function IfscSearchBox() {
             navigate(`/ifsc/${ifscValue}`);
         }).catch((err) => {
             alert(err.message);
+            navigate(`/`);
         }).finally(() => {
             dispatch(setLoadingState(false));
         });

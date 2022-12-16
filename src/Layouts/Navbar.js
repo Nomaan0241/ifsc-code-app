@@ -14,7 +14,7 @@ function Navbar() {
     const Dispatch = useDispatch();
 
     function toggleNavValue() {
-        Dispatch(setNavToggle());
+        Dispatch(setNavToggle(!NavToggleVal));
     }
 
     return (
@@ -28,8 +28,8 @@ function Navbar() {
                         <li><NavLink to="/contact" onClick={toggleNavValue}>Contact Us</NavLink></li>
                         <li><NavLink to="/service" onClick={toggleNavValue}>Service</NavLink></li>
                     </ul>
-                    <IfscSearchBox />
                 </div>
+                <IfscSearchBox />
                 <FontAwesomeIcon icon={NavToggleVal ? faXmark : faBars} onClick={toggleNavValue} className='headerIconStyle' id='menuIcon' />
             </header>
         </>

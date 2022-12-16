@@ -18,12 +18,9 @@ header {
 }
 
 #mainLogo {
-    /* height: inherit;
-    width: inherit; */
     display: block;
     margin: auto;
     height: 100%;
-    /* width: 100%; */
 }
 
 .btnSection {
@@ -79,11 +76,12 @@ header {
 
 .ifscSearchBoxContainer{
     position: relative;
-    width: 250px;
+    width: 300px;
+    max-width: 350px;
 }
 
 #ifscSearchBox {
-    padding: 10px 43px 10px 22px;
+    padding: 10px 43px 10px 15px;
     outline: none;
     border: none;
     border-radius: 20px;
