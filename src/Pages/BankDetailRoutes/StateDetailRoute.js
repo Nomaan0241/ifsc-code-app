@@ -1,9 +1,44 @@
 import React from 'react'
 import Home from '../Home/Home'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import axios from 'axios';
+import { setLoadingState } from '../../Middlewares/ReduxStore/ToggleStateSlice';
+import { setIfscFetchedDetails } from '../../Middlewares/ReduxStore/IfscFetchDetails';
+import { setIFSCSearchDetailInfo } from '../../Middlewares/ReduxStore/IfscSearchDetailInfo';
+import { nameConverter } from '../../Utils/RoutingFormats';
+
 
 function StateDetailRoute() {
   const { bank: { bankname } } = useSelector((state) => state.ifscSearchDetailInfo);
+  const { bankNameSlug } = useParams();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (bankNameSlug && !bankname) {
+      dispatch(setLoadingState(true));
+      axios({
+        method: "post",
+        url: "https://findbankifsccode.onrender.com/api/bank-name/get-states",
+        data: {
+          BANK: nameConverter(bankNameSlug),
+        },
+      }).then((res) => {
+        console.log(res.data, 'State Page');
+        dispatch(setIFSCSearchDetailInfo({ key: 'bank', value: { bankname: res.data.requestBody.BANK } }));
+        dispatch(setIfscFetchedDetails({ key: 'state', value: res.data.data }))
+      }).catch((err) => {
+        console.log(err);
+        alert(err.message);
+        navigate(`/`);
+      }).finally(() => {
+        dispatch(setLoadingState(false));
+      });
+    }
+  }, [bankname, bankNameSlug, dispatch, navigate])
+
   return (
     <>
       <Home />

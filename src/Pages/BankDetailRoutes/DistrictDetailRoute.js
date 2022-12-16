@@ -1,9 +1,45 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate, useParams } from 'react-router-dom';
 import Home from '../Home/Home'
-import { useSelector } from 'react-redux'
+import { setLoadingState } from '../../Middlewares/ReduxStore/ToggleStateSlice';
+import { setIfscFetchedDetails } from '../../Middlewares/ReduxStore/IfscFetchDetails';
+import { setIFSCSearchDetailInfo } from '../../Middlewares/ReduxStore/IfscSearchDetailInfo';
+import { nameConverter } from '../../Utils/RoutingFormats';
 
 function DistrictDetailRoute() {
   const { bank: { bankname }, state: { statename } } = useSelector((state) => state.ifscSearchDetailInfo);
+  const { bankNameSlug, stateNameSlug } = useParams();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (bankNameSlug && stateNameSlug && !statename) {
+      dispatch(setLoadingState(true));
+      axios({
+        method: "post",
+        url: "https://findbankifsccode.onrender.com/api/bank-name/state/city",
+        data: {
+          BANK: nameConverter(bankNameSlug),
+          STATE: nameConverter(stateNameSlug),
+        },
+      }).then((res) => {
+        console.log(res.data, 'District Page');
+        dispatch(setIFSCSearchDetailInfo({ key: 'bank', value: { bankname: res.data.requestBody.BANK } }));
+        dispatch(setIFSCSearchDetailInfo({ key: 'state', value: { statename: res.data.requestBody.STATE } }));
+        dispatch(setIfscFetchedDetails({ key: 'district', value: res.data.data }))
+      }).catch((err) => {
+        console.log(err);
+        alert(err.message);
+        navigate(`/`);
+      }).finally(() => {
+        dispatch(setLoadingState(false));
+      });
+    }
+  }, [statename, bankNameSlug, stateNameSlug, dispatch, navigate])
+
+
   return (
     <>
       <Home />

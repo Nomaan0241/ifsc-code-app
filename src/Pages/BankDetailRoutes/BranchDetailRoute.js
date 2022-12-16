@@ -1,9 +1,46 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import axios from 'axios';
 import Home from '../Home/Home'
-import { useSelector } from 'react-redux';
+import { useNavigate, useParams } from 'react-router-dom';
+import { setLoadingState } from '../../Middlewares/ReduxStore/ToggleStateSlice';
+import { setIfscFetchedDetails } from '../../Middlewares/ReduxStore/IfscFetchDetails';
+import { setIFSCSearchDetailInfo } from '../../Middlewares/ReduxStore/IfscSearchDetailInfo';
+import { nameConverter } from '../../Utils/RoutingFormats';
 
 function BranchDetailRoute() {
   const { bank: { bankname }, state: { statename }, district: { districtname } } = useSelector((state) => state.ifscSearchDetailInfo);
+  const { bankNameSlug, stateNameSlug, districtNameSlug } = useParams();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (bankNameSlug && stateNameSlug && districtNameSlug && !districtname) {
+      dispatch(setLoadingState(true));
+      axios({
+        method: "post",
+        url: "https://findbankifsccode.onrender.com/api/bank-name/state/city/branch",
+        data: {
+          BANK: nameConverter(bankNameSlug),
+          STATE: nameConverter(stateNameSlug),
+          CITY: nameConverter(districtNameSlug)
+        },
+      }).then((res) => {
+        console.log(res.data, 'Branch Page');
+        dispatch(setIFSCSearchDetailInfo({ key: 'bank', value: { bankname: res.data.requestBody.BANK } }));
+        dispatch(setIFSCSearchDetailInfo({ key: 'state', value: { statename: res.data.requestBody.STATE } }));
+        dispatch(setIFSCSearchDetailInfo({ key: 'district', value: { districtname: res.data.requestBody.CITY } }));
+        dispatch(setIfscFetchedDetails({ key: 'branch', value: res.data.data }))
+      }).catch((err) => {
+        console.log(err);
+        alert(err.message);
+        navigate(`/`);
+      }).finally(() => {
+        dispatch(setLoadingState(false));
+      });
+    }
+  }, [districtname, bankNameSlug, stateNameSlug, districtNameSlug, dispatch, navigate])
 
   return (
     <>

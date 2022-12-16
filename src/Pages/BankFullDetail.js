@@ -7,7 +7,6 @@ import { setIFSCSearchDetailInfo } from '../Middlewares/ReduxStore/IfscSearchDet
 import { setLoadingState } from '../Middlewares/ReduxStore/ToggleStateSlice';
 
 function BankFullDetail() {
-  // const [{ IFSC, MICR, BANK, BRANCH, ADDRESS, STATE, CITY, DISTRICT, CONTACT }] = useSelector((state) => state.ifscFetchDetails.ifsc);
   const { IFSC, MICR, BANK, BRANCH, ADDRESS, STATE, CITY, DISTRICT, CONTACT } = useSelector((state) => state.ifscFetchDetails.ifsc);
   const dispatch = useDispatch();
   const { ifscCodeSlug } = useParams();
@@ -89,7 +88,7 @@ function BankFullDetail() {
           <p className='descriptionPara'>The <span>{BRANCH}</span> Branch IFSC code is <span>{IFSC}</span>.
             The IFSC Code stands for Indian Financial System Code. It is an alphanumeric code that facilitates electronic funds transfer in India while using NEFT, RTGS, IMPS, or UPI.
 
-            In the IFSC Code <span>{IFSC}</span>, <span>{IFSC?.slice(0, 4) || 'Bank Code'}</span> represents <span>{BANK}</span> and <span>{IFSC?.slice(-5, 11) || 'Branch Code'}</span> is the branch code of <span>{BANK}</span>, <span>{BRANCH}</span>.
+            In the IFSC Code <span>{IFSC}</span>, <span>{IFSC?.slice(0, 4) || 'Bank Code'}</span> represents <span>{BANK}</span> and <span>{IFSC?.slice(-6, 11) || 'Branch Code'}</span> is the branch code of <span>{BANK}</span>, <span>{BRANCH}</span>.
           </p>
         </section>
       </div>

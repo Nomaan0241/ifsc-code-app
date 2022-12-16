@@ -12,7 +12,7 @@ import DistrictDetailRoute from './Pages/BankDetailRoutes/DistrictDetailRoute'
 import BranchDetailRoute from './Pages/BankDetailRoutes/BranchDetailRoute'
 import BankFullDetail from './Pages/BankFullDetail'
 import Footer from './Layouts/Footer'
-import Loader from './Components/Loader'
+import Loader from './Layouts/Loader'
 import { useSelector } from 'react-redux'
 
 function App() {
