@@ -87,11 +87,12 @@ header {
     border-radius: 20px;
     font-size: 18px;
     width: 100%;
+    color: var(--prColor);
 }
 
 #ifscSearchBox::placeholder {
     color: var(--prColor);
-    opacity: 0.8;
+    opacity: 0.7;
 }
 
 #ifscSearchBtn {
@@ -99,7 +100,7 @@ header {
     height: 35px;
     padding: 3px;
     color: var(--whiteColor);
-    background-color: var(--prColor);
+    background-color: var(--secColor);
     border: none;
     border-radius: 50%;
     font-size: 18px;
@@ -116,5 +117,5 @@ header {
 #ifscSearchBtn span {
     position: absolute;
     z-index: -2;
-    color: var(--prColor);
+    color: var(--secColor);
 }

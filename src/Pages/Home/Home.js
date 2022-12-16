@@ -1,11 +1,11 @@
 import Typed from "react-typed"
 import { Link } from 'react-router-dom'
-import '../../Assets/Styles/Home.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleChevronRight } from "@fortawesome/free-solid-svg-icons";
-import IfscDetailSetComponent from "../../Components/HomeIFSCDetailComponents/IfscDetailSetComponent";
+import IfscDetailSetComponent from "../../Components/IfscDetailSetComponent";
+import '../../Assets/Styles/Home.css';
 
-function Home({ IFSCDetailTakerComponent }) {
+function Home() {
     const textLines = [`IFSC`, `MICR`, `Banks`];
     return (
         <>
@@ -24,7 +24,6 @@ function Home({ IFSCDetailTakerComponent }) {
                 </div>
                 <div className="homeSubContainer homeRightSideContainer">
                     <IfscDetailSetComponent />
-                    {/* <IFSCDetailTakerComponent /> */}
                 </div>
             </div>
         </>

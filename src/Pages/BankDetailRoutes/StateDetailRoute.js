@@ -7,7 +7,7 @@ import axios from 'axios';
 import { setLoadingState } from '../../Middlewares/ReduxStore/ToggleStateSlice';
 import { setIfscFetchedDetails } from '../../Middlewares/ReduxStore/IfscFetchDetails';
 import { setIFSCSearchDetailInfo } from '../../Middlewares/ReduxStore/IfscSearchDetailInfo';
-import { nameConverter } from '../../Utils/RoutingFormats';
+import { capitalizeConverter, nameConverter } from '../../Utils/RoutingFormats';
 
 
 function StateDetailRoute() {
@@ -27,8 +27,8 @@ function StateDetailRoute() {
         },
       }).then((res) => {
         console.log(res.data, 'State Page');
-        dispatch(setIFSCSearchDetailInfo({ key: 'bank', value: { bankname: res.data.requestBody.BANK } }));
-        dispatch(setIfscFetchedDetails({ key: 'state', value: res.data.data }))
+        dispatch(setIFSCSearchDetailInfo({ key: 'bank', value: { bankname: capitalizeConverter(res.data.requestBody.BANK) } }));
+        dispatch(setIfscFetchedDetails({ key: 'state', value: res.data.data.map(wd=> capitalizeConverter(wd)) }))
       }).catch((err) => {
         console.log(err);
         alert(err.message);

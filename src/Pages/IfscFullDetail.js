@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { nameConverter } from '../Utils/RoutingFormats'
+import { capitalizeConverter, nameConverter, objectToIfscDataCapitalizeConverter } from '../Utils/RoutingFormats'
 import { useNavigate, useParams } from 'react-router-dom';
 import { setIfscFetchedDetails } from '../Middlewares/ReduxStore/IfscFetchDetails';
 import { setLoadingState } from '../Middlewares/ReduxStore/ToggleStateSlice';
@@ -27,11 +27,12 @@ function IfscFullDetail() {
                 },
             }).then((res) => {
                 console.log(res.data);
-                dispatch(setIFSCSearchDetailInfo({ key: 'bank', value: { bankname: res.data.requestBody.BANK } }));
-                dispatch(setIFSCSearchDetailInfo({ key: 'state', value: { statename: res.data.requestBody.STATE } }));
-                dispatch(setIFSCSearchDetailInfo({ key: 'district', value: { districtname: res.data.requestBody.CITY } }));
-                dispatch(setIFSCSearchDetailInfo({ key: 'branch', value: { branchname: res.data.requestBody.BRANCH } }));
-                dispatch(setIfscFetchedDetails({ key: 'bankDetails', value: res.data.data }))
+                const { requestBody: { BANK, STATE, CITY, BRANCH }, data } = res.data;
+                dispatch(setIFSCSearchDetailInfo({ key: 'bank', value: { bankname: capitalizeConverter(BANK) } }));
+                dispatch(setIFSCSearchDetailInfo({ key: 'state', value: { statename: capitalizeConverter(STATE) } }));
+                dispatch(setIFSCSearchDetailInfo({ key: 'district', value: { districtname: capitalizeConverter(CITY) } }));
+                dispatch(setIFSCSearchDetailInfo({ key: 'branch', value: { branchname: capitalizeConverter(BRANCH) } }));
+                dispatch(setIfscFetchedDetails({ key: 'bankDetails', value: objectToIfscDataCapitalizeConverter(data) }))
             }).catch((err) => {
                 alert(err.message);
                 navigate('/');

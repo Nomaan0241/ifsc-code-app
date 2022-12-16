@@ -1,13 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import axios from 'axios';
 import Home from '../Home/Home'
 import { useNavigate, useParams } from 'react-router-dom';
 import { setLoadingState } from '../../Middlewares/ReduxStore/ToggleStateSlice';
 import { setIfscFetchedDetails } from '../../Middlewares/ReduxStore/IfscFetchDetails';
 import { setIFSCSearchDetailInfo } from '../../Middlewares/ReduxStore/IfscSearchDetailInfo';
-import { nameConverter } from '../../Utils/RoutingFormats';
+import { capitalizeConverter, nameConverter } from '../../Utils/RoutingFormats';
+import axiosFetchBankDataInstance from '../../Middlewares/AxiosInstance/AxiosInstance';
 
 function BranchDetailRoute() {
   const { bank: { bankname }, state: { statename }, district: { districtname } } = useSelector((state) => state.ifscSearchDetailInfo);
@@ -18,9 +17,8 @@ function BranchDetailRoute() {
   useEffect(() => {
     if (bankNameSlug && stateNameSlug && districtNameSlug && !districtname) {
       dispatch(setLoadingState(true));
-      axios({
-        method: "post",
-        url: "https://findbankifsccode.onrender.com/api/bank-name/state/city/branch",
+      axiosFetchBankDataInstance({
+        url: "/bank-name/state/city/branch",
         data: {
           BANK: nameConverter(bankNameSlug),
           STATE: nameConverter(stateNameSlug),
@@ -28,10 +26,10 @@ function BranchDetailRoute() {
         },
       }).then((res) => {
         console.log(res.data, 'Branch Page');
-        dispatch(setIFSCSearchDetailInfo({ key: 'bank', value: { bankname: res.data.requestBody.BANK } }));
-        dispatch(setIFSCSearchDetailInfo({ key: 'state', value: { statename: res.data.requestBody.STATE } }));
-        dispatch(setIFSCSearchDetailInfo({ key: 'district', value: { districtname: res.data.requestBody.CITY } }));
-        dispatch(setIfscFetchedDetails({ key: 'branch', value: res.data.data }))
+        dispatch(setIFSCSearchDetailInfo({ key: 'bank', value: { bankname: capitalizeConverter(res.data.requestBody.BANK) } }));
+        dispatch(setIFSCSearchDetailInfo({ key: 'state', value: { statename: capitalizeConverter(res.data.requestBody.STATE) } }));
+        dispatch(setIFSCSearchDetailInfo({ key: 'district', value: { districtname: capitalizeConverter(res.data.requestBody.CITY) } }));
+        dispatch(setIfscFetchedDetails({ key: 'branch', value: res.data.data.map(wd=> capitalizeConverter(wd)) }))
       }).catch((err) => {
         console.log(err);
         alert(err.message);

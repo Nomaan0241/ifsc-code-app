@@ -2,12 +2,13 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setIFSCSearchDetailInfo } from '../Middlewares/ReduxStore/IfscSearchDetailInfo'
 import { setIfscFetchedDetails } from '../Middlewares/ReduxStore/IfscFetchDetails'
 import { setLoadingState } from '../Middlewares/ReduxStore/ToggleStateSlice'
+import axiosFetchBankDataInstance from '../Middlewares/AxiosInstance/AxiosInstance';
+import { objectToIfscDataCapitalizeConverter } from '../Utils/RoutingFormats';
 
 function IfscSearchBox() {
     const [ifscValue, setIfscValue] = useState();
@@ -17,16 +18,15 @@ function IfscSearchBox() {
     function getIFSCData(e) {
         e.preventDefault();
         dispatch(setLoadingState(true));
-        axios({
-            method: "post",
-            url: "https://findbankifsccode.onrender.com/api/ifsc",
+        axiosFetchBankDataInstance({
+            url: "/ifsc",
             data: {
-                IFSC: ifscValue,
+                IFSC: ifscValue.toUpperCase(),
             },
         }).then((res) => {
             console.log(res.data);
             dispatch(setIFSCSearchDetailInfo({ key: 'ifsc', value: ifscValue }))
-            dispatch(setIfscFetchedDetails({ key: 'ifsc', value: res.data.data }))
+            dispatch(setIfscFetchedDetails({ key: 'ifsc', value: objectToIfscDataCapitalizeConverter(res.data.data) }))
             navigate(`/ifsc/${ifscValue}`);
         }).catch((err) => {
             alert(err.message);

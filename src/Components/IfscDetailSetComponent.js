@@ -1,14 +1,14 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
-import axios from 'axios'
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBuildingColumns, faCaretDown, faFlag, faCity, faIndianRupeeSign, faArrowsRotate } from '@fortawesome/free-solid-svg-icons'
-import { setIFSCSearchDetailInfo } from '../../Middlewares/ReduxStore/IfscSearchDetailInfo'
-import '../../Assets/Styles/BankDetailSearchForm.css';
-import { setIfscFetchedDetails } from '../../Middlewares/ReduxStore/IfscFetchDetails';
-import { setLoadingState } from '../../Middlewares/ReduxStore/ToggleStateSlice';
-import { slugConverter } from '../../Utils/RoutingFormats'
+import { setIFSCSearchDetailInfo } from '../Middlewares/ReduxStore/IfscSearchDetailInfo'
+import { setIfscFetchedDetails } from '../Middlewares/ReduxStore/IfscFetchDetails';
+import { setLoadingState } from '../Middlewares/ReduxStore/ToggleStateSlice';
+import { capitalizeConverter, slugConverter } from '../Utils/RoutingFormats'
+import '../Assets/Styles/BankDetailSearchForm.css';
+import axiosFetchBankDataInstance from '../Middlewares/AxiosInstance/AxiosInstance';
 
 function IfscDetailSetComponent() {
   const { bank: bankList, state: stateList, district: districtList, branch: branchList } = useSelector((state) => state.ifscFetchDetails);
@@ -22,19 +22,17 @@ function IfscDetailSetComponent() {
   const navigate = useNavigate();
   const bankDetailNameWidth = useRef(50);
 
-  // console.log(bankNameSlug, stateNameSlug, districtNameSlug, branchNameSlug);
-
   function setBankNameValue(bankValue) {
     dispatch(setLoadingState(true));
-    axios({
-      method: "post",
-      url: "https://findbankifsccode.onrender.com/api/bank-name/get-states",
+    axiosFetchBankDataInstance({
+      url: "/bank-name/get-states",
       data: {
-        BANK: bankValue,
+        BANK: bankValue.toUpperCase(),
       },
     }).then((res) => {
       console.log(res.data);
-      dispatch(setIfscFetchedDetails({ key: 'state', value: res.data.data }))
+      dispatch(setIfscFetchedDetails({ key: 'state', value: res.data.data.map(wd => capitalizeConverter(wd)) }));
+      navigate(`bank/${slugConverter(bankValue)}`);
     }).catch((err) => {
       console.log(err);
       alert(err.message);
@@ -43,21 +41,21 @@ function IfscDetailSetComponent() {
       dispatch(setLoadingState(false));
     });
     dispatch(setIFSCSearchDetailInfo({ key: 'bank', value: { bankname: bankValue } }));
-    navigate(`bank/${slugConverter(bankValue)}`);
+    // navigate(`bank/${slugConverter(bankValue)}`);
   }
 
   function setStateNameValue(stateValue) {
     dispatch(setLoadingState(true));
-    axios({
-      method: "post",
-      url: "https://findbankifsccode.onrender.com/api/bank-name/state/city",
+    axiosFetchBankDataInstance({
+      url: "/bank-name/state/city",
       data: {
-        BANK: bank.bankname,
-        STATE: stateValue,
+        BANK: bank.bankname.toUpperCase(),
+        STATE: stateValue.toUpperCase(),
       },
     }).then((res) => {
       console.log(res.data);
-      dispatch(setIfscFetchedDetails({ key: 'district', value: res.data.data }))
+      dispatch(setIfscFetchedDetails({ key: 'district', value: res.data.data.map(wd => capitalizeConverter(wd)) }));
+      navigate(`/bank/${bankNameSlug}/${slugConverter(stateValue)}`);
     }).catch((err) => {
       alert(err.message);
       navigate(`/`);
@@ -65,22 +63,22 @@ function IfscDetailSetComponent() {
       dispatch(setLoadingState(false));
     });
     dispatch(setIFSCSearchDetailInfo({ key: 'state', value: { statename: stateValue } }));
-    navigate(`/bank/${bankNameSlug}/${slugConverter(stateValue)}`);
+    // navigate(`/bank/${bankNameSlug}/${slugConverter(stateValue)}`);
   }
 
   function setDistrictNameValue(districtValue) {
     dispatch(setLoadingState(true));
-    axios({
-      method: "post",
-      url: "https://findbankifsccode.onrender.com/api/bank-name/state/city/branch",
+    axiosFetchBankDataInstance({
+      url: "/bank-name/state/city/branch",
       data: {
-        BANK: bank.bankname,
-        STATE: state.statename,
-        CITY: districtValue
+        BANK: bank.bankname.toUpperCase(),
+        STATE: state.statename.toUpperCase(),
+        CITY: districtValue.toUpperCase()
       },
     }).then((res) => {
       console.log(res.data);
-      dispatch(setIfscFetchedDetails({ key: 'branch', value: res.data.data }));
+      dispatch(setIfscFetchedDetails({ key: 'branch', value: res.data.data.map(wd => capitalizeConverter(wd)) }));
+      navigate(`/bank/${bankNameSlug}/${stateNameSlug}/${slugConverter(districtValue)}`);
     }).catch((err) => {
       alert(err.message);
       navigate(`/`);
@@ -88,11 +86,10 @@ function IfscDetailSetComponent() {
       dispatch(setLoadingState(false));
     });
     dispatch(setIFSCSearchDetailInfo({ key: 'district', value: { districtname: districtValue, districtvalue: slugConverter(districtValue) } }));
-    navigate(`/bank/${bankNameSlug}/${stateNameSlug}/${slugConverter(districtValue)}`);
+    // navigate(`/bank/${bankNameSlug}/${stateNameSlug}/${slugConverter(districtValue)}`);
   }
 
   function setBranchNameValue(branchValue) {
-    // dispatch(setIFSCSearchDetailInfo({ key: 'branch', value: { branchname: branchValue } }));
     navigate(`/bank/${bankNameSlug}/${stateNameSlug}/${districtNameSlug}/${slugConverter(branchValue)}`);
   }
 
@@ -149,7 +146,7 @@ function IfscDetailSetComponent() {
           {showBankOption && !bank && <div className="bankDetailOptionContainer">
             {bankList.map((name, ind) => {
               return (
-                <div key={ind} onClick={() => setBankNameValue(name)} className='bankDetailOptionSelector'>{name}</div>
+                <div key={ind} onClick={() => setBankNameValue(name, navigate)} className='bankDetailOptionSelector'>★ {name}</div>
               );
             })}
           </div>}
@@ -162,7 +159,7 @@ function IfscDetailSetComponent() {
           {(showStateOption && !state && bank) && <div className="bankDetailOptionContainer">
             {stateList.map((name, ind) => {
               return (
-                <div key={ind} onClick={() => setStateNameValue(name)} className='bankDetailOptionSelector'>{name}</div>
+                <div key={ind} onClick={() => setStateNameValue(name)} className='bankDetailOptionSelector'>★  {name}</div>
               );
             })}
           </div>
@@ -176,7 +173,7 @@ function IfscDetailSetComponent() {
           {(showDistrictOption && !district && state) && <div className="bankDetailOptionContainer">
             {districtList.map((name, ind) => {
               return (
-                <div key={ind} onClick={() => setDistrictNameValue(name)} className='bankDetailOptionSelector'>{name}</div>
+                <div key={ind} onClick={() => setDistrictNameValue(name)} className='bankDetailOptionSelector'>★ {name}</div>
               );
             })}
           </div>
@@ -190,7 +187,7 @@ function IfscDetailSetComponent() {
           {showBranchOption && district && <div className="bankDetailOptionContainer">
             {branchList.map((name, ind) => {
               return (
-                <div key={ind} onClick={() => setBranchNameValue(name)} className='bankDetailOptionSelector'>{name}</div>
+                <div key={ind} onClick={() => setBranchNameValue(name)} className='bankDetailOptionSelector'>★ {name}</div>
               );
             })}
           </div>

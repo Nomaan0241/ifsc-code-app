@@ -5,6 +5,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { setIfscFetchedDetails } from '../Middlewares/ReduxStore/IfscFetchDetails';
 import { setIFSCSearchDetailInfo } from '../Middlewares/ReduxStore/IfscSearchDetailInfo';
 import { setLoadingState } from '../Middlewares/ReduxStore/ToggleStateSlice';
+import { objectToIfscDataCapitalizeConverter } from '../Utils/RoutingFormats';
 
 function BankFullDetail() {
   const { IFSC, MICR, BANK, BRANCH, ADDRESS, STATE, CITY, DISTRICT, CONTACT } = useSelector((state) => state.ifscFetchDetails.ifsc);
@@ -20,12 +21,12 @@ function BankFullDetail() {
         method: "post",
         url: "https://findbankifsccode.onrender.com/api/ifsc",
         data: {
-          IFSC: ifscCodeSlug,
+          IFSC: ifscCodeSlug.toUpperCase(),
         },
       }).then((res) => {
         console.log(res.data);
         dispatch(setIFSCSearchDetailInfo({ key: 'ifsc', value: ifscCodeSlug }))
-        dispatch(setIfscFetchedDetails({ key: 'ifsc', value: res.data.data }))
+        dispatch(setIfscFetchedDetails({ key: 'ifsc', value: objectToIfscDataCapitalizeConverter(res.data.data) }))
       }).catch((err) => {
         alert(err.message + 'Navigating to home page');
         navigate('/');

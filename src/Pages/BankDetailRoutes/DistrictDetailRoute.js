@@ -6,7 +6,7 @@ import Home from '../Home/Home'
 import { setLoadingState } from '../../Middlewares/ReduxStore/ToggleStateSlice';
 import { setIfscFetchedDetails } from '../../Middlewares/ReduxStore/IfscFetchDetails';
 import { setIFSCSearchDetailInfo } from '../../Middlewares/ReduxStore/IfscSearchDetailInfo';
-import { nameConverter } from '../../Utils/RoutingFormats';
+import { capitalizeConverter, nameConverter } from '../../Utils/RoutingFormats';
 
 function DistrictDetailRoute() {
   const { bank: { bankname }, state: { statename } } = useSelector((state) => state.ifscSearchDetailInfo);
@@ -25,10 +25,11 @@ function DistrictDetailRoute() {
           STATE: nameConverter(stateNameSlug),
         },
       }).then((res) => {
+        
         console.log(res.data, 'District Page');
-        dispatch(setIFSCSearchDetailInfo({ key: 'bank', value: { bankname: res.data.requestBody.BANK } }));
-        dispatch(setIFSCSearchDetailInfo({ key: 'state', value: { statename: res.data.requestBody.STATE } }));
-        dispatch(setIfscFetchedDetails({ key: 'district', value: res.data.data }))
+        dispatch(setIFSCSearchDetailInfo({ key: 'bank', value: { bankname: capitalizeConverter(res.data.requestBody.BANK) } }));
+        dispatch(setIFSCSearchDetailInfo({ key: 'state', value: { statename: capitalizeConverter(res.data.requestBody.STATE) } }));
+        dispatch(setIfscFetchedDetails({ key: 'district', value: res.data.data.map(wd=> capitalizeConverter(wd)) }))
       }).catch((err) => {
         console.log(err);
         alert(err.message);
