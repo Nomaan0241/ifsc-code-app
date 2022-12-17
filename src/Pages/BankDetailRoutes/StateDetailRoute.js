@@ -28,7 +28,7 @@ function StateDetailRoute() {
       }).then((res) => {
         console.log(res.data, 'State Page');
         dispatch(setIFSCSearchDetailInfo({ key: 'bank', value: { bankname: capitalizeConverter(res.data.requestBody.BANK) } }));
-        dispatch(setIfscFetchedDetails({ key: 'state', value: res.data.data.map(wd=> capitalizeConverter(wd)) }))
+        dispatch(setIfscFetchedDetails({ key: 'state', value: res.data.data.map(wd => capitalizeConverter(wd)) }))
       }).catch((err) => {
         console.log(err);
         alert(err.message);

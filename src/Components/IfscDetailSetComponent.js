@@ -63,7 +63,6 @@ function IfscDetailSetComponent() {
       dispatch(setLoadingState(false));
     });
     dispatch(setIFSCSearchDetailInfo({ key: 'state', value: { statename: stateValue } }));
-    // navigate(`/bank/${bankNameSlug}/${slugConverter(stateValue)}`);
   }
 
   function setDistrictNameValue(districtValue) {
@@ -86,7 +85,6 @@ function IfscDetailSetComponent() {
       dispatch(setLoadingState(false));
     });
     dispatch(setIFSCSearchDetailInfo({ key: 'district', value: { districtname: districtValue, districtvalue: slugConverter(districtValue) } }));
-    // navigate(`/bank/${bankNameSlug}/${stateNameSlug}/${slugConverter(districtValue)}`);
   }
 
   function setBranchNameValue(branchValue) {
@@ -95,27 +93,27 @@ function IfscDetailSetComponent() {
 
   const navToBankOption = useCallback(function () {
     if (bank) {
-      dispatch(setIFSCSearchDetailInfo({ key: 'bank', value: '' }))
-      dispatch(setIFSCSearchDetailInfo({ key: 'state', value: '' }))
-      dispatch(setIFSCSearchDetailInfo({ key: 'branch', value: '' }))
-      dispatch(setIFSCSearchDetailInfo({ key: 'district', value: '' }))
+      dispatch(setIFSCSearchDetailInfo({ key: 'bank', value: '' }));
+      dispatch(setIFSCSearchDetailInfo({ key: 'state', value: '' }));
+      dispatch(setIFSCSearchDetailInfo({ key: 'branch', value: '' }));
+      dispatch(setIFSCSearchDetailInfo({ key: 'district', value: '' }));
       navigate(`/`, { replace: true });
     }
   }, [bank, dispatch, navigate])
 
   const navToStateOption = useCallback(function () {
     if (state) {
-      dispatch(setIFSCSearchDetailInfo({ key: 'state', value: '' }))
-      dispatch(setIFSCSearchDetailInfo({ key: 'district', value: '' }))
-      dispatch(setIFSCSearchDetailInfo({ key: 'branch', value: '' }))
+      dispatch(setIFSCSearchDetailInfo({ key: 'state', value: '' }));
+      dispatch(setIFSCSearchDetailInfo({ key: 'district', value: '' }));
+      dispatch(setIFSCSearchDetailInfo({ key: 'branch', value: '' }));
       navigate(`/bank/${bankNameSlug}`, { replace: true });
     }
   }, [bankNameSlug, state, dispatch, navigate])
 
   const navToDistrictOption = useCallback(function () {
     if (district) {
-      dispatch(setIFSCSearchDetailInfo({ key: 'district', value: '' }))
-      dispatch(setIFSCSearchDetailInfo({ key: 'branch', value: '' }))
+      dispatch(setIFSCSearchDetailInfo({ key: 'district', value: '' }));
+      dispatch(setIFSCSearchDetailInfo({ key: 'branch', value: '' }));
       navigate(`/bank/${bankNameSlug}/${stateNameSlug}`, { replace: true });
     }
   }, [bankNameSlug, stateNameSlug, district, dispatch, navigate])

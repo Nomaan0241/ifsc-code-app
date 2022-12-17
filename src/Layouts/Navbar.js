@@ -21,14 +21,14 @@ function Navbar() {
         <>
             <header>
                 <Link id='mainLogoContainer' to="/"><img src={iconLogo} alt="logo" id='mainLogo' /></Link>
-                <div className={`${(NavToggleVal) ? 'show' : ''} btnSection`}>
+                <nav className={`${(NavToggleVal) ? 'show' : ''} btnSection`}>
                     <ul className='navbar'>
                         <li><NavLink to="/" onClick={toggleNavValue}>Home</NavLink></li>
                         <li><NavLink to="/about" onClick={toggleNavValue}>About</NavLink></li>
                         <li><NavLink to="/contact" onClick={toggleNavValue}>Contact Us</NavLink></li>
                         <li><NavLink to="/service" onClick={toggleNavValue}>Service</NavLink></li>
                     </ul>
-                </div>
+                </nav>
                 <IfscSearchBox />
                 <FontAwesomeIcon icon={NavToggleVal ? faXmark : faBars} onClick={toggleNavValue} className='headerIconStyle' id='menuIcon' />
             </header>

@@ -108,7 +108,7 @@
 
 .bankDetailOptionSelector {
     padding: 5px;
-    text-transform:capitalize;
+    border-bottom: 0.5px solid var(--prColor);
 }
 
 .bankDetailOptionSelector:first-child {
