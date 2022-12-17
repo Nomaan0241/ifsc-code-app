@@ -154,6 +154,23 @@
         padding: 10px;
     }
 
+    .infoTableCol {
+        flex: 1 1 100%;
+    }
+
+    .infoTableIfscDetailRow {
+        gap: 0px;
+    }
+
+    .infoTableIfscCol {
+        flex: 1 1 100%;
+        text-align: center;
+    }
+
+    .ifscValueFieldCol h2 {
+        text-align: center;
+    }
+
     #footer {
         justify-content: center;
         padding: 30px;

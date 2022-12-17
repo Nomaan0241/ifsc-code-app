@@ -22,12 +22,6 @@
         .descriptionContainer p {
             padding: 0px 5px;
         }
-
-        .infoTableRow {
-            padding: 10px;
-        }
-
-
     }
 
     @media screen and (max-width: 375px) {

@@ -23,6 +23,7 @@ const findStates = () => {
 		console.log(response);
 	});
 };
+
 const findCity = () => {
 	axios({
 		method: "post",

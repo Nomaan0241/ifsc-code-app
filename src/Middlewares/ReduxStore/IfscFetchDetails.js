@@ -47,6 +47,7 @@ const ifscFetchDetails = createSlice({
             'Equitas Small Finance Bank',
             'Export Import Bank Of India',
             'Federal Bank',
+            "Fino Payments Bank",
             'Firstrand Bank',
             'Goa State Co-operative Bank',
             'Gopinath Patil Parsik Janata Sahakari Bank',

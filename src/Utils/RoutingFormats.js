@@ -20,5 +20,4 @@ export function objectToIfscDataCapitalizeConverter(obj) {
 
 export function nameConverter(name) {
     return name.toUpperCase().split('_').join(' ');
-    // return name.toLowerCase().split('_').map((word) => word.toUpperCase()).join(' ');
 }
