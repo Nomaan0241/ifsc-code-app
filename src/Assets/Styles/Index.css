@@ -18,6 +18,30 @@
   --shadow: 2px 3px 9px rgba(0, 0, 0, 0.160);
 }
 
+@font-face {
+  font-family: Roboto;
+  src: url('../Fonts/Roboto-400.ttf');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: Roboto;
+  src: url('../Fonts/Roboto-500.ttf');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: Roboto;
+  src: url('../Fonts/Roboto-700.ttf');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: Roboto;
+  src: url('../Fonts/Roboto-900.ttf');
+  font-weight: 900;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -89,7 +113,7 @@ p {
 }
 
 .descriptionContainer p span {
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .descriptionHeading {
@@ -229,7 +253,7 @@ p {
 }
 
 .fieldNameCol {
-  font-weight: 600;
+  font-weight: 700;
   border-radius: 10px;
   background-color: var(--thirdColor);
 }
