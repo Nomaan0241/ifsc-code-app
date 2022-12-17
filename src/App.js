@@ -4,6 +4,8 @@ import Home from './Pages/Home/Home'
 import About from './Pages/Home/About'
 import Contact from './Pages/Home/Contact'
 import Service from './Pages/Home/Service'
+import TermCondition from './Pages/Home/TermCondition'
+import Disclaimer from './Pages/Home/Disclaimer'
 import OutletPage from './Pages/Extra/OutletPage'
 import PageNotFound from './Pages/Extra/PageNotFound'
 import IfscFullDetail from './Pages/IfscFullDetail'
@@ -24,7 +26,9 @@ function App() {
   });
   return (
     <>
+      
       {loading && <Loader />}
+      
       <Navbar />
       <Routes>
         <Route path='/' element={<OutletPage />}>
@@ -32,6 +36,8 @@ function App() {
           <Route path='about' element={<About />} />
           <Route path='contact' element={<Contact />} />
           <Route path='service' element={<Service />} />
+          <Route path='disclaimer' element={<Disclaimer />} />
+          <Route path='terms-of-uses' element={<TermCondition />} />
           <Route path='ifsc' element={<OutletPage />}>
             <Route path=':ifscCodeSlug' element={<BankFullDetail />} />
           </Route>

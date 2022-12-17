@@ -1,0 +1,47 @@
+.contactFormContainer {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.contactFormDirectChilds {
+    padding: 10px;
+    flex: 1 1 ;
+}
+
+.contactFormLeftSide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contactFormLeftSide img {
+    width: 100%;
+}
+
+.contactFormRightSide h1 {
+    font-size: var(--titleHeadingSize);
+    color: var(--prColor);
+}
+
+.contactUsForm {
+    margin: 20px 0px;
+}
+
+.contactUsForm input,
+.contactUsForm textarea {
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background-color: var(--lightGreyColor);
+    display: block;
+    font-size: var(--fontSize);
+    margin: 0px 0px 10px 0px;
+}
+
+.contactUsForm input[type='submit'] {
+    background-color: var(--prColor);
+    color: var(--whiteColor);
+    cursor: pointer;
+}

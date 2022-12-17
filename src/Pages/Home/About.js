@@ -20,7 +20,7 @@ function About() {
           <h1 className='headingStyle'>Data <span>Available</span></h1>
           <div id="bankDataInfoSection">
             <div className="bankDataInfoContainer">
-              <h2>56<span>+</span></h2>
+              <h2>165<span>+</span></h2>
               <p>Banks</p>
             </div>
             <div className="bankDataInfoContainer">
@@ -28,11 +28,11 @@ function About() {
               <p>States</p>
             </div>
             <div className="bankDataInfoContainer">
-              <h2>1655<span>+</span></h2>
+              <h2>645<span>+</span></h2>
               <p>Districts</p>
             </div>
             <div className="bankDataInfoContainer">
-              <h2>162852<span>+</span></h2>
+              <h2>169983<span>+</span></h2>
               <p>Branches</p>
             </div>
           </div>

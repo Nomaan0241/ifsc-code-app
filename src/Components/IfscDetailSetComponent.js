@@ -32,7 +32,6 @@ function IfscDetailSetComponent() {
     }).then((res) => {
       console.log(res.data);
       dispatch(setIfscFetchedDetails({ key: 'state', value: res.data.data.map(wd => capitalizeConverter(wd)) }));
-      navigate(`bank/${slugConverter(bankValue)}`);
     }).catch((err) => {
       console.log(err);
       alert(err.message);
@@ -41,7 +40,7 @@ function IfscDetailSetComponent() {
       dispatch(setLoadingState(false));
     });
     dispatch(setIFSCSearchDetailInfo({ key: 'bank', value: { bankname: bankValue } }));
-    // navigate(`bank/${slugConverter(bankValue)}`);
+    navigate(`bank/${slugConverter(bankValue)}`);
   }
 
   function setStateNameValue(stateValue) {
@@ -55,7 +54,6 @@ function IfscDetailSetComponent() {
     }).then((res) => {
       console.log(res.data);
       dispatch(setIfscFetchedDetails({ key: 'district', value: res.data.data.map(wd => capitalizeConverter(wd)) }));
-      navigate(`/bank/${bankNameSlug}/${slugConverter(stateValue)}`);
     }).catch((err) => {
       alert(err.message);
       navigate(`/`);
@@ -63,6 +61,7 @@ function IfscDetailSetComponent() {
       dispatch(setLoadingState(false));
     });
     dispatch(setIFSCSearchDetailInfo({ key: 'state', value: { statename: stateValue } }));
+    navigate(`/bank/${bankNameSlug}/${slugConverter(stateValue)}`);
   }
 
   function setDistrictNameValue(districtValue) {
@@ -77,7 +76,6 @@ function IfscDetailSetComponent() {
     }).then((res) => {
       console.log(res.data);
       dispatch(setIfscFetchedDetails({ key: 'branch', value: res.data.data.map(wd => capitalizeConverter(wd)) }));
-      navigate(`/bank/${bankNameSlug}/${stateNameSlug}/${slugConverter(districtValue)}`);
     }).catch((err) => {
       alert(err.message);
       navigate(`/`);
@@ -85,6 +83,7 @@ function IfscDetailSetComponent() {
       dispatch(setLoadingState(false));
     });
     dispatch(setIFSCSearchDetailInfo({ key: 'district', value: { districtname: districtValue, districtvalue: slugConverter(districtValue) } }));
+    navigate(`/bank/${bankNameSlug}/${stateNameSlug}/${slugConverter(districtValue)}`);
   }
 
   function setBranchNameValue(branchValue) {
@@ -95,8 +94,8 @@ function IfscDetailSetComponent() {
     if (bank) {
       dispatch(setIFSCSearchDetailInfo({ key: 'bank', value: '' }));
       dispatch(setIFSCSearchDetailInfo({ key: 'state', value: '' }));
-      dispatch(setIFSCSearchDetailInfo({ key: 'branch', value: '' }));
       dispatch(setIFSCSearchDetailInfo({ key: 'district', value: '' }));
+      dispatch(setIFSCSearchDetailInfo({ key: 'branch', value: '' }));
       navigate(`/`, { replace: true });
     }
   }, [bank, dispatch, navigate])
@@ -119,7 +118,7 @@ function IfscDetailSetComponent() {
   }, [bankNameSlug, stateNameSlug, district, dispatch, navigate])
 
   useEffect(() => {
-    bankDetailNameWidth.current = document.querySelector('.bankDetailSelectContainer  p').offsetWidth;
+    bankDetailNameWidth.current = document.querySelector('.bankDetailSelectContainer p').offsetWidth;
 
     if (!bankNameSlug) {
       navToBankOption();

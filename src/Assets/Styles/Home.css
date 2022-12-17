@@ -2,7 +2,6 @@
     width: 100%;
     min-height: calc(100vh - 66px);
     padding: 55px 70px;
-    padding: 3% 6%;
     position: relative;
     background-image: url('../Images/backgroundImages/debitCard.webp'), url('../Images/backgroundImages/bank.webp');
     background-repeat: no-repeat;
@@ -25,7 +24,7 @@
 /* LEFT SIDE CONTAINER */
 
 .homeLeftSideContainer{
-    flex: 1 1 55%;
+    flex: 1 1 54%;
 }
 
 #homeHeading {
@@ -70,5 +69,5 @@
 /* RIGHT SIDE CONTAINER */
 
 .homeRightSideContainer{
-    flex: 1 1 45%;
+    flex: 1 1 46%;
 }

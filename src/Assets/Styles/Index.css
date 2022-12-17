@@ -2,6 +2,7 @@
   --prColor: #013DB9;
   --secColor: #01C324;
   --thirdColor: #e2e2e2;
+  --lightGreyColor: #f2f2f2;
   --whiteColor: #ffffff;
   --blackColor: #0f0f0f;
   --redColor: #ff0000;
@@ -42,7 +43,6 @@ p {
   border-radius: 20px;
 }
 
-
 .pageContainer {
   max-width: 920px;
   padding: 10px 15px;
@@ -77,13 +77,14 @@ p {
 /* Description Box */
 
 .descriptionContainer {
-  margin: 20px 0px 40px 0px;
+  margin: 20px 0px 20px 0px;
 }
 
 .descriptionContainer p {
   text-align: center;
   text-align: justify;
   padding: 0px 20px;
+  margin: 0px 0px 10px 0px;
   color: var(--blackColor);
 }
 
@@ -128,7 +129,8 @@ p {
 
 /* TABLE */
 
-.infoTable {
+.infoTable,
+.contactFormContainer {
   margin: 0px 0px 30px 0px;
   padding: 20px;
   font-size: var(--fontSize);
@@ -158,7 +160,7 @@ p {
   flex: 1 1;
 }
 
-.ifscValueFieldCol h2{
+.ifscValueFieldCol h2 {
   text-align: right;
   font-weight: 500;
 }
@@ -185,7 +187,7 @@ p {
   justify-content: center;
 }
 
-.cellDataContainer{
+.cellDataContainer {
   margin: 5px;
   padding: 5px 12px;
   border-radius: 20px;
@@ -196,7 +198,7 @@ p {
 }
 
 .cellDataIcon {
-  margin-right: 5px ;
+  margin-right: 5px;
 }
 
 .bgGreen {

@@ -123,6 +123,19 @@
     }
 }
 
+@media screen and (max-width: 785px) {
+    .contactFormDirectChilds {
+        flex: 1 1 100%;
+    }
+    .contactFormLeftSide img {
+        max-width: 300px;
+    }
+    .contactFormRightSide h1,
+    .contactFormRightSide p {
+        text-align: center;
+    }
+}
+
 @media screen and (max-width: 700px) {
     .detailSectionLeftContainer {
         flex: 1 1 100%;
@@ -173,7 +186,7 @@
 
     #footer {
         justify-content: center;
-        padding: 30px;
+        padding: 15px 20px;
     }
 
     .footerContainer {
