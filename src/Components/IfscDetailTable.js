@@ -1,14 +1,16 @@
-import React from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleCheck, faCircleXmark } from "@fortawesome/free-solid-svg-icons";
-
 
 function IfscDetailTable(props) {
     const { IFSC, MICR, BANK, BRANCH, ADDRESS, STATE, CITY, DISTRICT, CONTACT, IMPS, RTGS, UPI, NEFT } = props.details;
 
-    function copyIfsc(text) {
-        navigator.clipboard.writeText(text);
-        alert(`IFSC Copied: ${text}`);
+    function copyIfsc() {
+        var copyText = document.querySelector(".ifscValueDataCol input");
+        copyText.select();
+        copyText.setSelectionRange(0, 99999);
+        const copied = navigator.clipboard.writeText(copyText.value);
+        if (copied)
+            alert("Copied the text: " + copyText.value);
     }
 
     return (
@@ -20,8 +22,9 @@ function IfscDetailTable(props) {
                         <h2>IFSC Code:</h2>
                     </div>
                     <div className="infoTableIfscCol ifscValueDataCol">
-                        <h2>{IFSC || 'No Data Available'}</h2>
-                        <button onClick={() => copyIfsc(IFSC)}>Copy IFSC</button>
+                        <h2>IFSC Code:</h2>
+                        <input type="text" value={IFSC || 'Copy when value is showing'} readOnly />
+                        <button value={IFSC} onClick={copyIfsc}>Copy IFSC</button>
                     </div>
                 </div>
                 <div className="infoTableCellValueShowBoxRow">

@@ -236,6 +236,12 @@ p {
   display: inline-block;
 }
 
+.ifscValueDataCol input{
+  display: none;
+}
+
+
+
 .ifscValueDataCol button {
   margin: 0px 5px;
   padding: 5px 15px;
