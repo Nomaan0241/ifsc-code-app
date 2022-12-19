@@ -1,21 +1,22 @@
+import { useSelector } from 'react-redux'
 import { Route, Routes } from 'react-router-dom'
 import Navbar from './Layouts/Navbar'
 import Home from './Pages/Home/Home'
+import Footer from './Layouts/Footer'
+import Loader from './Layouts/Loader'
 import About from './Pages/Home/About'
 import Contact from './Pages/Home/Contact'
-import Service from './Pages/Home/Service'
 import TermCondition from './Pages/Home/TermCondition'
 import Disclaimer from './Pages/Home/Disclaimer'
+import PageNotFound from './Pages/Home/PageNotFound'
 import OutletPage from './Pages/Extra/OutletPage'
-import PageNotFound from './Pages/Extra/PageNotFound'
 import IfscFullDetail from './Pages/IfscFullDetail'
 import StateDetailRoute from './Pages/BankDetailRoutes/StateDetailRoute'
 import DistrictDetailRoute from './Pages/BankDetailRoutes/DistrictDetailRoute'
 import BranchDetailRoute from './Pages/BankDetailRoutes/BranchDetailRoute'
 import BankFullDetail from './Pages/BankFullDetail'
-import Footer from './Layouts/Footer'
-import Loader from './Layouts/Loader'
-import { useSelector } from 'react-redux'
+import FindByIFSC from './Pages/Home/FindByIFSC'
+import FindByMICR from './Pages/Home/FindByMICR'
 
 function App() {
   const loading = useSelector((state) => state.toggleState.isLoading);
@@ -26,18 +27,15 @@ function App() {
   });
   return (
     <>
-      
       {loading && <Loader />}
-      
       <Navbar />
       <Routes>
         <Route path='/' element={<OutletPage />}>
           <Route index element={<Home />} />
           <Route path='about' element={<About />} />
           <Route path='contact' element={<Contact />} />
-          <Route path='service' element={<Service />} />
-          <Route path='disclaimer' element={<Disclaimer />} />
-          <Route path='terms-of-uses' element={<TermCondition />} />
+          <Route path='find-by-ifsc' element={<FindByIFSC />} />
+          <Route path='find-by-micr' element={<FindByMICR />} />
           <Route path='ifsc' element={<OutletPage />}>
             <Route path=':ifscCodeSlug' element={<BankFullDetail />} />
           </Route>
@@ -56,6 +54,8 @@ function App() {
               </Route>
             </Route>
           </Route>
+          <Route path='disclaimer' element={<Disclaimer />} />
+          <Route path='terms-of-uses' element={<TermCondition />} />
           <Route path='*' element={<PageNotFound />} />
         </Route>
       </Routes>

@@ -24,15 +24,15 @@ function Footer() {
               <li><Link to='/'>Home</Link></li>
               <li><Link to='/about'>About</Link></li>
               <li><Link to='/contact'>Contact Us</Link></li>
-              <li><Link to='/service'>Service</Link></li>
+              <li><Link to='/find-by-ifsc'>Service</Link></li>
             </ul >
           </div >
           <div className="footerContainer" id="footerContainer4">
             <h1>Search By</h1>
             <ul>
               <li><Link to='/'>Bank Info</Link></li>
-              <li><Link to='/'>IFSC Info</Link></li>
-              <li><Link to='/'>MICR Info</Link></li>
+              <li><Link to='/find-by-ifsc'>IFSC Info</Link></li>
+              <li><Link to='/find-by-micr'>MICR Info</Link></li>
             </ul >
           </div>
         </div>

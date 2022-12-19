@@ -38,10 +38,15 @@
     display: block;
     font-size: var(--fontSize);
     margin: 0px 0px 10px 0px;
+    resize: none;
 }
 
 .contactUsForm input[type='submit'] {
-    background-color: var(--prColor);
+    background-color: var(--secColor);
     color: var(--whiteColor);
     cursor: pointer;
+    transition: all 0.1s ease-in 0s;
+}
+.contactUsForm input[type='submit']:hover {
+    background-color: var(--secDarkColor);
 }

@@ -28,7 +28,7 @@
 
 .footerContainer h1 {
     margin: 0px 0px 10px 0px;
-    font-weight: 500;
+    font-weight: 700;
     font-size: calc(var(--fontSize) + 4px);
 }
 
@@ -62,7 +62,7 @@
 
 #footerContainer3 ul li a:hover, 
 #footerContainer4 ul li a:hover {
-    font-weight: 500;
+    font-weight: 700;
     translate: 5px;
 }
 

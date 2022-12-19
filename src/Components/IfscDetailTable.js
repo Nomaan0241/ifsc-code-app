@@ -7,7 +7,7 @@ function IfscDetailTable(props) {
     function copyIfsc() {
         var copyText = document.querySelector(".ifscValueDataCol input");
         copyText.select();
-        copyText.setSelectionRange(0, 99999);
+        copyText.setSelectionRange(0, 100);
         const copied = navigator.clipboard.writeText(copyText.value);
         if (copied)
             alert("Copied the text: " + copyText.value);
@@ -15,16 +15,16 @@ function IfscDetailTable(props) {
 
     return (
         <>
-            <div className="infoTable">
+            <div className="infoTable shadowBoxContainer">
                 <h1 className="infoTableHeading">{IFSC} Bank Details</h1>
                 <div className="infoTableIfscDetailRow">
                     <div className="infoTableIfscCol ifscValueFieldCol">
                         <h2>IFSC Code:</h2>
                     </div>
                     <div className="infoTableIfscCol ifscValueDataCol">
-                        <h2>IFSC Code:</h2>
+                        <h2>{IFSC || 'Copy when value is showing'}</h2>
                         <input type="text" value={IFSC || 'Copy when value is showing'} readOnly />
-                        <button value={IFSC} onClick={copyIfsc}>Copy IFSC</button>
+                        <button onClick={copyIfsc}>Copy IFSC</button>
                     </div>
                 </div>
                 <div className="infoTableCellValueShowBoxRow">

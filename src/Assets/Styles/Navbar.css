@@ -76,8 +76,8 @@ header {
 
 .ifscSearchBoxContainer{
     position: relative;
-    width: 300px;
-    max-width: 350px;
+    width: 350px;
+    max-width: 450px;
 }
 
 #ifscSearchBox {
@@ -105,13 +105,18 @@ header {
     border-radius: 50%;
     font-size: 18px;
     position: absolute;
-    top: 3px;
+    top: 4px;
     right: 4px;
     display: grid;
     place-items: center;
     outline: none;
     z-index: 3;
     cursor: pointer;
+    transition: all 0.1s ease-in 0s;
+}
+
+#ifscSearchBtn:hover {
+    background-color: var(--secDarkColor);
 }
 
 #ifscSearchBtn span {

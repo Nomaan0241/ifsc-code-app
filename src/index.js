@@ -5,6 +5,7 @@ import { BrowserRouter } from 'react-router-dom'
 import ReduxStore from './Middlewares/ReduxStore/ReduxStore';
 import App from './App'
 import './Assets/Styles/Index.css'
+import './Assets/Styles/Fonts.css'
 import './Assets/Styles/TabView.css'
 import './Assets/Styles/MobileView.css'
 

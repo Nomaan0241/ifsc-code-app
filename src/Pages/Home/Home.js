@@ -1,7 +1,7 @@
 import Typed from "react-typed"
-// import { Link } from 'react-router-dom'
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faCircleChevronRight } from "@fortawesome/free-solid-svg-icons";
+import { Link } from 'react-router-dom'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleChevronRight } from "@fortawesome/free-solid-svg-icons";
 import IfscDetailSetComponent from "../../Components/IfscDetailSetComponent";
 import '../../Assets/Styles/Home.css';
 
@@ -17,10 +17,10 @@ function Home() {
                         </span>
                     </h1>
                     <p id="homeSubHeading">Website Name is a place where you can know your bank details through IFSC Codes.</p>
-                    {/* <Link to='/about' id='homeBannerBtn'>
+                    <Link to='/find-by-ifsc' className="btnWithIcon" id='homeBannerBtn'>
                         <span>Know More</span>
                         <FontAwesomeIcon icon={faCircleChevronRight} />
-                    </Link> */}
+                    </Link>
                 </div>
                 <div className="homeSubContainer homeRightSideContainer">
                     <IfscDetailSetComponent />

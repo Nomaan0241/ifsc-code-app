@@ -26,7 +26,8 @@ function Navbar() {
                         <li><NavLink to="/" onClick={toggleNavValue}>Home</NavLink></li>
                         <li><NavLink to="/about" onClick={toggleNavValue}>About</NavLink></li>
                         <li><NavLink to="/contact" onClick={toggleNavValue}>Contact Us</NavLink></li>
-                        <li><NavLink to="/service" onClick={toggleNavValue}>Service</NavLink></li>
+                        <li><NavLink to="/find-by-ifsc" onClick={toggleNavValue}>Find by IFSC</NavLink></li>
+                        <li><NavLink to="/find-by-micr" onClick={toggleNavValue}>Find by MICR</NavLink></li>
                     </ul>
                 </nav>
                 <IfscSearchBox />

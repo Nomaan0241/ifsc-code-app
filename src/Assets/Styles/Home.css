@@ -23,7 +23,7 @@
 
 /* LEFT SIDE CONTAINER */
 
-.homeLeftSideContainer{
+.homeLeftSideContainer {
     flex: 1 1 54%;
 }
 
@@ -45,29 +45,16 @@
 }
 
 #homeBannerBtn {
-    width: 170px;
-    border-radius: 30px;
-    outline: none;
-    border: none;
-    padding: 8px 12px 8px 15px;
     background-color: var(--prColor);
-    color: var(--whiteColor);
-    font-size: var(--fontSize);
-    text-decoration: none;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    transition: all 0.2s ease-in 0s;
 }
 
 #homeBannerBtn:hover {
-    background-color: var(--secColor);
-    width: 173px;
+    background-color: var(--prDarkColor);
+    width: 168px;
 }
 
 /* RIGHT SIDE CONTAINER */
 
-.homeRightSideContainer{
+.homeRightSideContainer {
     flex: 1 1 46%;
 }

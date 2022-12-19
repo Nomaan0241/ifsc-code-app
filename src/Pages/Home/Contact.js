@@ -5,7 +5,7 @@ function Contact() {
     <div className='sectionContainer'>
       <h1 className='sectionHeaderTitle'>contact <span>us</span></h1>
       <div className="pageContainer">
-        <div className="contactFormContainer">
+        <div className="contactFormContainer shadowBoxContainer">
           <div className="contactFormLeftSide contactFormDirectChilds">
             <img src={contactUs} alt="contact us" />
           </div>

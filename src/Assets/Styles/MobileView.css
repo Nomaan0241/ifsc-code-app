@@ -1,6 +1,6 @@
     @media screen and (max-width: 500px) {
         :root {
-            --fontSize: 18px;
+            --fontSize: 17px;
             --headSize: 48px;
             --headingSize: 42px;
             --titleHeadingSize: 30px;
@@ -21,6 +21,10 @@
 
         .descriptionContainer p {
             padding: 0px 5px;
+        }
+
+        .btnWithIcon {
+            width: 150px;
         }
     }
 
