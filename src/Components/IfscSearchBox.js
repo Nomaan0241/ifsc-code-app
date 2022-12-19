@@ -4,9 +4,9 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { setIFSCSearchDetailInfo } from '../Middlewares/ReduxStore/IfscSearchDetailInfo'
-import { setIfscFetchedDetails } from '../Middlewares/ReduxStore/IfscFetchDetails'
 import { setLoadingState } from '../Middlewares/ReduxStore/ToggleStateSlice'
+import { setIfscFetchedDetails } from '../Middlewares/ReduxStore/IfscFetchDetails'
+import { setIFSCSearchDetailInfo } from '../Middlewares/ReduxStore/IfscSearchDetailInfo'
 import axiosFetchBankDataInstance from '../Middlewares/AxiosInstance/AxiosInstance';
 import { objectToIfscDataCapitalizeConverter } from '../Utils/RoutingFormats';
 

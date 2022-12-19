@@ -46,11 +46,12 @@
 
 #homeBannerBtn {
     background-color: var(--prColor);
+    width: 170px;
 }
 
 #homeBannerBtn:hover {
     background-color: var(--prDarkColor);
-    width: 168px;
+    width: 172px;
 }
 
 /* RIGHT SIDE CONTAINER */

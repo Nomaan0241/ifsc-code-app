@@ -17,6 +17,7 @@ function IfscFullDetail() {
 
     useEffect(() => {
         if (bankNameSlug && stateNameSlug && districtNameSlug && branchNameSlug) {
+            console.log(nameConverter(bankNameSlug), nameConverter(stateNameSlug), nameConverter(districtNameSlug), nameConverter(branchNameSlug))
             dispatch(setLoadingState(true));
             axios({
                 method: "post",

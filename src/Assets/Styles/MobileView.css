@@ -23,8 +23,12 @@
             padding: 0px 5px;
         }
 
-        .btnWithIcon {
+        .btnWithIcon, #homeBannerBtn  {
             width: 150px;
+        }
+        
+        #homeBannerBtn:hover {
+            width: 153px;
         }
     }
 

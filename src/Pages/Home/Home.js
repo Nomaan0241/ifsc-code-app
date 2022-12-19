@@ -18,7 +18,7 @@ function Home() {
                     </h1>
                     <p id="homeSubHeading">Website Name is a place where you can know your bank details through IFSC Codes.</p>
                     <Link to='/find-by-ifsc' className="btnWithIcon" id='homeBannerBtn'>
-                        <span>Know More</span>
+                        <span>Search IFSC</span>
                         <FontAwesomeIcon icon={faCircleChevronRight} />
                     </Link>
                 </div>

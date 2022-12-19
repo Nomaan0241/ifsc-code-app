@@ -1,7 +1,40 @@
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setLoadingState } from '../../Middlewares/ReduxStore/ToggleStateSlice'
+import { setIfscFetchedDetails } from '../../Middlewares/ReduxStore/IfscFetchDetails'
+import { setIFSCSearchDetailInfo } from '../../Middlewares/ReduxStore/IfscSearchDetailInfo'
+import axiosFetchBankDataInstance from '../../Middlewares/AxiosInstance/AxiosInstance';
+import { objectToIfscDataCapitalizeConverter } from '../../Utils/RoutingFormats';
 import SearchImg from '../../Assets/Images/Icons/search.png'
 import '../../Assets/Styles/FindByCodes.css'
 
 function FindByIFSC() {
+    const [ifscValue, setIfscValue] = useState();
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    function getIFSCData(e) {
+        e.preventDefault();
+        dispatch(setLoadingState(true));
+        axiosFetchBankDataInstance({
+            url: "/ifsc",
+            data: {
+                IFSC: ifscValue.toUpperCase(),
+            },
+        }).then((res) => {
+            console.log(res.data);
+            dispatch(setIFSCSearchDetailInfo({ key: 'ifsc', value: ifscValue }))
+            dispatch(setIfscFetchedDetails({ key: 'ifsc', value: objectToIfscDataCapitalizeConverter(res.data.data) }))
+            navigate(`/ifsc/${ifscValue}`);
+        }).catch((err) => {
+            alert(err.message);
+        }).finally(() => {
+            dispatch(setLoadingState(false));
+        });
+        setIfscValue('');
+    }
+
     return (
         <>
             <h1 className='sectionHeaderTitle'>Find by <span>IFSC</span></h1>
@@ -13,8 +46,8 @@ function FindByIFSC() {
                     <div id='findByIfscCodeContainer' className="findByCodeSubContainer">
                         <h1>Find Bank Details</h1>
                         <p>Find your bank details by IFSC Code</p>
-                        <form className='findByCodeSearchForm'>
-                            <input type="text" placeholder='Search your IFSC code here' className='findByCodeFormInputField' />
+                        <form onSubmit={(e) => getIFSCData(e)} className='findByCodeSearchForm'>
+                            <input type="text" pattern="^[A-Za-z]{4}0[A-Za-z0-9]{6}$" onChange={(e) => setIfscValue(e.target.value)} value={ifscValue} placeholder='Search your IFSC code here' title="Enter correct IFSC Code." maxLength={11} required className='findByCodeFormInputField' />
                             <button type="submit" id='findByCodeFormBtn' className='findByCodeFormInputField'>Submit</button>
                         </form>
                     </div>

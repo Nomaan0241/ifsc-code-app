@@ -7,14 +7,17 @@
     padding: 10px;
 }
 
-#findByCodeImgContainer {}
+#findByCodeImgContainer {
+    display: flex;
+    align-items: center;
+}
 
 #findByCodeImgContainer img {
     display: block;
     text-align: center;
     margin: 0px auto;
+    width: 160px;
 }
-
 
 #findByIfscCodeContainer {
     width: 100%;
@@ -51,9 +54,9 @@
     resize: none;
 }
 
-#findByCodeFormBtn{
+#findByCodeFormBtn {
     width: 125px;
-    border-radius: 0 10px 10px 0 ;
+    border-radius: 0 10px 10px 0;
     background-color: var(--secColor);
     color: var(--whiteColor);
     cursor: pointer;
