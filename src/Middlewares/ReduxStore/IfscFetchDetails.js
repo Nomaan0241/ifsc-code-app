@@ -5,8 +5,6 @@ const ifscFetchDetails = createSlice({
     initialState: {
         bank: [
             'Abhyudaya Co-Operative Bank',
-            'Abhyudaya Co-operative Bank',
-            'ICICI Bank',
             'Airtel Payments Bank',
             'Akola Janata Commercial Co-Operative Bank',
             'Allahabad Bank',
@@ -217,7 +215,8 @@ const ifscFetchDetails = createSlice({
             MICR: '',
             STATE: '',
         },
-        ifsc: {}
+        ifsc: {},
+        micr: {}
     },
     reducers: {
         setIfscFetchedDetails(state, actions) {

@@ -5,7 +5,6 @@ import { setLoadingState } from '../../Middlewares/ReduxStore/ToggleStateSlice'
 import { setIfscFetchedDetails } from '../../Middlewares/ReduxStore/IfscFetchDetails'
 import { setIFSCSearchDetailInfo } from '../../Middlewares/ReduxStore/IfscSearchDetailInfo'
 import axiosFetchBankDataInstance from '../../Middlewares/AxiosInstance/AxiosInstance';
-import { objectToIfscDataCapitalizeConverter } from '../../Utils/RoutingFormats';
 import SearchImg from '../../Assets/Images/Icons/search2.png'
 import '../../Assets/Styles/FindByCodes.css'
 
@@ -20,13 +19,13 @@ function FindByMICR() {
         axiosFetchBankDataInstance({
             url: "/micr",
             data: {
-                MICR: micrValue.toUpperCase(),
+                MICR: micrValue,
             },
         }).then((res) => {
             console.log(res.data);
             dispatch(setIFSCSearchDetailInfo({ key: 'micr', value: micrValue }))
-            dispatch(setIfscFetchedDetails({ key: 'micr', value: objectToIfscDataCapitalizeConverter(res.data.data) }))
-            navigate(`/ifsc/${micrValue}`);
+            dispatch(setIfscFetchedDetails({ key: 'micr', value: res.data.data }))
+            navigate(`/micr/${micrValue}`);
         }).catch((err) => {
             alert(err.message);
         }).finally(() => {
@@ -46,7 +45,7 @@ function FindByMICR() {
                     <div id='findByIfscCodeContainer' className="findByCodeSubContainer">
                         <h1>Find Bank Details</h1>
                         <p>Find your bank details by MICR Code</p>
-                        <form onSubmit={(e) => getMICRData(e)} className='findByCodeSearchForm'>
+                        <form onSubmit={(e) => getMICRData(e)} className='findByCodeSearchForm' autocomplete="off">
                             <input type="text" placeholder='Search your MICR code here' className='findByCodeFormInputField' pattern="^[0-9]{9}$" onChange={(e) => setMicrValue(e.target.value)} value={micrValue} title="Enter correct IFSC Code." maxLength={9} required />
                             <button type="submit" id='findByCodeFormBtn' className='findByCodeFormInputField'>Submit</button>
                         </form>

@@ -39,7 +39,7 @@ function IfscSearchBox() {
 
     return (
         <>
-            <form onSubmit={(e) => getIFSCData(e)} method='get' className='ifscSearchBoxContainer'>
+            <form onSubmit={(e) => getIFSCData(e)} method='get' className='ifscSearchBoxContainer' autocomplete="off">
                 <input pattern="^[A-Za-z]{4}0[A-Za-z0-9]{6}$" type="text" name="ifscInput" onChange={(e) => setIfscValue(e.target.value)} value={ifscValue} id="ifscSearchBox" placeholder='Search Any IFSC Code' title="Enter correct IFSC Code." maxLength={11} required/>
                 <button type='submit' id='ifscSearchBtn' >
                     <FontAwesomeIcon icon={faMagnifyingGlass} /><span>s</span>

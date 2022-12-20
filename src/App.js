@@ -15,6 +15,7 @@ import StateDetailRoute from './Pages/BankDetailRoutes/StateDetailRoute'
 import DistrictDetailRoute from './Pages/BankDetailRoutes/DistrictDetailRoute'
 import BranchDetailRoute from './Pages/BankDetailRoutes/BranchDetailRoute'
 import BankFullDetail from './Pages/BankFullDetail'
+import MicrFullDetail from './Pages/MicrFullDetail'
 import FindByIFSC from './Pages/Home/FindByIFSC'
 import FindByMICR from './Pages/Home/FindByMICR'
 
@@ -29,6 +30,7 @@ function App() {
     <>
       {loading && <Loader />}
       <Navbar />
+
       <Routes>
         <Route path='/' element={<OutletPage />}>
           <Route index element={<Home />} />
@@ -38,6 +40,9 @@ function App() {
           <Route path='find-by-micr' element={<FindByMICR />} />
           <Route path='ifsc' element={<OutletPage />}>
             <Route path=':ifscCodeSlug' element={<BankFullDetail />} />
+          </Route>
+          <Route path='micr' element={<OutletPage />}>
+            <Route path=':micrCodeSlug' element={<MicrFullDetail />} />
           </Route>
           <Route path='bank' element={<OutletPage />} >
             <Route path=':bankNameSlug' element={<OutletPage />} >

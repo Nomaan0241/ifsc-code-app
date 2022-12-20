@@ -46,7 +46,7 @@ function FindByIFSC() {
                     <div id='findByIfscCodeContainer' className="findByCodeSubContainer">
                         <h1>Find Bank Details</h1>
                         <p>Find your bank details by IFSC Code</p>
-                        <form onSubmit={(e) => getIFSCData(e)} className='findByCodeSearchForm'>
+                        <form onSubmit={(e) => getIFSCData(e)} className='findByCodeSearchForm' autocomplete="off">
                             <input type="text" pattern="^[A-Za-z]{4}0[A-Za-z0-9]{6}$" onChange={(e) => setIfscValue(e.target.value)} value={ifscValue} placeholder='Search your IFSC code here' title="Enter correct IFSC Code." maxLength={11} required className='findByCodeFormInputField' />
                             <button type="submit" id='findByCodeFormBtn' className='findByCodeFormInputField'>Submit</button>
                         </form>

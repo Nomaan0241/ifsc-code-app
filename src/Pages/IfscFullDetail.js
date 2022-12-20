@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom';
-import { capitalizeConverter, nameConverter, objectToIfscDataCapitalizeConverter } from '../Utils/RoutingFormats'
+import { capitalizeConverter, nameConverter } from '../Utils/RoutingFormats'
 import { setIfscFetchedDetails } from '../Middlewares/ReduxStore/IfscFetchDetails';
 import { setLoadingState } from '../Middlewares/ReduxStore/ToggleStateSlice';
 import { setIFSCSearchDetailInfo } from '../Middlewares/ReduxStore/IfscSearchDetailInfo';
@@ -35,7 +35,7 @@ function IfscFullDetail() {
                 dispatch(setIFSCSearchDetailInfo({ key: 'state', value: { statename: capitalizeConverter(STATE) } }));
                 dispatch(setIFSCSearchDetailInfo({ key: 'district', value: { districtname: capitalizeConverter(CITY) } }));
                 dispatch(setIFSCSearchDetailInfo({ key: 'branch', value: { branchname: capitalizeConverter(BRANCH) } }));
-                dispatch(setIfscFetchedDetails({ key: 'bankDetails', value: objectToIfscDataCapitalizeConverter(data) }))
+                dispatch(setIfscFetchedDetails({ key: 'bankDetails', value: data }))
             }).catch((err) => {
                 alert(err.message);
                 navigate('/');

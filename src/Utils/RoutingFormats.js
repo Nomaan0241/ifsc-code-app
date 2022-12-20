@@ -3,14 +3,11 @@ export function slugConverter(name) {
 }
 
 export function nameConverter(name) {
-    return name.toLowerCase().split('_').map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ').split('-').map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join('-').split('(').map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join('(').split('[').map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join('[');
-}
-export function nameConverterOld(name) {
     return name.toLowerCase().split('_').map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
 }
 
 export function capitalizeConverter(name) {
-    return name.toLowerCase().split(' ').map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ').split('-').map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join('-');
+    return name.toLowerCase().split(' ').map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
 }
 
 export function objectToIfscDataCapitalizeConverter(obj) {

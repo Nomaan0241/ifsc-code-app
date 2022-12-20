@@ -23,8 +23,6 @@ function IfscDetailSetComponent() {
   const bankDetailNameWidth = useRef(50);
 
   function setBankNameValue(bankValue) {
-    console.log(bankValue, 'bank name')
-    console.log(capitalizeConverter(bankValue), 'bank name coverted')
     dispatch(setLoadingState(true));
     axiosFetchBankDataInstance({
       url: "/bank-name/get-states",

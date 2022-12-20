@@ -12,7 +12,7 @@ function Contact() {
           <div className="contactFormRightSide contactFormDirectChilds">
             <h1>Get In Touch</h1>
             <p>How can we help you? Get any query.</p>
-            <form method="post" className='contactUsForm'>
+            <form method="post" className='contactUsForm' autocomplete="off">
               <input type="text" required className="contactFormField" placeholder='Enter your name' />
               <input type='email' required className="contactFormField" placeholder='Enter your email' />
               <textarea className="contactFormField" required rows="4" placeholder='Enter message'></textarea>

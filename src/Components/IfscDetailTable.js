@@ -22,7 +22,7 @@ function IfscDetailTable(props) {
                         <h2>IFSC Code:</h2>
                     </div>
                     <div className="infoTableIfscCol ifscValueDataCol">
-                        <h2>{IFSC || 'Copy when value is showing'}</h2>
+                        <h2>{IFSC || 'No Data Available'}</h2>
                         <input type="text" value={IFSC || 'Copy when value is showing'} readOnly />
                         <button onClick={copyIfsc}>Copy IFSC</button>
                     </div>

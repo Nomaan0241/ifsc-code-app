@@ -24,7 +24,6 @@ function Footer() {
               <li><Link to='/'>Home</Link></li>
               <li><Link to='/about'>About</Link></li>
               <li><Link to='/contact'>Contact Us</Link></li>
-              <li><Link to='/find-by-ifsc'>Service</Link></li>
             </ul >
           </div >
           <div className="footerContainer" id="footerContainer4">

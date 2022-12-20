@@ -7,27 +7,27 @@ import { setIFSCSearchDetailInfo } from '../Middlewares/ReduxStore/IfscSearchDet
 import { setLoadingState } from '../Middlewares/ReduxStore/ToggleStateSlice';
 import IfscDetailTable from '../Components/IfscDetailTable';
 
-function BankFullDetail() {
-  const { IFSC, MICR, BANK, BRANCH, ADDRESS, STATE, CITY, DISTRICT,} = useSelector((state) => state.ifscFetchDetails.ifsc);
-  const ifscDetails = useSelector((state) => state.ifscFetchDetails.ifsc);
+function MicrFullDetail() {
+  const { IFSC, MICR, BANK, BRANCH, ADDRESS, STATE, CITY, DISTRICT, } = useSelector((state) => state.ifscFetchDetails.micr);
+  const micrDetails = useSelector((state) => state.ifscFetchDetails.micr);
   const dispatch = useDispatch();
-  const { ifscCodeSlug } = useParams();
-  const { ifsc } = useSelector((state) => state.ifscSearchDetailInfo);
+  const { micrCodeSlug } = useParams();
+  const { micr } = useSelector((state) => state.ifscSearchDetailInfo);
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!ifsc) {
+    if (!micr) {
       dispatch(setLoadingState(true));
       axios({
         method: "post",
         url: "https://findbankifsccode.onrender.com/api/ifsc",
         data: {
-          IFSC: ifscCodeSlug.toUpperCase(),
+          IFSC: micrCodeSlug,
         },
       }).then((res) => {
         console.log(res.data);
-        dispatch(setIFSCSearchDetailInfo({ key: 'ifsc', value: ifscCodeSlug }))
-        dispatch(setIfscFetchedDetails({ key: 'ifsc', value: res.data.data }))
+        dispatch(setIFSCSearchDetailInfo({ key: 'micr', value: micrCodeSlug }))
+        dispatch(setIfscFetchedDetails({ key: 'micr', value: res.data.data }))
       }).catch((err) => {
         alert(err.message + 'Navigating to home page');
         navigate('/');
@@ -41,7 +41,7 @@ function BankFullDetail() {
     <>
       <h1 className='sectionHeaderTitle'>Bank <span>Details</span></h1>
       <div className="pageContainer">
-        <IfscDetailTable details={ifscDetails} />
+        <IfscDetailTable details={micrDetails} />
         <section className="descriptionContainer">
           <h1 className='descriptionHeading'><span>{IFSC}</span> IFSC Code Details</h1>
           <p className='descriptionPara'>The <span>{BRANCH}</span> Branch IFSC code is <span>{IFSC}</span> and address is <span>{ADDRESS}, {CITY}, {DISTRICT}, {STATE}</span>. The IFSC Code stands for Indian Financial System Code. It is an alphanumeric code that facilitates electronic funds transfer in India while using NEFT, RTGS, IMPS, or UPI. The <span>{BRANCH}</span> Branch MICR code is <span>{MICR}.</span></p>
@@ -57,4 +57,4 @@ function BankFullDetail() {
   )
 }
 
-export default BankFullDetail
+export default MicrFullDetail
