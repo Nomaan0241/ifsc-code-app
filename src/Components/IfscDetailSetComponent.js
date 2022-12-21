@@ -18,6 +18,7 @@ function IfscDetailSetComponent() {
   const [showStateOption, setShowStateOption] = useState(false);
   const [showDistrictOption, setShowDistrictOption] = useState(false);
   const [showBranchOption, setShowBranchOption] = useState(false);
+  const [searchedValue, setSearchedValues] = useState({ bank: '', state: '', district: '', branch: '' });
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const bankDetailNameWidth = useRef(50);
@@ -25,7 +26,7 @@ function IfscDetailSetComponent() {
   function setBankNameValue(bankValue) {
     dispatch(setLoadingState(true));
     axiosFetchBankDataInstance({
-      url: "/bank-name/get-states",
+      url: "api/bank-name/get-states",
       data: {
         BANK: capitalizeConverter(bankValue)
       },
@@ -46,7 +47,7 @@ function IfscDetailSetComponent() {
   function setStateNameValue(stateValue) {
     dispatch(setLoadingState(true));
     axiosFetchBankDataInstance({
-      url: "/bank-name/state/city",
+      url: "api/bank-name/state/city",
       data: {
         BANK: bank.bankname,
         STATE: capitalizeConverter(stateValue),
@@ -67,7 +68,7 @@ function IfscDetailSetComponent() {
   function setDistrictNameValue(districtValue) {
     dispatch(setLoadingState(true));
     axiosFetchBankDataInstance({
-      url: "/bank-name/state/city/branch",
+      url: "api/bank-name/state/city/branch",
       data: {
         BANK: bank.bankname,
         STATE: state.statename,
@@ -119,7 +120,9 @@ function IfscDetailSetComponent() {
 
   useEffect(() => {
     bankDetailNameWidth.current = document.querySelector('.bankDetailSelectContainer p').offsetWidth;
+  }, [])
 
+  useEffect(() => {
     if (!bankNameSlug) {
       navToBankOption();
     }
@@ -136,57 +139,70 @@ function IfscDetailSetComponent() {
       <h1>IFSC Code <span>Finder</span></h1>
       <div id='bankDetailFormContainer'>
         {/* Bank Section */}
-        <div className={`bankDetailSelectContainer ${bank && 'successBorder'}`} onClick={() => setShowBankOption(!showBankOption)}>
-          <FontAwesomeIcon icon={faBuildingColumns} className={`bankDetailSelectIcon`} />
-          <p style={{ width: `${bankDetailNameWidth.current + 'px'}` }} >{bank.bankname || 'Select Bank'}</p>
-          <FontAwesomeIcon icon={(bank) ? faArrowsRotate : faCaretDown} className={`bankDetailSelectDropDownIcon ${showBankOption && !bank && 'opened'} ${bank && 'refreshBtnColor'}`} onClick={() => navToBankOption()} />
-          {showBankOption && !bank && <div className="bankDetailOptionContainer">
-            {bankList.map((name, ind) => {
-              return (
-                <div key={ind} onClick={() => setBankNameValue(name, navigate)} className='bankDetailOptionSelector'>● {name}</div>
-              );
-            })}
+        <div className='bankDetailSelectOuterContainer'>
+          <div className={`bankDetailSelectContainer ${bank && 'successBorder'}`} onClick={() => setShowBankOption(!showBankOption)}>
+            <FontAwesomeIcon icon={faBuildingColumns} className={`bankDetailSelectIcon`} />
+            <p style={{ width: `${bankDetailNameWidth.current + 'px'}` }}>{bank.bankname || 'Select Bank'}</p>
+            <FontAwesomeIcon icon={(bank) ? faArrowsRotate : faCaretDown} className={`bankDetailSelectDropDownIcon ${showBankOption && !bank && 'opened'} ${bank && 'refreshBtnColor'}`} onClick={() => navToBankOption()} />
+          </div>
+          {showBankOption && !bank && <div className="bankDetailOptionOuterContainer">
+            <div className="bankDetailOptionSearchBoxContainer">
+              <input type="text" className='bankDetailOptionSearchBox' value={searchedValue.bank} onChange={(e) => setSearchedValues({ ...searchedValue, bank: e.target.value })} placeholder='Search Bank Name' />
+            </div>
+            <div className="bankDetailOptionContainer">
+              {searchedValue.bank ? bankList.filter((name) => name.toLowerCase().includes(searchedValue.bank.toLowerCase())).map((name, ind) => <div key={ind} onClick={() => setBankNameValue(name)} className='bankDetailOptionSelector'>● {name}</div>) : bankList.map((name, ind) => <div key={ind} onClick={() => setBankNameValue(name)} className='bankDetailOptionSelector'>● {name}</div>)}
+            </div>
           </div>}
         </div>
         {/* State Section */}
-        <div className={`bankDetailSelectContainer ${(!bank) && 'disabledField'} ${state && 'successBorder'}`} onClick={() => setShowStateOption(!showStateOption)}>
-          <FontAwesomeIcon icon={faFlag} className={`bankDetailSelectIcon`} />
-          <p>{state.statename || 'Select State'}</p>
-          <FontAwesomeIcon icon={(state) ? faArrowsRotate : faCaretDown} className={`bankDetailSelectDropDownIcon ${(showStateOption && !state && bank) && 'opened'} ${state && 'refreshBtnColor'}`} onClick={() => navToStateOption()} />
-          {(showStateOption && !state && bank) && <div className="bankDetailOptionContainer">
-            {stateList.map((name, ind) => {
-              return (
-                <div key={ind} onClick={() => setStateNameValue(name)} className='bankDetailOptionSelector'>● {name}</div>
-              );
-            })}
+        <div className='bankDetailSelectOuterContainer'>
+          <div className={`bankDetailSelectContainer ${(!bank) && 'disabledField'} ${state && 'successBorder'}`} onClick={() => setShowStateOption(!showStateOption)}>
+            <FontAwesomeIcon icon={faFlag} className={`bankDetailSelectIcon`} />
+            <p style={{ width: `${bankDetailNameWidth.current + 'px'}` }}>{state.statename || 'Select State'}</p>
+            <FontAwesomeIcon icon={(state) ? faArrowsRotate : faCaretDown} className={`bankDetailSelectDropDownIcon $
+            {(showStateOption && !state && bank) && 'opened'} ${state && 'refreshBtnColor'}`} onClick={() => navToStateOption()} />
+          </div>
+          {(showStateOption && !state && bank) && <div className="bankDetailOptionOuterContainer">
+            <div className="bankDetailOptionSearchBoxContainer">
+              <input type="text" className='bankDetailOptionSearchBox' value={searchedValue.state} onChange={(e) => setSearchedValues({ ...searchedValue, state: e.target.value })} placeholder='Search State Name' />
+            </div>
+            <div className="bankDetailOptionContainer">
+              {searchedValue.state ? stateList.filter((name) => name.toLowerCase().includes(searchedValue.state.toLowerCase())).map((name, ind) => <div key={ind} onClick={() => setStateNameValue(name)} className='bankDetailOptionSelector'>● {name}</div>) : stateList.map((name, ind) => <div key={ind} onClick={() => setStateNameValue(name)} className='bankDetailOptionSelector'>● {name}</div>)}
+            </div>
           </div>
           }
         </div>
         { /* District Section */}
-        <div className={`bankDetailSelectContainer ${(!state) ? 'disabledField' : ''} ${district && 'successBorder'}`} onClick={() => setShowDistrictOption(!showDistrictOption)}>
-          <FontAwesomeIcon icon={faCity} className={`bankDetailSelectIcon`} />
-          <p>{district.districtname || 'Select District'}</p>
-          <FontAwesomeIcon icon={(district) ? faArrowsRotate : faCaretDown} className={`bankDetailSelectDropDownIcon ${(showDistrictOption && !district && state) && 'opened'} ${district && 'refreshBtnColor'}`} onClick={() => navToDistrictOption()} />
-          {(showDistrictOption && !district && state) && <div className="bankDetailOptionContainer">
-            {districtList.map((name, ind) => {
-              return (
-                <div key={ind} onClick={() => setDistrictNameValue(name)} className='bankDetailOptionSelector'>● {name}</div>
-              );
-            })}
+        <div className='bankDetailSelectOuterContainer'>
+          <div className={`bankDetailSelectContainer ${(!state) ? 'disabledField' : ''} ${district && 'successBorder'}`} onClick={() => setShowDistrictOption(!showDistrictOption)}>
+            <FontAwesomeIcon icon={faCity} className={`bankDetailSelectIcon`} />
+            <p style={{ width: `${bankDetailNameWidth.current + 'px'}` }}>{district.districtname || 'Select District'}</p>
+            <FontAwesomeIcon icon={(district) ? faArrowsRotate : faCaretDown} className={`bankDetailSelectDropDownIcon ${(showDistrictOption && !district && state) && 'opened'} ${district && 'refreshBtnColor'}`} onClick={() => navToDistrictOption()} />
+          </div>
+          {(showDistrictOption && !district && state) && <div className="bankDetailOptionOuterContainer">
+            <div className="bankDetailOptionSearchBoxContainer">
+              <input type="text" className='bankDetailOptionSearchBox' value={searchedValue.district} onChange={(e) => setSearchedValues({ ...searchedValue, district: e.target.value })} placeholder='Search District Name' />
+            </div>
+            <div className="bankDetailOptionContainer">
+              {searchedValue.district ? districtList.filter((name) => name.toLowerCase().includes(searchedValue.district.toLowerCase())).map((name, ind) => <div key={ind} onClick={() => setDistrictNameValue(name)} className='bankDetailOptionSelector'>● {name}</div>) : districtList.map((name, ind) => <div key={ind} onClick={() => setDistrictNameValue(name)} className='bankDetailOptionSelector'>● {name}</div>)}
+            </div>
           </div>
           }
         </div>
         { /* Branch Section */}
-        <div className={`bankDetailSelectContainer ${(!district) ? 'disabledField' : ''}`} onClick={() => setShowBranchOption(!showBranchOption)}>
-          <FontAwesomeIcon icon={faIndianRupeeSign} className={`bankDetailSelectIcon`} />
-          <p>{branch.branchname || 'Select Branch'}</p>
-          <FontAwesomeIcon icon={faCaretDown} className={`bankDetailSelectDropDownIcon ${showBranchOption && district && 'opened'}`} />
-          {showBranchOption && district && <div className="bankDetailOptionContainer">
-            {branchList.map((name, ind) => {
-              return (
-                <div key={ind} onClick={() => setBranchNameValue(name)} className='bankDetailOptionSelector'>● {name}</div>
-              );
-            })}
+        <div className='bankDetailSelectOuterContainer'>
+          <div className={`bankDetailSelectContainer ${(!district) ? 'disabledField' : ''}`} onClick={() => setShowBranchOption(!showBranchOption)}>
+            <FontAwesomeIcon icon={faIndianRupeeSign} className={`bankDetailSelectIcon`} />
+            <p style={{ width: `${bankDetailNameWidth.current + 'px'}` }}>{branch.branchname || 'Select Branch'}</p>
+            <FontAwesomeIcon icon={faCaretDown} className={`bankDetailSelectDropDownIcon ${showBranchOption && district && 'opened'}`} />
+          </div>
+          {showBranchOption && district && <div className="bankDetailOptionOuterContainer">
+            <div className="bankDetailOptionSearchBoxContainer">
+              <input type="text" className='bankDetailOptionSearchBox' value={searchedValue.branch} onChange={(e) => setSearchedValues({ ...searchedValue, branch: e.target.value })} placeholder='Search Branch Name' />
+            </div>
+            <div className="bankDetailOptionContainer">
+              {searchedValue.branch ? branchList.filter((name) => name.toLowerCase().includes(searchedValue.branch.toLowerCase())).map((name, ind) => <div key={ind} onClick={() => setBranchNameValue(name)} className='bankDetailOptionSelector'>● {name}</div>) : branchList.map((name, ind) => <div key={ind} onClick={() => setBranchNameValue(name)} className='bankDetailOptionSelector'>● {name}</div>)}
+            </div>
           </div>
           }
         </div>

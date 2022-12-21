@@ -31,7 +31,9 @@ function Navbar() {
                     </ul>
                 </nav>
                 <IfscSearchBox />
-                <FontAwesomeIcon icon={NavToggleVal ? faXmark : faBars} onClick={toggleNavValue} className='headerIconStyle' id='menuIcon' />
+                <div className='headerIconStyle' id='menuIcon'>
+                    <FontAwesomeIcon icon={NavToggleVal ? faXmark : faBars} onClick={toggleNavValue} />
+                </div>
             </header>
         </>
     )

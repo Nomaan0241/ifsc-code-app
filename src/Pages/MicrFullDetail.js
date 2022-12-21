@@ -1,10 +1,10 @@
-import axios from 'axios';
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom';
 import { setIfscFetchedDetails } from '../Middlewares/ReduxStore/IfscFetchDetails';
 import { setIFSCSearchDetailInfo } from '../Middlewares/ReduxStore/IfscSearchDetailInfo';
 import { setLoadingState } from '../Middlewares/ReduxStore/ToggleStateSlice';
+import axiosFetchBankDataInstance from '../Middlewares/AxiosInstance/AxiosInstance';
 import IfscDetailTable from '../Components/IfscDetailTable';
 
 function MicrFullDetail() {
@@ -18,9 +18,8 @@ function MicrFullDetail() {
   useEffect(() => {
     if (!micr) {
       dispatch(setLoadingState(true));
-      axios({
-        method: "post",
-        url: "https://findbankifsccode.onrender.com/api/ifsc",
+      axiosFetchBankDataInstance({
+        url: "api/ifsc",
         data: {
           IFSC: micrCodeSlug,
         },

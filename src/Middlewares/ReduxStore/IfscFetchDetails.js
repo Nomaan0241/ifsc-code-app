@@ -225,19 +225,5 @@ const ifscFetchDetails = createSlice({
     }
 });
 
-export function fetchIFSCDetails(fetchFor, fetchLink) {
-    return async function fetchingIFSCDetails(dispatch, getState) {
-        try {
-            const res = await fetch(fetchLink);
-            const data = await res.json();
-            console.log(data);
-            dispatch(setIfscFetchedDetails({ key: fetchFor, value: data }));
-        } catch (error) {
-            console.log(error);
-        }
-    }
-}
-
-
 export const { setIfscFetchedDetails } = ifscFetchDetails.actions;
 export default ifscFetchDetails.reducer;

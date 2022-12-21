@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom';
@@ -6,6 +5,7 @@ import { capitalizeConverter, nameConverter } from '../Utils/RoutingFormats'
 import { setIfscFetchedDetails } from '../Middlewares/ReduxStore/IfscFetchDetails';
 import { setLoadingState } from '../Middlewares/ReduxStore/ToggleStateSlice';
 import { setIFSCSearchDetailInfo } from '../Middlewares/ReduxStore/IfscSearchDetailInfo';
+import axiosFetchBankDataInstance from '../Middlewares/AxiosInstance/AxiosInstance';
 import IfscDetailTable from '../Components/IfscDetailTable';
 
 function IfscFullDetail() {
@@ -15,13 +15,14 @@ function IfscFullDetail() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
+
     useEffect(() => {
+
         if (bankNameSlug && stateNameSlug && districtNameSlug && branchNameSlug) {
             console.log(nameConverter(bankNameSlug), nameConverter(stateNameSlug), nameConverter(districtNameSlug), nameConverter(branchNameSlug))
             dispatch(setLoadingState(true));
-            axios({
-                method: "post",
-                url: "https://findbankifsccode.onrender.com/api/bank-name/state/city/branch/bank",
+            axiosFetchBankDataInstance({
+                url: "api/bank-name/state/city/branch/bank",
                 data: {
                     BANK: nameConverter(bankNameSlug),
                     STATE: nameConverter(stateNameSlug),

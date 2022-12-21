@@ -29,6 +29,11 @@
     border-radius: 10px;
 }
 
+.bankDetailSelectOuterContainer {
+    width: 100%;
+    position: relative;
+}
+
 .bankDetailSelectContainer {
     width: 100%;
     margin: 0 0 30px 0;
@@ -43,7 +48,6 @@
     cursor: pointer;
     outline: none;
     box-shadow: 2px 3px 9px #00000029;
-    position: relative;
 }
 
 .bankDetailSelectIcon {
@@ -82,17 +86,54 @@
     transition: all 0.1s ease-in;
 }
 
-.bankDetailOptionContainer {
+.bankDetailOptionOuterContainer {
     width: inherit;
+    padding: 10px;
     max-height: 250px;
     position: absolute;
-    overflow-y: auto;
-    top: 52px;
+    top: 52.5px;
     left: 0px;
+    background-color: var(--lightGreyColor);
+    border: 0.5px solid var(--prColor);
+    border-radius: 10px;
+    z-index: 10;
+}
+
+.bankDetailOptionContainer {
+    width: inherit;
+    max-height: 174px;
+    height: 100%;
+    overflow-y: auto;
     background-color: var(--whiteColor);
     border-radius: 10px;
+    color: var(--prColor);
+    font-size: var(--fontSize);
+    font-weight: 500;
     border: 0.5px solid var(--prColor);
-    z-index: 10;
+    
+}
+
+.bankDetailOptionSearchBoxContainer {
+    width: 100%;
+}
+
+.bankDetailOptionSearchBox {
+    width: 100%;
+    margin: 0px 0px 10px 0px;
+    padding: 7px 10px;
+    position: sticky;
+    display: block;
+    font-size: var(--fontSize);
+    outline: none;
+    color: var(--prColor);
+    border-radius: 8px;
+    border: 2px solid var(--secColor);
+    box-shadow: 1px 1px 5px 1px var(--shadowColor) inset;
+}
+
+.bankDetailOptionSearchBox::placeholder {
+    color: var(--prColor);
+    opacity: 0.7;
 }
 
 .bankDetailOptionContainer::-webkit-scrollbar {
@@ -108,6 +149,7 @@
 
 .bankDetailOptionSelector {
     padding: 5px;
+    cursor: pointer;
     border-bottom: 0.5px solid var(--prColor);
 }
 
@@ -117,6 +159,7 @@
 
 .bankDetailOptionSelector:last-child {
     border-radius: 0px 0px 10px 10px;
+    border-bottom: none;
 }
 
 .bankDetailOptionSelector:hover {
@@ -133,7 +176,7 @@
 
 
 .refreshBtnColor {
-    color: var(--refreshBtnColor);
+    color: var(--orangeColor);
 }
 
 .errorColor {

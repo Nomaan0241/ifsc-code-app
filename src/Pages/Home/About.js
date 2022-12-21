@@ -9,15 +9,15 @@ function About() {
       <h1 className='sectionHeaderTitle'>About <span>us</span></h1>
       {/* what is ifsc section */}
       <div className="pageContainer">
-        <div id="aboutIfscSection">
-          <h1 className='headingStyle'>What is <span>IFSC Code?</span></h1>
+        <div className='infoBox'>
+          <h1 className='infoHeading'>What is <span>IFSC Code?</span></h1>
           <p>IFSC code is used by electronic payment system applications such as real-time gross settlement (RTGS), NEFT and Centralized Funds Management System (CFMS). This code is mandatory for fund transfers from one bank account to another. Every bank branch will have a unique code and no two branches (even of the same bank) will ever be the same.</p>
         </div>
       </div>
       {/* branches data show section */}
       <div className='aboutFullWidthPageContainer'>
         <div className='pageContainer'>
-          <h1 className='headingStyle'>Data <span>Available</span></h1>
+          <h1 className='infoHeading'>Data <span>Available</span></h1>
           <div id="bankDataInfoSection">
             <div className="bankDataInfoContainer">
               <h2>165<span>+</span></h2>
@@ -32,7 +32,7 @@ function About() {
               <p>Districts</p>
             </div>
             <div className="bankDataInfoContainer">
-              <h2>169983<span>+</span></h2>
+              <h2>162983<span>+</span></h2>
               <p>Branches</p>
             </div>
           </div>

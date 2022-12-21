@@ -8,7 +8,7 @@
   --whiteColor: #ffffff;
   --blackColor: #0f0f0f;
   --redColor: #ff0000;
-  --refreshBtnColor: #FFA500;
+  --orangeColor: #FFA500;
   --bgColor: #d9d9d9;
   --textFontSize: 18px;
   --headSize: 72px;
@@ -18,6 +18,7 @@
   --navFontSize: 18px;
   --mainFont: 'Roboto', sans-serif;
   --shadow: 2px 3px 9px rgba(0, 0, 0, 0.160);
+  --shadowColor: rgba(0, 0, 0, 0.160);
 }
 
 * {
@@ -112,7 +113,6 @@ p {
 
 
 /* Description Box */
-
 .descriptionContainer {
   margin: 20px 0px 20px 0px;
 }
@@ -140,20 +140,33 @@ p {
   font-size: var(--titleHeadingSize);
 }
 
-.headingStyle {
+/* INFO BOX */
+
+.infoBox {
+  text-align: center;
+  margin: 20px 0;
+}
+
+
+.infoHeading {
   color: var(--prColor);
   font-size: var(--titleHeadingSize);
   text-align: center;
   margin: 0px 0px 8px 0px;
 }
 
-.headingStyle span,
+.infoHeading span,
 .descriptionHeading span {
   color: var(--secColor);
   position: relative;
 }
 
-.headingStyle span::after {
+.infoBox p,
+.infoBox pre {
+  margin: 0 0 10px 0;
+}
+
+.infoHeading span::after {
   content: '';
   background-color: var(--secColor);
   position: absolute;
@@ -162,6 +175,7 @@ p {
   height: 3px;
   width: 100%;
 }
+
 
 
 /* TABLE */
@@ -195,7 +209,7 @@ p {
   display: inline-block;
 }
 
-.ifscValueDataCol input{
+.ifscValueDataCol input {
   display: none;
 }
 
