@@ -127,6 +127,7 @@ p {
 
 .descriptionContainer p span {
   font-weight: 500;
+  word-break: break-all;  
 }
 
 .descriptionHeading {
@@ -213,8 +214,6 @@ p {
   display: none;
 }
 
-
-
 .ifscValueDataCol button {
   margin: 0px 5px;
   padding: 5px 15px;
@@ -281,7 +280,7 @@ p {
 }
 
 .dataCol {
-  text-transform: capitalize;
+  word-break: break-all;
 }
 
 /* Loader */

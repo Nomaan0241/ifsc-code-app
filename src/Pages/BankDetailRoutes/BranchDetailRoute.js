@@ -13,7 +13,7 @@ function BranchDetailRoute() {
   const { bankNameSlug, stateNameSlug, districtNameSlug } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  
   useEffect(() => {
     if (bankNameSlug && stateNameSlug && districtNameSlug && !districtname) {
       dispatch(setLoadingState(true));

@@ -127,7 +127,7 @@
     outline: none;
     color: var(--prColor);
     border-radius: 8px;
-    border: 2px solid var(--secColor);
+    border: 1px solid var(--secColor);
     box-shadow: 1px 1px 5px 1px var(--shadowColor) inset;
 }
 

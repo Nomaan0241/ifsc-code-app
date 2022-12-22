@@ -5,7 +5,6 @@ import { setLoadingState } from '../../Middlewares/ReduxStore/ToggleStateSlice'
 import { setIfscFetchedDetails } from '../../Middlewares/ReduxStore/IfscFetchDetails'
 import { setIFSCSearchDetailInfo } from '../../Middlewares/ReduxStore/IfscSearchDetailInfo'
 import axiosFetchBankDataInstance from '../../Middlewares/AxiosInstance/AxiosInstance';
-import { objectToIfscDataCapitalizeConverter } from '../../Utils/RoutingFormats';
 import SearchImg from '../../Assets/Images/Icons/search.png'
 import '../../Assets/Styles/FindByCodes.css'
 
@@ -25,7 +24,7 @@ function FindByIFSC() {
         }).then((res) => {
             console.log(res.data);
             dispatch(setIFSCSearchDetailInfo({ key: 'ifsc', value: ifscValue }))
-            dispatch(setIfscFetchedDetails({ key: 'ifsc', value: objectToIfscDataCapitalizeConverter(res.data.data) }))
+            dispatch(setIfscFetchedDetails({ key: 'ifsc', value: res.data.data }))
             navigate(`/ifsc/${ifscValue}`);
         }).catch((err) => {
             alert(err.message);

@@ -173,6 +173,10 @@
         padding: 10px;
     }
 
+    .infoTableRow {
+        padding: 5px 0;
+    }
+
     .infoTableCol {
         flex: 1 1 100%;
     }
