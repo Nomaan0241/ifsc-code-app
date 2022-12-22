@@ -1,15 +1,20 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleCheck, faCircleXmark, faCopy } from "@fortawesome/free-solid-svg-icons";
+import { faCircleCheck, faCircleXmark, faCopy, faClipboardCheck } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
 
 function IfscDetailTable(props) {
     const { IFSC, MICR, BANK, BRANCH, ADDRESS, STATE, CITY, DISTRICT, CONTACT, IMPS, RTGS, UPI, NEFT } = props.details;
-
+    const [copyValue, setCopyValue] = useState(<FontAwesomeIcon icon={faCopy}/>)
     function copyIfsc() { 
         var copyText = document.getElementById("ifscValueCopier");
         copyText.select();
         copyText.setSelectionRange(0, 99999);
         navigator.clipboard.writeText(copyText.value);
-        alert("Copied the text: " + copyText.value);
+        setCopyValue('Copied !');
+        // setCopyValue(<FontAwesomeIcon icon={faClipboardCheck}/>);
+        setTimeout(() => {
+            setCopyValue(<FontAwesomeIcon icon={faCopy}/>);
+        }, 1000);
     }
 
     return (
@@ -23,7 +28,7 @@ function IfscDetailTable(props) {
                     <div className="infoTableIfscCol ifscValueDataCol">
                         <h2>{IFSC || 'No Data Available'}</h2>
                         <input type="text" id="ifscValueCopier" value={IFSC || 'Copy when value is showing'} readOnly />
-                        <button onClick={copyIfsc}><FontAwesomeIcon icon={faCopy}/> IFSC</button>
+                        <button onClick={copyIfsc}>{copyValue}</button>
                     </div>
                 </div>
                 <div className="infoTableCellValueShowBoxRow">

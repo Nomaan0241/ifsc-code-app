@@ -47,6 +47,6 @@
     cursor: pointer;
     transition: all 0.1s ease-in 0s;
 }
-.contactUsForm input[type='submit']:hover {
+.contactUsForm input[type='submit']:hover, .contactUsForm input[type='submit']:active {
     background-color: var(--secDarkColor);
 }
