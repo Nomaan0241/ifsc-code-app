@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleCheck, faCircleXmark, faCopy, faClipboardCheck } from "@fortawesome/free-solid-svg-icons";
+import { faCircleCheck, faCircleXmark, faCopy } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 
 function IfscDetailTable(props) {
@@ -11,7 +11,6 @@ function IfscDetailTable(props) {
         copyText.setSelectionRange(0, 99999);
         navigator.clipboard.writeText(copyText.value);
         setCopyValue('Copied !');
-        // setCopyValue(<FontAwesomeIcon icon={faClipboardCheck}/>);
         setTimeout(() => {
             setCopyValue(<FontAwesomeIcon icon={faCopy}/>);
         }, 1000);

@@ -38,7 +38,11 @@
     display: block;
     font-size: var(--fontSize);
     margin: 0px 0px 10px 0px;
+}
+
+.contactUsForm textarea {
     resize: none;
+    height: 130px;
 }
 
 .contactUsForm input[type='submit'] {

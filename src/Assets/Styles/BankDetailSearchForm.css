@@ -32,6 +32,7 @@
 .bankDetailSelectOuterContainer {
     width: 100%;
     position: relative;
+    user-select: none;
 }
 
 .bankDetailSelectContainer {
@@ -174,7 +175,6 @@
     border: 0.5px solid var(--redColor);
 }
 
-
 .refreshBtnColor {
     color: var(--orangeColor);
 }
@@ -187,3 +187,4 @@
     background-color: var(--thirdColor);
     cursor: auto;
 }
+

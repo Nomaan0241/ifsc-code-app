@@ -15,7 +15,7 @@ function Contact() {
             <form method="post" className='contactUsForm' autoComplete="off">
               <input type="text" required className="contactFormField" placeholder='Enter your name' />
               <input type='email' required className="contactFormField" placeholder='Enter your email' />
-              <textarea className="contactFormField" required rows="4" placeholder='Enter message'></textarea>
+              <textarea className="contactFormField" required placeholder='Enter message'></textarea>
               <input type="submit" value="Submit" />
             </form>
           </div>
