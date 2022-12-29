@@ -1,11 +1,13 @@
 import targetImg from '../../Assets/Images/Icons/targetIcon.png'
 import missionImg from '../../Assets/Images/Icons/mission.png'
+import HeaderTags from '../../Components/HeaderTags'
 import '../../Assets/Styles/About.css'
 
 function About() {
 
   return (
     <>
+      <HeaderTags title={`${process.env.REACT_APP_NAME} | About Us`} description={`About us page of ${process.env.REACT_APP_NAME}`}/>
       <h1 className='sectionHeaderTitle'>About <span>us</span></h1>
       {/* what is ifsc section */}
       <div className="pageContainer">

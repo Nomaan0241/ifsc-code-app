@@ -1,15 +1,20 @@
 import React from 'react'
+import HeaderTags from '../../Components/HeaderTags'
 
 function Disclaimer() {
   return (
     <>
+      <HeaderTags
+        title={`${process.env.REACT_APP_NAME} | Disclaimer`}
+        description={`Disclaimer`}
+      />
       <h1 className='sectionHeaderTitle'>Disclaimer</h1>
       <div className="pageContainer">
         <div className="descriptionSectionContainer">
           <div className="descriptionContainer">
             <h1 className='descriptionHeading'><span>1.</span> Disclaimer and Limitation of Liability</h1>
             <p className='descriptionPara'>1.1 The Website is provided on an "AS IS" and "AS AVAILABLE" basis without any representation or endorsement made and without warranty of any kind whether express or implied, including but not limited to the implied warranties of satisfactory quality, fitness for a particular purpose, non-infringement, compatibility, security and accuracy.</p>
-            
+
             <h1 className='descriptionHeading'><span>2.</span> Indemnity</h1>
             <p className='descriptionPara'>You agree to indemnify and hold <span>Website name</span> and softusvista Inc. harmless from and against all liabilities, legal fees, damages, losses, costs and other expenses in relation to any claims or actions brought against <span>Website name</span> arising out of any breach by you of these Terms and Conditions or other liabilities arising out of your use of this Website.</p>
 

@@ -1,8 +1,12 @@
-import React from 'react'
+import HeaderTags from "../../Components/HeaderTags"
 
 function TermCondition() {
   return (
     <>
+      <HeaderTags
+        title={`${process.env.REACT_APP_NAME} | Terms of Use`}
+        description={`Terms of Use`}
+      />
       <h1 className='sectionHeaderTitle'>Terms & <span>Conditions</span></h1>
       <div className="pageContainer">
         <div className="descriptionSectionContainer">

@@ -1,7 +1,8 @@
+import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { Route, Routes } from 'react-router-dom'
 import Navbar from './Layouts/Navbar'
-import Home from './Pages/Home/Home'
+import MainHome from './Pages/Home/MainHome'
 import Footer from './Layouts/Footer'
 import Loader from './Layouts/Loader'
 import About from './Pages/Home/About'
@@ -10,30 +11,31 @@ import TermCondition from './Pages/Home/TermCondition'
 import Disclaimer from './Pages/Home/Disclaimer'
 import PageNotFound from './Pages/Home/PageNotFound'
 import OutletPage from './Pages/Extra/OutletPage'
-import IfscFullDetail from './Pages/IfscFullDetail'
 import StateDetailRoute from './Pages/BankDetailRoutes/StateDetailRoute'
 import DistrictDetailRoute from './Pages/BankDetailRoutes/DistrictDetailRoute'
 import BranchDetailRoute from './Pages/BankDetailRoutes/BranchDetailRoute'
-import BankFullDetail from './Pages/BankFullDetail'
-import MicrFullDetail from './Pages/MicrFullDetail'
+import IfscFullDetail from './Pages/FullDetailPage/IfscFullDetail'
+import BankFullDetail from './Pages/FullDetailPage/BankFullDetail'
+import MicrFullDetail from './Pages/FullDetailPage/MicrFullDetail'
 import FindByIFSC from './Pages/Home/FindByIFSC'
 import FindByMICR from './Pages/Home/FindByMICR'
 
 function App() {
   const loading = useSelector((state) => state.toggleState.isLoading);
-  window.scrollTo({
-    top: 0,
-    left: 0,
-    behavior: 'smooth'
-  });
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
+  })
   return (
     <>
       {loading && <Loader />}
       <Navbar />
-
       <Routes>
         <Route path='/' element={<OutletPage />}>
-          <Route index element={<Home />} />
+          <Route index element={<MainHome />} />
           <Route path='about' element={<About />} />
           <Route path='contact' element={<Contact />} />
           <Route path='find-by-ifsc' element={<FindByIFSC />} />

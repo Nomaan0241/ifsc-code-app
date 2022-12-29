@@ -8,7 +8,7 @@ import '../../Assets/Styles/Home.css';
 function Home() {
     const textLines = [`IFSC`, `MICR`, `Banks`];
     return (
-        <>
+        <>            
             <div className="homeContainer homeFullWithContainer">
                 <div className="homeSubContainer homeLeftSideContainer">
                     <h1 id="homeHeading">Find&nbsp;
@@ -16,7 +16,7 @@ function Home() {
                             <Typed strings={textLines} typeSpeed={100} backSpeed={50} startDelay={100} backDelay={1000} loop />
                         </span>
                     </h1>
-                    <p id="homeSubHeading">Website Name is a place where you can know your bank details through IFSC Codes.</p>
+                    <p id="homeSubHeading">{process.env.REACT_APP_TAGLINE}</p>
                     <Link to='/find-by-ifsc' className="btnWithIcon" id='homeBannerBtn'>
                         <span>Search IFSC</span>
                         <FontAwesomeIcon icon={faCircleChevronRight} />

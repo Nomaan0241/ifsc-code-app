@@ -8,7 +8,6 @@ const ToggleStateSlice = createSlice({
     },
     reducers: {
         setNavToggle(state, actions) {
-            // state.navToggle = !state.navToggle;
             state.navToggle= actions.payload;
         },
         setLoadingState(state, actions) {

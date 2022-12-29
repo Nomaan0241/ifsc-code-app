@@ -1,13 +1,14 @@
 import React from 'react'
 import Home from '../Home/Home'
+import { Helmet } from "react-helmet";
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import axios from 'axios';
+import axiosFetchBankDataInstance from '../../Middlewares/AxiosInstance/AxiosInstance';
 import { setLoadingState } from '../../Middlewares/ReduxStore/ToggleStateSlice';
 import { setIfscFetchedDetails } from '../../Middlewares/ReduxStore/IfscFetchDetails';
 import { setIFSCSearchDetailInfo } from '../../Middlewares/ReduxStore/IfscSearchDetailInfo';
-import { capitalizeConverter, nameConverter } from '../../Utils/RoutingFormats';
+import { nameConverter } from '../../Utils/RoutingFormats';
 
 
 function StateDetailRoute() {
@@ -15,20 +16,20 @@ function StateDetailRoute() {
   const { bankNameSlug } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const capsBankName = nameConverter(bankNameSlug);
 
   useEffect(() => {
     if (bankNameSlug && !bankname) {
       dispatch(setLoadingState(true));
-      axios({
-        method: "post",
-        url: "https://findbankifsccode.onrender.com/api/bank-name/get-states",
+      axiosFetchBankDataInstance({
+        url: "api/bank-name/get-states",
         data: {
-          BANK: nameConverter(bankNameSlug),
+          BANK: capsBankName,
         },
       }).then((res) => {
         console.log(res.data, 'State Page');
-        dispatch(setIFSCSearchDetailInfo({ key: 'bank', value: { bankname: capitalizeConverter(res.data.requestBody.BANK) } }));
-        dispatch(setIfscFetchedDetails({ key: 'state', value: res.data.data.map(wd => capitalizeConverter(wd)) }))
+        dispatch(setIFSCSearchDetailInfo({ key: 'bank', value: { bankname: res.data.requestBody.BANK } }));
+        dispatch(setIfscFetchedDetails({ key: 'state', value: res.data.data }))
       }).catch((err) => {
         console.log(err);
         alert(err.message);
@@ -37,10 +38,14 @@ function StateDetailRoute() {
         dispatch(setLoadingState(false));
       });
     }
-  }, [bankname, bankNameSlug, dispatch, navigate])
+  }, [bankname, bankNameSlug, capsBankName, dispatch, navigate])
 
   return (
     <>
+      <Helmet>
+        <title>{`${capsBankName} Branches, All Branch Addresses, Phone, IFSC code, MICR code`} </title>
+        <meta name="description" content={`${capsBankName} Branches, All Branch Addresses, Phone, IFSC code, MICR code, Find IFSC, MICR Codes, Address, All Bank Branches in India, for NEFT, RTGS, ECS Transactions`} />
+      </Helmet>
       <Home />
       <div className="pageContainer">
         <div className="descriptionSectionContainer">

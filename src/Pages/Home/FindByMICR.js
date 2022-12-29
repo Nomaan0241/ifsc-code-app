@@ -5,6 +5,7 @@ import { setLoadingState } from '../../Middlewares/ReduxStore/ToggleStateSlice'
 import { setIfscFetchedDetails } from '../../Middlewares/ReduxStore/IfscFetchDetails'
 import { setIFSCSearchDetailInfo } from '../../Middlewares/ReduxStore/IfscSearchDetailInfo'
 import axiosFetchBankDataInstance from '../../Middlewares/AxiosInstance/AxiosInstance';
+import HeaderTags from '../../Components/HeaderTags'
 import SearchImg from '../../Assets/Images/Icons/search2.png'
 import '../../Assets/Styles/FindByCodes.css'
 
@@ -36,6 +37,10 @@ function FindByMICR() {
 
     return (
         <>
+            <HeaderTags
+                title={`${process.env.REACT_APP_NAME} | Find By MICR`}
+                description={`Find by MICR Description`}
+            />
             <h1 className='sectionHeaderTitle'>Find by <span>MICR</span></h1>
             <div className="pageContainer">
                 <div className="shadowBoxContainer findByCodeContainer">

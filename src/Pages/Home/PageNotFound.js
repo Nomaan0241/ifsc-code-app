@@ -2,10 +2,15 @@ import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleChevronRight } from "@fortawesome/free-solid-svg-icons";
 import PageNotFoundImg from '../../Assets/Images/Icons/pageNotFound.png'
+import HeaderTags from '../../Components/HeaderTags'
 import '../../Assets/Styles/PageNotFound.css'
 function PageNotFound() {
   return (
     <>
+      <HeaderTags
+        title={`${process.env.REACT_APP_NAME} | Page Not Found`}
+        description={`Page Not Found`}
+      />
       <div className="pageContainer">
         <div className="pageNotFoundContainer">
           <img src={PageNotFoundImg} alt="404 Error" className='pageNotFoundImg' />

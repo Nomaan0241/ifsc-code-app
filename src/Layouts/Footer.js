@@ -15,8 +15,8 @@ function Footer() {
             <img src={logo} alt="logo" />
           </div>
           <div className="footerContainer" id="footerContainer2">
-            <h1>IFSC Code Website</h1>
-            <p>IFSC Code is a place where you can know your bank details through IFSC Codes.</p>
+            <h1>{process.env.REACT_APP_NAME}</h1>
+            <p>{process.env.REACT_APP_TAGLINE}</p>
           </div>
           <div className="footerContainer" id="footerContainer3">
             <h1>Check</h1>
@@ -32,11 +32,11 @@ function Footer() {
               <li><Link to='/'>Bank Info</Link></li>
               <li><Link to='/find-by-ifsc'>IFSC Info</Link></li>
               <li><Link to='/find-by-micr'>MICR Info</Link></li>
-            </ul >
+            </ul>
           </div>
         </div>
         <div id="footerBottomContainer">
-          IFSC Code @ 2022 | All Rights Reserved | <span><Link to='terms-of-uses'>Terms of use</Link></span> | <span><Link to='disclaimer'>Disclaimer</Link></span>
+          {process.env.REACT_APP_NAME} @ {new Date().getFullYear()} | All Rights Reserved | <span><Link to='terms-of-uses'>Terms of use</Link></span> | <span><Link to='disclaimer'>Disclaimer</Link></span>
         </div>
       </footer >
     </>

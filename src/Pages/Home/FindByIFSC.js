@@ -6,6 +6,7 @@ import { setIfscFetchedDetails } from '../../Middlewares/ReduxStore/IfscFetchDet
 import { setIFSCSearchDetailInfo } from '../../Middlewares/ReduxStore/IfscSearchDetailInfo'
 import axiosFetchBankDataInstance from '../../Middlewares/AxiosInstance/AxiosInstance';
 import SearchImg from '../../Assets/Images/Icons/search.png'
+import HeaderTags from '../../Components/HeaderTags'
 import '../../Assets/Styles/FindByCodes.css'
 
 function FindByIFSC() {
@@ -36,6 +37,10 @@ function FindByIFSC() {
 
     return (
         <>
+            <HeaderTags
+                title={`${process.env.REACT_APP_NAME} | Find By IFSC`}
+                description={`Find by IFSC Description`}
+            />
             <h1 className='sectionHeaderTitle'>Find by <span>IFSC</span></h1>
             <div className="pageContainer">
                 <div className="shadowBoxContainer findByCodeContainer">

@@ -1,12 +1,13 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom';
-import { capitalizeConverter, nameConverter } from '../Utils/RoutingFormats'
-import { setIfscFetchedDetails } from '../Middlewares/ReduxStore/IfscFetchDetails';
-import { setLoadingState } from '../Middlewares/ReduxStore/ToggleStateSlice';
-import { setIFSCSearchDetailInfo } from '../Middlewares/ReduxStore/IfscSearchDetailInfo';
-import axiosFetchBankDataInstance from '../Middlewares/AxiosInstance/AxiosInstance';
-import IfscDetailTable from '../Components/IfscDetailTable';
+import { capitalizeConverter, nameConverter } from '../../Utils/RoutingFormats'
+import { setIfscFetchedDetails } from '../../Middlewares/ReduxStore/IfscFetchDetails';
+import { setLoadingState } from '../../Middlewares/ReduxStore/ToggleStateSlice';
+import { setIFSCSearchDetailInfo } from '../../Middlewares/ReduxStore/IfscSearchDetailInfo';
+import axiosFetchBankDataInstance from '../../Middlewares/AxiosInstance/AxiosInstance';
+import HeaderTags from '../../Components/HeaderTags'
+import IfscDetailTable from '../../Components/IfscDetailTable';
 
 function IfscFullDetail() {
     const { IFSC, MICR, BANK, BRANCH, ADDRESS, STATE, CITY, DISTRICT } = useSelector((state) => state.ifscFetchDetails.bankDetails);
@@ -14,20 +15,22 @@ function IfscFullDetail() {
     const { bankNameSlug, stateNameSlug, districtNameSlug, branchNameSlug } = useParams();
     const dispatch = useDispatch();
     const navigate = useNavigate();
-
+    const capsBankName = nameConverter(bankNameSlug);
+    const capsStateName = nameConverter(stateNameSlug);
+    const capsDistrictName = nameConverter(districtNameSlug);
+    const capsBranchName = nameConverter(branchNameSlug);
 
     useEffect(() => {
-
         if (bankNameSlug && stateNameSlug && districtNameSlug && branchNameSlug) {
             console.log(nameConverter(bankNameSlug), nameConverter(stateNameSlug), nameConverter(districtNameSlug), nameConverter(branchNameSlug))
             dispatch(setLoadingState(true));
             axiosFetchBankDataInstance({
                 url: "api/bank-name/state/city/branch/bank",
                 data: {
-                    BANK: nameConverter(bankNameSlug),
-                    STATE: nameConverter(stateNameSlug),
-                    CITY: nameConverter(districtNameSlug),
-                    BRANCH: nameConverter(branchNameSlug),
+                    BANK: capsBankName,
+                    STATE: capsStateName,
+                    CITY: capsDistrictName,
+                    BRANCH: capsBranchName,
                 },
             }).then((res) => {
                 console.log(res.data);
@@ -44,10 +47,15 @@ function IfscFullDetail() {
                 dispatch(setLoadingState(false));
             });
         }
-    }, [bankNameSlug, stateNameSlug, districtNameSlug, branchNameSlug, dispatch, navigate])
+    }, [bankNameSlug, stateNameSlug, districtNameSlug, branchNameSlug, capsBankName,
+        capsStateName, capsDistrictName, capsBranchName, dispatch, navigate])
 
     return (
         <>
+            <HeaderTags
+                title={`${capsBankName}, ${capsStateName}, ${capsDistrictName}, ${capsBranchName} | All details address, IFSC, MICR, Contact`}
+                description={`${capsBankName}, ${capsStateName}, ${capsDistrictName}, ${capsBranchName} | All details address, IFSC, MICR, Contact`}
+            />
             <h1 className='sectionHeaderTitle'>IFSC <span>Details</span></h1>
             <div className="pageContainer">
                 <IfscDetailTable details={bankDetails} />

@@ -1,35 +1,36 @@
 import React, { useEffect } from 'react'
-import axios from 'axios';
+import Home from '../Home/Home'
+import { Helmet } from "react-helmet";
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom';
-import Home from '../Home/Home'
 import { setLoadingState } from '../../Middlewares/ReduxStore/ToggleStateSlice';
 import { setIfscFetchedDetails } from '../../Middlewares/ReduxStore/IfscFetchDetails';
 import { setIFSCSearchDetailInfo } from '../../Middlewares/ReduxStore/IfscSearchDetailInfo';
-import { capitalizeConverter, nameConverter } from '../../Utils/RoutingFormats';
+import { nameConverter } from '../../Utils/RoutingFormats';
+import axiosFetchBankDataInstance from '../../Middlewares/AxiosInstance/AxiosInstance';
 
 function DistrictDetailRoute() {
   const { bank: { bankname }, state: { statename } } = useSelector((state) => state.ifscSearchDetailInfo);
   const { bankNameSlug, stateNameSlug } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const capsBankName = nameConverter(bankNameSlug);
+  const capsStateName = nameConverter(stateNameSlug);
 
   useEffect(() => {
     if (bankNameSlug && stateNameSlug && !statename) {
       dispatch(setLoadingState(true));
-      axios({
-        method: "post",
-        url: "https://findbankifsccode.onrender.com/api/bank-name/state/city",
+      axiosFetchBankDataInstance({
+        url: "api/bank-name/state/city",
         data: {
-          BANK: nameConverter(bankNameSlug),
-          STATE: nameConverter(stateNameSlug),
+          BANK: capsBankName,
+          STATE: capsStateName,
         },
       }).then((res) => {
-        
         console.log(res.data, 'District Page');
-        dispatch(setIFSCSearchDetailInfo({ key: 'bank', value: { bankname: capitalizeConverter(res.data.requestBody.BANK) } }));
-        dispatch(setIFSCSearchDetailInfo({ key: 'state', value: { statename: capitalizeConverter(res.data.requestBody.STATE) } }));
-        dispatch(setIfscFetchedDetails({ key: 'district', value: res.data.data.map(wd=> capitalizeConverter(wd)) }))
+        dispatch(setIFSCSearchDetailInfo({ key: 'bank', value: { bankname: res.data.requestBody.BANK } }));
+        dispatch(setIFSCSearchDetailInfo({ key: 'state', value: { statename: res.data.requestBody.STATE } }));
+        dispatch(setIfscFetchedDetails({ key: 'district', value: res.data.data }))
       }).catch((err) => {
         console.log(err);
         alert(err.message);
@@ -38,11 +39,14 @@ function DistrictDetailRoute() {
         dispatch(setLoadingState(false));
       });
     }
-  }, [statename, bankNameSlug, stateNameSlug, dispatch, navigate])
-
+  }, [statename, bankNameSlug, stateNameSlug, capsBankName, capsStateName, dispatch, navigate])
 
   return (
     <>
+      <Helmet>
+        <title>{`${capsBankName}, ${capsStateName} All Branch Addresses, Phone, IFSC code, MICR code`} </title>
+        <meta name="description" content={`${capsBankName}, ${capsStateName} All Branch Addresses, Phone, IFSC code, MICR code, Find IFSC, MICR Codes, Address, All Bank Branches in India, for NEFT, RTGS, ECS Transactions`} />
+      </Helmet>
       <Home />
       <div className="pageContainer">
         <div className="descriptionSectionContainer">
