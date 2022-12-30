@@ -1,10 +1,10 @@
 import { useEffect } from 'react'
-import { useSelector } from 'react-redux'
 import { Route, Routes } from 'react-router-dom'
+import { Provider } from 'react-redux'
+import ReduxStore from './Middlewares/ReduxStore/ReduxStore';
 import Navbar from './Layouts/Navbar'
 import MainHome from './Pages/Home/MainHome'
 import Footer from './Layouts/Footer'
-import Loader from './Layouts/Loader'
 import About from './Pages/Home/About'
 import Contact from './Pages/Home/Contact'
 import TermCondition from './Pages/Home/TermCondition'
@@ -19,9 +19,9 @@ import BankFullDetail from './Pages/FullDetailPage/BankFullDetail'
 import MicrFullDetail from './Pages/FullDetailPage/MicrFullDetail'
 import FindByIFSC from './Pages/Home/FindByIFSC'
 import FindByMICR from './Pages/Home/FindByMICR'
+import IsLoading from './Components/IsLoading';
 
 function App() {
-  const loading = useSelector((state) => state.toggleState.isLoading);
   useEffect(() => {
     window.scrollTo({
       top: 0,
@@ -31,42 +31,44 @@ function App() {
   })
   return (
     <>
-      {loading && <Loader />}
-      <Navbar />
-      <Routes>
-        <Route path='/' element={<OutletPage />}>
-          <Route index element={<MainHome />} />
-          <Route path='about' element={<About />} />
-          <Route path='contact' element={<Contact />} />
-          <Route path='find-by-ifsc' element={<FindByIFSC />} />
-          <Route path='find-by-micr' element={<FindByMICR />} />
-          <Route path='ifsc' element={<OutletPage />}>
-            <Route path=':ifscCodeSlug' element={<BankFullDetail />} />
-          </Route>
-          <Route path='micr' element={<OutletPage />}>
-            <Route path=':micrCodeSlug' element={<MicrFullDetail />} />
-          </Route>
-          <Route path='bank' element={<OutletPage />} >
-            <Route path=':bankNameSlug' element={<OutletPage />} >
-              <Route index element={<StateDetailRoute />} />
-              <Route path=':stateNameSlug' element={<OutletPage />} >
-                <Route index element={<DistrictDetailRoute />} />
-                <Route path=':districtNameSlug' element={<OutletPage />} >
-                  <Route index element={<BranchDetailRoute />} />
-                  <Route path=':branchNameSlug' element={<OutletPage />} >
-                    <Route index element={<IfscFullDetail />} />
-                    <Route path='details' element={<IfscFullDetail />} />
+      <Provider store={ReduxStore}>
+        <IsLoading />
+        <Navbar />
+        <Routes>
+          <Route path='/' element={<OutletPage />}>
+            <Route index element={<MainHome />} />
+            <Route path='about' element={<About />} />
+            <Route path='contact' element={<Contact />} />
+            <Route path='find-by-ifsc' element={<FindByIFSC />} />
+            <Route path='find-by-micr' element={<FindByMICR />} />
+            <Route path='ifsc' element={<OutletPage />}>
+              <Route path=':ifscCodeSlug' element={<BankFullDetail />} />
+            </Route>
+            <Route path='micr' element={<OutletPage />}>
+              <Route path=':micrCodeSlug' element={<MicrFullDetail />} />
+            </Route>
+            <Route path='bank' element={<OutletPage />} >
+              <Route path=':bankNameSlug' element={<OutletPage />} >
+                <Route index element={<StateDetailRoute />} />
+                <Route path=':stateNameSlug' element={<OutletPage />} >
+                  <Route index element={<DistrictDetailRoute />} />
+                  <Route path=':districtNameSlug' element={<OutletPage />} >
+                    <Route index element={<BranchDetailRoute />} />
+                    <Route path=':branchNameSlug' element={<OutletPage />} >
+                      <Route index element={<IfscFullDetail />} />
+                      <Route path='details' element={<IfscFullDetail />} />
+                    </Route>
                   </Route>
                 </Route>
               </Route>
             </Route>
+            <Route path='disclaimer' element={<Disclaimer />} />
+            <Route path='terms-of-uses' element={<TermCondition />} />
+            <Route path='*' element={<PageNotFound />} />
           </Route>
-          <Route path='disclaimer' element={<Disclaimer />} />
-          <Route path='terms-of-uses' element={<TermCondition />} />
-          <Route path='*' element={<PageNotFound />} />
-        </Route>
-      </Routes>
-      <Footer />
+        </Routes>
+        <Footer />
+      </Provider>
     </>
   )
 }
