@@ -150,6 +150,9 @@
 
 .bankDetailOptionSelector {
     padding: 5px;
+    color: var(--prColor);
+    text-decoration: none;
+    display: block;
     cursor: pointer;
     border-bottom: 0.5px solid var(--prColor);
 }

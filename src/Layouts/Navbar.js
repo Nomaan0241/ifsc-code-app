@@ -8,7 +8,6 @@ import { setNavToggle, setLoadingState } from '../Middlewares/ReduxStore/ToggleS
 import { setIfscFetchedDetails } from '../Middlewares/ReduxStore/IfscFetchDetails'
 import { setIFSCSearchDetailInfo } from '../Middlewares/ReduxStore/IfscSearchDetailInfo'
 import axiosFetchBankDataInstance from '../Middlewares/AxiosInstance/AxiosInstance';
-// import { objectToIfscDataCapitalizeConverter } from '../Utils/RoutingFormats';
 import iconLogo from '../Assets/Images/logo.png'
 import '../Assets/Styles/Navbar.css'
 

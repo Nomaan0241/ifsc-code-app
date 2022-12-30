@@ -21,12 +21,13 @@ function BranchDetailRoute() {
   useEffect(() => {
     if (bankNameSlug && stateNameSlug && districtNameSlug && !districtname) {
       dispatch(setLoadingState(true));
+
       axiosFetchBankDataInstance({
-        url: "/bank-name/state/city/branch",
+        url: "api/bank-name/state/city/branch",
         data: {
-          BANK: nameConverter(bankNameSlug),
-          STATE: nameConverter(stateNameSlug),
-          CITY: nameConverter(districtNameSlug)
+          BANK: capsBankName,
+          STATE: capsStateName,
+          CITY: capsDistrictName
         },
       }).then((res) => {
         console.log(res.data, 'Branch Page');

@@ -1,7 +1,4 @@
-// import React from 'react'
-// import facebook from '../Assets/Images/Icons/facebook.png'
-// import google from '../Assets/Images/Icons/google.png'
-// import instagram from '../Assets/Images/Icons/instagram.png'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import logo from '../Assets/Images/logo.png'
 import '../Assets/Styles/Footer.css'

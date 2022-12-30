@@ -1,5 +1,5 @@
-import { useState, useEffect, useCallback, useRef } from 'react'
-import { useNavigate, useParams } from 'react-router-dom';
+import React, { useState, useEffect, useCallback, useRef } from 'react'
+import { useNavigate, useParams, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBuildingColumns, faCaretDown, faFlag, faCity, faIndianRupeeSign, faArrowsRotate } from '@fortawesome/free-solid-svg-icons'
@@ -31,17 +31,14 @@ function IfscDetailSetComponent() {
         BANK: capitalizeConverter(bankValue)
       },
     }).then((res) => {
-      console.log(res.data);
       dispatch(setIfscFetchedDetails({ key: 'state', value: res.data.data }));
     }).catch((err) => {
-      console.log(err);
       alert(err.message);
       navigate(`/`);
     }).finally(() => {
       dispatch(setLoadingState(false));
     });
     dispatch(setIFSCSearchDetailInfo({ key: 'bank', value: { bankname: capitalizeConverter(bankValue) } }));
-    navigate(`bank/${slugConverter(bankValue)}`);
   }
 
   function setStateNameValue(stateValue) {
@@ -53,7 +50,6 @@ function IfscDetailSetComponent() {
         STATE: capitalizeConverter(stateValue),
       },
     }).then((res) => {
-      console.log(res.data);
       dispatch(setIfscFetchedDetails({ key: 'district', value: res.data.data }));
     }).catch((err) => {
       alert(err.message);
@@ -62,7 +58,6 @@ function IfscDetailSetComponent() {
       dispatch(setLoadingState(false));
     });
     dispatch(setIFSCSearchDetailInfo({ key: 'state', value: { statename: capitalizeConverter(stateValue) } }));
-    navigate(`/bank/${bankNameSlug}/${slugConverter(stateValue)}`);
   }
 
   function setDistrictNameValue(districtValue) {
@@ -72,10 +67,9 @@ function IfscDetailSetComponent() {
       data: {
         BANK: bank.bankname,
         STATE: state.statename,
-        CITY: capitalizeConverter(districtValue)
+        CITY: districtValue
       },
     }).then((res) => {
-      console.log(res.data);
       dispatch(setIfscFetchedDetails({ key: 'branch', value: res.data.data }));
     }).catch((err) => {
       alert(err.message);
@@ -84,12 +78,12 @@ function IfscDetailSetComponent() {
       dispatch(setLoadingState(false));
     });
     dispatch(setIFSCSearchDetailInfo({ key: 'district', value: { districtname: capitalizeConverter(districtValue) } }));
-    navigate(`/bank/${bankNameSlug}/${stateNameSlug}/${slugConverter(districtValue)}`);
+    // navigate(`/bank/${bankNameSlug}/${stateNameSlug}/${slugConverter(districtValue)}`);
   }
 
-  function setBranchNameValue(branchValue) {
-    navigate(`/bank/${bankNameSlug}/${stateNameSlug}/${districtNameSlug}/${slugConverter(branchValue)}`);
-  }
+  // function setBranchNameValue(branchValue) {
+  //   navigate(`/bank/${bankNameSlug}/${stateNameSlug}/${districtNameSlug}/${slugConverter(branchValue)}`);
+  // }
 
   const navToBankOption = useCallback(function () {
     if (bank) {
@@ -150,7 +144,9 @@ function IfscDetailSetComponent() {
               <input type="text" className='bankDetailOptionSearchBox' value={searchedValue.bank} onChange={(e) => setSearchedValues({ ...searchedValue, bank: e.target.value })} placeholder='Search Bank Name' />
             </div>
             <div className="bankDetailOptionContainer">
-              {searchedValue.bank ? bankList.filter((name) => name.toLowerCase().includes(searchedValue.bank.toLowerCase())).map((name, ind) => <div key={ind} onClick={() => setBankNameValue(name)} className='bankDetailOptionSelector'>● {name}</div>) : bankList.map((name, ind) => <div key={ind} onClick={() => setBankNameValue(name)} className='bankDetailOptionSelector'>● {name}</div>)}
+              {searchedValue.bank ?
+                bankList.filter((name) => name.toLowerCase().includes(searchedValue.bank.toLowerCase())).map((name, ind) => <Link to={`/bank/${slugConverter(name)}`} key={ind} onClick={() => setBankNameValue(name)} className='bankDetailOptionSelector'>● {name}</Link>) :
+                bankList.map((name, ind) => <Link to={`/bank/${slugConverter(name)}`} key={ind} onClick={() => setBankNameValue(name)} className='bankDetailOptionSelector'>● {name}</Link>)}
             </div>
           </div>}
         </div>
@@ -167,7 +163,9 @@ function IfscDetailSetComponent() {
               <input type="text" className='bankDetailOptionSearchBox' value={searchedValue.state} onChange={(e) => setSearchedValues({ ...searchedValue, state: e.target.value })} placeholder='Search State Name' />
             </div>
             <div className="bankDetailOptionContainer">
-              {searchedValue.state ? stateList.filter((name) => name.toLowerCase().includes(searchedValue.state.toLowerCase())).map((name, ind) => <div key={ind} onClick={() => setStateNameValue(name)} className='bankDetailOptionSelector'>● {name}</div>) : stateList.map((name, ind) => <div key={ind} onClick={() => setStateNameValue(name)} className='bankDetailOptionSelector'>● {name}</div>)}
+              {searchedValue.state ?
+                stateList.filter((name) => name.toLowerCase().includes(searchedValue.state.toLowerCase())).map((name, ind) => <Link to={`/bank/${bankNameSlug}/${slugConverter(name)}`} key={ind} onClick={() => setStateNameValue(name)} className='bankDetailOptionSelector'>● {name}</Link>) :
+                stateList.map((name, ind) => <Link to={`/bank/${bankNameSlug}/${slugConverter(name)}`} key={ind} onClick={() => setStateNameValue(name)} className='bankDetailOptionSelector'>● {name}</Link>)}
             </div>
           </div>
           }
@@ -184,7 +182,9 @@ function IfscDetailSetComponent() {
               <input type="text" className='bankDetailOptionSearchBox' value={searchedValue.district} onChange={(e) => setSearchedValues({ ...searchedValue, district: e.target.value })} placeholder='Search District Name' />
             </div>
             <div className="bankDetailOptionContainer">
-              {searchedValue.district ? districtList.filter((name) => name.toLowerCase().includes(searchedValue.district.toLowerCase())).map((name, ind) => <div key={ind} onClick={() => setDistrictNameValue(name)} className='bankDetailOptionSelector'>● {name}</div>) : districtList.map((name, ind) => <div key={ind} onClick={() => setDistrictNameValue(name)} className='bankDetailOptionSelector'>● {name}</div>)}
+              {searchedValue.district ?
+                districtList.filter((name) => name.toLowerCase().includes(searchedValue.district.toLowerCase())).map((name, ind) => <Link to={`/bank/${bankNameSlug}/${stateNameSlug}/${slugConverter(name)}`} key={ind} onClick={() => setDistrictNameValue(name)} className='bankDetailOptionSelector'>● {name}</Link>) :
+                districtList.map((name, ind) => <Link to={`/bank/${bankNameSlug}/${stateNameSlug}/${slugConverter(name)}`} key={ind} onClick={() => setDistrictNameValue(name)} className='bankDetailOptionSelector'>● {name}</Link>)}
             </div>
           </div>
           }
@@ -201,7 +201,9 @@ function IfscDetailSetComponent() {
               <input type="text" className='bankDetailOptionSearchBox' value={searchedValue.branch} onChange={(e) => setSearchedValues({ ...searchedValue, branch: e.target.value })} placeholder='Search Branch Name' />
             </div>
             <div className="bankDetailOptionContainer">
-              {searchedValue.branch ? branchList.filter((name) => name.toLowerCase().includes(searchedValue.branch.toLowerCase())).map((name, ind) => <div key={ind} onClick={() => setBranchNameValue(name)} className='bankDetailOptionSelector'>● {name}</div>) : branchList.map((name, ind) => <div key={ind} onClick={() => setBranchNameValue(name)} className='bankDetailOptionSelector'>● {name}</div>)}
+              {searchedValue.branch ?
+                branchList.filter((name) => name.toLowerCase().includes(searchedValue.branch.toLowerCase())).map((name, ind) => <Link to={`/bank/${bankNameSlug}/${stateNameSlug}/${districtNameSlug}/${slugConverter(name)}`} key={ind} className='bankDetailOptionSelector'>● {name}</Link>) :
+                branchList.map((name, ind) => <Link to={`/bank/${bankNameSlug}/${stateNameSlug}/${districtNameSlug}/${slugConverter(name)}`} key={ind} className='bankDetailOptionSelector'>● {name}</Link>)}
             </div>
           </div>
           }
