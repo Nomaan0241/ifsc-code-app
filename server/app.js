@@ -10,12 +10,16 @@ import { Provider } from "react-redux";
 import ReduxStore from "../src/Middlewares/ReduxStore/ReduxStore";
 const app = express();
 
-app.use("/build", express.static("./build"));
-app.use("/build", express.static("./server-build"));
+// app.use("/build", express.static("./build"));
+app.use("/client", express.static("./client"));
+// app.use("/build", express.static("./server-build"));
+
+const clientBuildPath = path.resolve(__dirname, "../client/index.html");
+
 app.use((req, res, next) => {
 	console.log(req.url, "**");
 	if (/\.js|\.css|\.png|\.webp|\.woff/.test(req.path)) {
-		res.redirect("/build" + req.path);
+		res.redirect("/client" + req.path);
 	} else {
 		next();
 	}
@@ -33,7 +37,7 @@ app.get("*", (req, res) => {
 		</React.StrictMode>
 	);
 	const helmet = Helmet.renderStatic();
-	fs.readFile(path.resolve("./build/index.html"), "utf8", (err, data) => {
+	fs.readFile(clientBuildPath, "utf8", (err, data) => {
 		if (err) {
 			return res.status(500).send("Error occurred. Didnt find index.html");
 		}

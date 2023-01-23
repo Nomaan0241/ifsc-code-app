@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/static/css/main.d224ed14.css",
+    "main.js": "/static/js/main.74e3f6b9.js",
+    "static/media/Roboto-900-Italic.woff": "/static/media/Roboto-900-Italic.2126cdd49345bd88ae8f.woff",
+    "static/media/Roboto-400-Italic.woff": "/static/media/Roboto-400-Italic.c1f5f7a43a7f553b7d28.woff",
+    "static/media/Roboto-500-Italic.woff": "/static/media/Roboto-500-Italic.0699a90de43ae572e928.woff",
+    "static/media/Roboto-700-Italic.woff": "/static/media/Roboto-700-Italic.2e39aea15a75479dc0da.woff",
+    "static/media/Roboto-400.woff": "/static/media/Roboto-400.f7bafc7e0b4cc5d4a0d9.woff",
+    "static/media/Roboto-900.woff": "/static/media/Roboto-900.14cae30dcc936cea7d90.woff",
+    "static/media/Roboto-500.woff": "/static/media/Roboto-500.913f5f1d432d3090add0.woff",
+    "static/media/Roboto-700.woff": "/static/media/Roboto-700.5e938a82fef90580d3d8.woff",
+    "static/media/pageNotFound.png": "/static/media/pageNotFound.4e999f54957aa37def3f.png",
+    "static/media/contactUs.png": "/static/media/contactUs.c585fa94b8249fab5bac.png",
+    "static/media/targetIcon.png": "/static/media/targetIcon.9b288af93bc42efb03da.png",
+    "static/media/search2.png": "/static/media/search2.d5009c19ae7e2f8c5555.png",
+    "static/media/bank.webp": "/static/media/bank.9b8333b96082236d8d80.webp",
+    "static/media/debitCard.webp": "/static/media/debitCard.c561aefc8f6aca8ba771.webp",
+    "index.html": "/index.html",
+    "main.d224ed14.css.map": "/static/css/main.d224ed14.css.map",
+    "main.74e3f6b9.js.map": "/static/js/main.74e3f6b9.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d224ed14.css",
+    "static/js/main.74e3f6b9.js"
+  ]
+}
